@@ -1,5 +1,5 @@
 
-package Pessoa;
+package cliente;
 
 import Endereco.Endereco;
 
@@ -9,12 +9,14 @@ public abstract  class Cliente extends Endereco{
     private String telefone;
     private String numeroDoCartao;
 
-    public Cliente(String email, String telefone, String numeroDoCartao, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro) {
-        super(bairro, cidade, cep, logradouro, tipoDeLogradouro);
+    public Cliente(String email, String telefone, String numeroDoCartao, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia) {
+        super(bairro, cidade, cep, logradouro, tipoDeLogradouro, numero, complemento, pontoDeReferencia);
         this.email = email;
         this.telefone = telefone;
         this.numeroDoCartao = numeroDoCartao;
     }
+
+    
 
     public String getEmail() {
         return email;

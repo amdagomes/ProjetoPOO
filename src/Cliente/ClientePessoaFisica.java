@@ -9,13 +9,15 @@ public class ClientePessoaFisica extends Cliente {
     private String cpf;
     private LocalDate dataDeNascimento;
 
-    public ClientePessoaFisica(String nome, String rg, String cpf, LocalDate dataDeNascimento) {
-
+    public ClientePessoaFisica(String nome, String rg, String cpf, LocalDate dataDeNascimento, String email, String telefone, String numeroDoCartao, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia) {
+        super(email, telefone, numeroDoCartao, bairro, cidade, cep, logradouro, tipoDeLogradouro, numero, complemento, pontoDeReferencia);
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
     }
+
+    
 
     public String getNome() {
         return nome;
