@@ -7,8 +7,8 @@ package modelo;
 public class TV extends Servico {
     private int quantCanais;
 
-    public TV(int quantCanais, float vInstalacao, float vMesalidade, int codigo) {
-        super(vInstalacao, vMesalidade, codigo);
+    public TV(int quantCanais, float vInstalacao, float vMesalidade, String status, int codigo) {
+        super(vInstalacao, vMesalidade, status, codigo);
         this.quantCanais = quantCanais;
     }
 

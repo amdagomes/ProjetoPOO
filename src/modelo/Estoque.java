@@ -6,11 +6,13 @@ package modelo;
  */
 public class Estoque {
     private static int codigo;
+    private String tipo;
     private String nome;
     private int quantidade;
 
-    public Estoque(int codigo, String nome, int quantidade) {
+    public Estoque(int codigo, String tipo, String nome, int quantidade) {
         this.codigo = codigo;
+        this.tipo = tipo;
         this.nome = nome;
         this.quantidade = quantidade;
     }
@@ -20,6 +22,13 @@ public class Estoque {
     }
     public static void setCodigo(int codigo) {
         Estoque.codigo = codigo;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNome() {

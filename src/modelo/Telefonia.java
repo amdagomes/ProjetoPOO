@@ -10,8 +10,8 @@ public class Telefonia extends Servico{
     private float ligacaoNacional;
     private float ligacaoOperadora;
 
-    public Telefonia(String numero, float ligacaoLocal, float ligacaoNacional, float ligacaoOperadora, float vInstalacao, float vMesalidade, int codigo) {
-        super(vInstalacao, vMesalidade, codigo);
+    public Telefonia(String numero, float ligacaoLocal, float ligacaoNacional, float ligacaoOperadora, float vInstalacao, float vMesalidade, String status, int codigo) {
+        super(vInstalacao, vMesalidade, status, codigo);
         this.numero = numero;
         this.ligacaoLocal = ligacaoLocal;
         this.ligacaoNacional = ligacaoNacional;
