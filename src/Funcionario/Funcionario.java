@@ -12,8 +12,9 @@ public class Funcionario extends Endereco {
     private String escolaridade;
     private String reservista;
     private String telefone;
+    private String cargo;
 
-    public Funcionario(String nome, String email, String cpf, String rg, String curso, String escolaridade, String reservista, String telefone, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia) {
+    public Funcionario(String nome, String email, String cpf, String rg, String curso, String escolaridade, String reservista, String telefone, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia,String cargo) {
         super(bairro, cidade, cep, logradouro, tipoDeLogradouro, numero, complemento, pontoDeReferencia);
         this.nome = nome;
         this.email = email;
@@ -23,6 +24,7 @@ public class Funcionario extends Endereco {
         this.escolaridade = escolaridade;
         this.reservista = reservista;
         this.telefone = telefone;
+        this.cargo= cargo;
     }
 
     public String getNome() {
@@ -87,6 +89,14 @@ public class Funcionario extends Endereco {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
 }
