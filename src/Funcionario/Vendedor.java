@@ -1,5 +1,5 @@
 
-package Funcionario;
+package funcionario;
 
 
 public class Vendedor extends Funcionario{

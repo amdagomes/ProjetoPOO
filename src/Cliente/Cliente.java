@@ -1,7 +1,7 @@
 
 package cliente;
 
-import Endereco.Endereco;
+import endereco.Endereco;
 
 
 public abstract  class Cliente extends Endereco{
