@@ -11,11 +11,14 @@ public class Pagamento {
     private LocalDate vencimento;
     private float vAdicional;
     private String mesReferente;
+    private RealizaPagamento[] contas;
 
     public Pagamento(LocalDate vencimento, float vAdicional, String mesReferente) {
         this.vencimento = vencimento;
         this.vAdicional = vAdicional;
         this.mesReferente = mesReferente;
+        this.contas = contas;
+        contas = new RealizaPagamento[10];
     }
 
     public LocalDate getVencimento() {
@@ -38,6 +41,12 @@ public class Pagamento {
     public void setMesReferente(String mesReferente) {
         this.mesReferente = mesReferente;
     }
-    
-    
+
+    public RealizaPagamento[] getContas() {
+        return contas;
+    }
+    public void setContas(RealizaPagamento[] contas) {
+        this.contas = contas;
+    }
+     
 }
