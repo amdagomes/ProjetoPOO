@@ -12,11 +12,11 @@ public class Atendimento {
     private String descricao;
     private Cliente cliente[];
 
-    public Atendimento(LocalDate data, LocalTime hora, String descricao, Cliente[] cliente) {
+    public Atendimento(LocalDate data, LocalTime hora, String descricao) {
         this.data = data;
         this.hora = hora;
         this.descricao = descricao;
-        this.cliente = cliente;
+        cliente = new Cliente[10];
     }
 
     public LocalDate getData() {
