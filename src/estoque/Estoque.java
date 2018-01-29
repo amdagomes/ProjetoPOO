@@ -1,4 +1,6 @@
-package modelo;
+package estoque;
+
+import funcionario.Assalariado;
 
 /**
  *
@@ -9,12 +11,13 @@ public class Estoque {
     private String tipo;
     private String nome;
     private int quantidade;
+    private Assalariado[] funcionario;
 
-    public Estoque(int codigo, String tipo, String nome, int quantidade) {
-        this.codigo = codigo;
+    public Estoque(String tipo, String nome, int quantidade) {
         this.tipo = tipo;
         this.nome = nome;
         this.quantidade = quantidade;
+        funcionario = new Assalariado[10];
     }
 
     public static int getCodigo() {
@@ -43,6 +46,13 @@ public class Estoque {
     }
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Assalariado[] getFuncionario() {
+        return funcionario;
+    }
+    public void setFuncionario(Assalariado[] funcionario) {
+        this.funcionario = funcionario;
     }
     
 }
