@@ -1,14 +1,9 @@
 package modelo;
-import modelo.Cliente;
-/**
- *
- * @author Amanda
- */
+
 public abstract class Servico {
     private float vInstalacao;
     private float vMesalidade;
     private String status;
-    private Cliente cliente[];
     private static int codigo;
 
     public Servico(float vInstalacao, float vMesalidade, String status, int codigo) {
@@ -16,7 +11,6 @@ public abstract class Servico {
         this.vMesalidade = vMesalidade;
         this.status = status;
         this.codigo = codigo;
-        cliente = new Cliente[10];
     }
 
     public float getvInstalacao() {
@@ -45,14 +39,6 @@ public abstract class Servico {
     }
     public void setCodigo(int codigo){
         this.codigo = codigo;
-    }
-
-    public Cliente[] getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente[] cliente) {
-        this.cliente = cliente;
     }
     
 }

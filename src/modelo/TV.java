@@ -1,9 +1,5 @@
 package modelo;
 
-/**
- *
- * @author Amanda
- */
 public class TV extends Servico {
     private int quantCanais;
 

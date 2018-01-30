@@ -1,8 +1,6 @@
 package modelo;
 
-import modelo.Endereco;
-
-public class Funcionario extends Endereco {
+public class Funcionario {
 
     private String nome;
     private String email;
@@ -13,9 +11,9 @@ public class Funcionario extends Endereco {
     private String reservista;
     private String telefone;
     private String cargo;
+    private Endereco endereco;
 
-    public Funcionario(String nome, String email, String cpf, String rg, String curso, String escolaridade, String reservista, String telefone, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia,String cargo) {
-        super(bairro, cidade, cep, logradouro, tipoDeLogradouro, numero, complemento, pontoDeReferencia);
+    public Funcionario(String nome, String email, String cpf, String rg, String curso, String escolaridade, String reservista, String telefone, String cargo, Endereco endereco) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
@@ -24,7 +22,8 @@ public class Funcionario extends Endereco {
         this.escolaridade = escolaridade;
         this.reservista = reservista;
         this.telefone = telefone;
-        this.cargo= cargo;
+        this.cargo = cargo;
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -98,5 +97,15 @@ public class Funcionario extends Endereco {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    
 
 }

@@ -1,9 +1,5 @@
 package modelo;
 
-/**
- *
- * @author Amanda
- */
 public class Telefonia extends Servico{
     private String numero;
     private float ligacaoLocal;

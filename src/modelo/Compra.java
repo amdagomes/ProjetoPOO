@@ -1,8 +1,7 @@
-
 package modelo;
 
-
 public class Compra {
+    
     private Vendedor vendedor;
     private Cliente cliente;
     private Servico servico;
@@ -16,7 +15,6 @@ public class Compra {
     public Vendedor getVendedor() {
         return vendedor;
     }
-
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
@@ -24,7 +22,6 @@ public class Compra {
     public Cliente getCliente() {
         return cliente;
     }
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -32,10 +29,8 @@ public class Compra {
     public Servico getServico() {
         return servico;
     }
-
     public void setServico(Servico servico) {
         this.servico = servico;
     }
-    
     
 }

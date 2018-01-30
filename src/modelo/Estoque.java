@@ -1,12 +1,8 @@
 package modelo;
 
-import modelo.Assalariado;
 
-/**
- *
- * @author Amanda
- */
 public class Estoque {
+    
     private static int codigo;
     private String tipo;
     private String nome;

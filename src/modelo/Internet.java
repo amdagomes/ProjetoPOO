@@ -1,9 +1,5 @@
 package modelo;
 
-/**
- *
- * @author Amanda
- */
 public class Internet extends Servico{
     private float upload;
     private float download;

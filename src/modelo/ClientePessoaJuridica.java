@@ -11,8 +11,6 @@ public class ClientePessoaJuridica extends Cliente {
         this.cnpj = cnpj;
     }
 
-   
-
     public String getRazaoSocial() {
         return razaoSocial;
     }

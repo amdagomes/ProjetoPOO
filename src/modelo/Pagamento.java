@@ -1,13 +1,9 @@
 package modelo;
 
-/**
- *
- * @author Amanda
- */
-
 import java.time.LocalDate;
 
 public class Pagamento {
+    
     private LocalDate vencimento;
     private float vAdicional;
     private String mesReferente;
