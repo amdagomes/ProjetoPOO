@@ -4,12 +4,12 @@ public class Compra {
     
     private Vendedor vendedor;
     private Cliente cliente;
-    private Servico servico;
+    private Servico[] servico;
 
-    public Compra(Vendedor vendedor, Cliente cliente, Servico servico) {
+    public Compra(Vendedor vendedor, Cliente cliente) {
         this.vendedor = vendedor;
         this.cliente = cliente;
-        this.servico = servico;
+        servico = new Servico[3];
     }
 
     public Vendedor getVendedor() {
@@ -26,10 +26,10 @@ public class Compra {
         this.cliente = cliente;
     }
 
-    public Servico getServico() {
+    public Servico[] getServico() {
         return servico;
     }
-    public void setServico(Servico servico) {
+    public void setServico(Servico[] servico) {
         this.servico = servico;
     }
     
