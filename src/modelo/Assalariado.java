@@ -1,5 +1,5 @@
 
-package funcionario;
+package modelo;
 
 public class Assalariado extends Funcionario {
 

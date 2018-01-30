@@ -1,23 +1,21 @@
 
-package cliente;
-
-import endereco.Endereco;
-import pagamento.Pagamento;
-import pagamento.RealizaPagamento;
+package modelo;
 
 
-public abstract  class Cliente extends Endereco{
+
+
+public abstract  class Cliente{
     private String email;
     private String telefone;
     private String numeroDoCartao;
-    private Pagamento[] fatura;
+    
+    private Endereco endereco;
 
-    public Cliente(String email, String telefone, String numeroDoCartao, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia) {
-        super(bairro, cidade, cep, logradouro, tipoDeLogradouro, numero, complemento, pontoDeReferencia);
+    public Cliente(String email, String telefone, String numeroDoCartao, Endereco endereco) {
         this.email = email;
         this.telefone = telefone;
         this.numeroDoCartao = numeroDoCartao;
-        fatura = new Pagamento[12];
+        
     }
 
     public String getEmail() {
@@ -44,12 +42,7 @@ public abstract  class Cliente extends Endereco{
         this.numeroDoCartao = numeroDoCartao;
     }
     
-    public Pagamento[] getFatura() {
-        return fatura;
-    }
-    public void setFatura(Pagamento[] fatura) {
-        this.fatura = fatura;
-    }
+    
    
     }
     

@@ -1,5 +1,5 @@
 
-package endereco;
+package modelo;
 
 
 public class Endereco {

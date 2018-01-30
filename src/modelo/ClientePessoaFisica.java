@@ -1,4 +1,4 @@
-package cliente;
+package modelo;
 
 import java.time.LocalDate;
 
@@ -9,14 +9,15 @@ public class ClientePessoaFisica extends Cliente {
     private String cpf;
     private LocalDate dataDeNascimento;
 
-    public ClientePessoaFisica(String nome, String rg, String cpf, LocalDate dataDeNascimento, String email, String telefone, String numeroDoCartao, String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia) {
-        super(email, telefone, numeroDoCartao, bairro, cidade, cep, logradouro, tipoDeLogradouro, numero, complemento, pontoDeReferencia);
+    public ClientePessoaFisica(String nome, String rg, String cpf, LocalDate dataDeNascimento, String email, String telefone, String numeroDoCartao, Endereco endereco) {
+        super(email, telefone, numeroDoCartao, endereco);
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
     }
 
+    
     
 
     public String getNome() {

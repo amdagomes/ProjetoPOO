@@ -1,6 +1,6 @@
-package estoque;
+package modelo;
 
-import funcionario.Assalariado;
+import modelo.Assalariado;
 
 /**
  *

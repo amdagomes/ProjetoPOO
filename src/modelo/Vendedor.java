@@ -1,6 +1,6 @@
-package funcionario;
+package modelo;
 
-import servico.Servico;
+import modelo.Servico;
 
 public class Vendedor extends Funcionario {
 

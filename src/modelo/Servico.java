@@ -1,5 +1,5 @@
-package servico;
-import cliente.Cliente;
+package modelo;
+import modelo.Cliente;
 /**
  *
  * @author Amanda

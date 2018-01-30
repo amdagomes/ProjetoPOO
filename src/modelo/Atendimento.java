@@ -1,6 +1,6 @@
-package atendimento;
+package modelo;
 
-import cliente.Cliente;
+import modelo.Cliente;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,13 +10,13 @@ public class Atendimento {
     private LocalDate data;
     private LocalTime hora;
     private String descricao;
-    private Cliente cliente[];
+    private Cliente cliente;
+    private Assalariado tecnico;
 
-    public Atendimento(LocalDate data, LocalTime hora, String descricao) {
+    public Atendimento(LocalDate data, LocalTime hora, String descricao, Cliente cliente) {
         this.data = data;
         this.hora = hora;
         this.descricao = descricao;
-        cliente = new Cliente[10];
     }
 
     public LocalDate getData() {
@@ -43,13 +43,22 @@ public class Atendimento {
         this.descricao = descricao;
     }
 
-    public Cliente[] getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente[] cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
+    public Assalariado getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(Assalariado tecnico) {
+        this.tecnico = tecnico;
+    }
+
+   
 
 }

@@ -1,6 +1,6 @@
-package funcionario;
+package modelo;
 
-import endereco.Endereco;
+import modelo.Endereco;
 
 public class Funcionario extends Endereco {
 
