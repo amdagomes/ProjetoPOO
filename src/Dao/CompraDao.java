@@ -10,7 +10,7 @@ public class CompraDao implements Dao<Compra> {
 
     public CompraDao() {
         compras = new ArrayList<>();
-    }
+   }
 
     @Override
     public boolean salvar(Compra obj) {
