@@ -11,7 +11,7 @@ import modelo.Endereco;
 /**
  * Classe de cadastro de Cliente
  *
- * @author
+ * @author Rafaela
  */
 public class CadastroCliente implements Dao<Cliente> {
 
