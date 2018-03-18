@@ -1,22 +1,25 @@
 package modelo;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Compra {
     
     private Vendedor vendedor;
     private Cliente cliente;
-    private Servico[] servico;
-    private final int codigo;
-    private int quant;
+    private Servico servico;
+    private int codigo;
 
-    public Compra(Vendedor vendedor, Cliente cliente,int quant) {
+    public Compra(int codigo, Vendedor vendedor, Cliente cliente) {
+        this.codigo = codigo;
         this.vendedor = vendedor;
         this.cliente = cliente;
-        servico = new Servico[3];
-        quant=0;
-        codigo=quant++;
+        this.servico = servico;
+    }
+
+    public Compra() {
+        
     }
 
     public Vendedor getVendedor() {
@@ -33,33 +36,27 @@ public class Compra {
         this.cliente = cliente;
     }
 
-    public Servico[] getServico() {
+    public Servico getServico() {
         return servico;
     }
-    public void setServico(Servico[] servico) {
+    public void setServico(Servico servico) {
         this.servico = servico;
-    }
-
-    public int getQuant() {
-        return quant;
-    }
-
-    public void setQuant(int quant) {
-        this.quant = quant;
     }
 
     public int getCodigo() {
         return codigo;
     }
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + Objects.hashCode(this.vendedor);
-        hash = 71 * hash + Objects.hashCode(this.cliente);
-        hash = 71 * hash + Arrays.deepHashCode(this.servico);
-        hash = 71 * hash + this.codigo;
-        hash = 71 * hash + this.quant;
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.vendedor);
+        hash = 59 * hash + Objects.hashCode(this.cliente);
+        hash = 59 * hash + Objects.hashCode(this.servico);
+        hash = 59 * hash + this.codigo;
         return hash;
     }
 
@@ -78,16 +75,13 @@ public class Compra {
         if (this.codigo != other.codigo) {
             return false;
         }
-        if (this.quant != other.quant) {
-            return false;
-        }
         if (!Objects.equals(this.vendedor, other.vendedor)) {
             return false;
         }
         if (!Objects.equals(this.cliente, other.cliente)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.servico, other.servico)) {
+        if (!Objects.equals(this.servico, other.servico)) {
             return false;
         }
         return true;
@@ -95,7 +89,7 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "Compra{" + "vendedor=" + vendedor + ", cliente=" + cliente + ", servico=" + servico + ", codigo=" + codigo + ", quant=" + quant + '}';
+        return "Informações da compra:\n" + "Codigo da venda: " + codigo + vendedor + cliente + servico;
     }
     
 }

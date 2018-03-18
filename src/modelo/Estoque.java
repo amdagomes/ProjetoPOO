@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Estoque {
     
@@ -7,13 +9,13 @@ public class Estoque {
     private String tipo;
     private String nome;
     private int quantidade;
-    private Assalariado[] funcionario;
+    private List<Assalariado> funcionario;
 
     public Estoque(String tipo, String nome, int quantidade) {
         this.tipo = tipo;
         this.nome = nome;
         this.quantidade = quantidade;
-        funcionario = new Assalariado[10];
+        funcionario = new ArrayList();
     }
 
     public static int getCodigo() {
@@ -44,11 +46,12 @@ public class Estoque {
         this.quantidade = quantidade;
     }
 
-    public Assalariado[] getFuncionario() {
+    public List<Assalariado> getFuncionario() {
         return funcionario;
     }
-    public void setFuncionario(Assalariado[] funcionario) {
+
+    public void setFuncionario(List<Assalariado> funcionario) {
         this.funcionario = funcionario;
     }
-    
+ 
 }

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Objects;
+
 public class Internet extends Servico{
     private float upload;
     private float download;
@@ -41,4 +43,48 @@ public class Internet extends Servico{
     public void setTecnologia(String tecnologia) {
         this.tecnologia = tecnologia;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + Float.floatToIntBits(this.upload);
+        hash = 47 * hash + Float.floatToIntBits(this.download);
+        hash = 47 * hash + this.MB;
+        hash = 47 * hash + Objects.hashCode(this.tecnologia);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Internet other = (Internet) obj;
+        if (Float.floatToIntBits(this.upload) != Float.floatToIntBits(other.upload)) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.download) != Float.floatToIntBits(other.download)) {
+            return false;
+        }
+        if (this.MB != other.MB) {
+            return false;
+        }
+        if (!Objects.equals(this.tecnologia, other.tecnologia)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "\nServico de Internet\n" + "Upload: " + upload + "Mps \tDownload: " + download + "MB \nMB: " + MB + 
+                "\tTecnologia: " + tecnologia + "\n" + super.toString();
+    }
+    
 }
