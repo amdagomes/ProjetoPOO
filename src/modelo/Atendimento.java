@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Atendimento {
-    
+
     private LocalDate data;
     private LocalTime hora;
     private String descricao;
@@ -20,6 +20,7 @@ public class Atendimento {
     public LocalDate getData() {
         return data;
     }
+
     public void setData(LocalDate data) {
         this.data = data;
     }
@@ -27,6 +28,7 @@ public class Atendimento {
     public LocalTime getHora() {
         return hora;
     }
+
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
@@ -34,6 +36,7 @@ public class Atendimento {
     public String getDescricao() {
         return descricao;
     }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -41,6 +44,7 @@ public class Atendimento {
     public Cliente getCliente() {
         return cliente;
     }
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -48,6 +52,7 @@ public class Atendimento {
     public Assalariado getTecnico() {
         return tecnico;
     }
+
     public void setTecnico(Assalariado tecnico) {
         this.tecnico = tecnico;
     }

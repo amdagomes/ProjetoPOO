@@ -44,11 +44,13 @@ public class CadastroServico implements Dao<Servico> {
             return null;
         }
     }
-/**Metodo para buscar cadastro do serviço pelo codigo
- * 
- * @param codigo código do serviço
- * @return o cadastro do servico que contém o código
- */
+
+    /**
+     * Metodo para buscar cadastro do serviço pelo codigo
+     *
+     * @param codigo código do serviço
+     * @return o cadastro do servico que contém o código
+     */
     public Servico cadastro(int codigo) {
         return busca(codigo);
     }

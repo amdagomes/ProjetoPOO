@@ -11,7 +11,7 @@ import modelo.Vendedor;
 /**
  * Classe de cadastro de funcionário
  *
- * @author Cliente
+ * @author
  */
 public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
 
@@ -66,10 +66,12 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
             return false;
         }
     }
-/**Metodo de cadastro de funcionario vendedor
- * 
- * @return cadastro de vendedor
- */
+
+    /**
+     * Metodo de cadastro de funcionario vendedor
+     *
+     * @return cadastro de vendedor
+     */
     public Funcionario cadastraVendedor() {
         Vendedor f = new Vendedor();
 
@@ -116,10 +118,12 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
         f.setSenha(entrada.next());
         return f;
     }
-/** Metodo de cadastro de funcionario Assalariado
- * 
- * @return cadastro de funcionario Assalariado
- */
+
+    /**
+     * Metodo de cadastro de funcionario Assalariado
+     *
+     * @return cadastro de funcionario Assalariado
+     */
     public Funcionario cadastraAssalariado() {
         Assalariado f = new Assalariado();
 

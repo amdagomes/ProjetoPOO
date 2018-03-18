@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Compra {
-    
+
     private Vendedor vendedor;
     private Cliente cliente;
     private Servico servico;
@@ -19,12 +19,13 @@ public class Compra {
     }
 
     public Compra() {
-        
+
     }
 
     public Vendedor getVendedor() {
         return vendedor;
     }
+
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
@@ -32,6 +33,7 @@ public class Compra {
     public Cliente getCliente() {
         return cliente;
     }
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -39,6 +41,7 @@ public class Compra {
     public Servico getServico() {
         return servico;
     }
+
     public void setServico(Servico servico) {
         this.servico = servico;
     }
@@ -46,6 +49,7 @@ public class Compra {
     public int getCodigo() {
         return codigo;
     }
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
@@ -91,5 +95,5 @@ public class Compra {
     public String toString() {
         return "Informações da compra:\n" + "Codigo da venda: " + codigo + vendedor + cliente + servico;
     }
-    
+
 }

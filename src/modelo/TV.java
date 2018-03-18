@@ -1,6 +1,7 @@
 package modelo;
 
 public class TV extends Servico {
+
     private int quantCanais;
 
     public TV(int quantCanais, float vInstalacao, float vMesalidade, String status, int codigo) {
@@ -11,6 +12,7 @@ public class TV extends Servico {
     public int getQuantCanais() {
         return quantCanais;
     }
+
     public void setQuantCanais(int quantCanais) {
         this.quantCanais = quantCanais;
     }
@@ -44,6 +46,5 @@ public class TV extends Servico {
     public String toString() {
         return "\nServiço de TV:\n" + "Quantidade de canais: " + quantCanais + "\n" + super.toString();
     }
-    
-    
+
 }

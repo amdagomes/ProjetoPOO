@@ -2,7 +2,8 @@ package modelo;
 
 import java.util.Objects;
 
-public class Telefonia extends Servico{
+public class Telefonia extends Servico {
+
     private String numero;
     private float ligacaoLocal;
     private float ligacaoNacional;
@@ -19,6 +20,7 @@ public class Telefonia extends Servico{
     public String getNumero() {
         return numero;
     }
+
     public void setNumero(String numero) {
         this.numero = numero;
     }
@@ -26,6 +28,7 @@ public class Telefonia extends Servico{
     public float getLigacaoLocal() {
         return ligacaoLocal;
     }
+
     public void setLigacaoLocal(float ligacaoLocal) {
         this.ligacaoLocal = ligacaoLocal;
     }
@@ -33,6 +36,7 @@ public class Telefonia extends Servico{
     public float getLigacaoNacional() {
         return ligacaoNacional;
     }
+
     public void setLigacaoNacional(float ligacaoNacional) {
         this.ligacaoNacional = ligacaoNacional;
     }
@@ -40,6 +44,7 @@ public class Telefonia extends Servico{
     public float getLigacaoOperadora() {
         return ligacaoOperadora;
     }
+
     public void setLigacaoOperadora(float ligacaoOperadora) {
         this.ligacaoOperadora = ligacaoOperadora;
     }
@@ -83,9 +88,9 @@ public class Telefonia extends Servico{
 
     @Override
     public String toString() {
-        return "\nServico de Telefonia\n" + "Numero: " + numero + "\tValor da Ligacao Local: R$" + ligacaoLocal + 
-                "nValor da ligacao nacional: R$" + ligacaoNacional + "\tValor da ligacao para outra operadora=" + ligacaoOperadora + "\n"
+        return "\nServico de Telefonia\n" + "Numero: " + numero + "\tValor da Ligacao Local: R$" + ligacaoLocal
+                + "nValor da ligacao nacional: R$" + ligacaoNacional + "\tValor da ligacao para outra operadora=" + ligacaoOperadora + "\n"
                 + super.toString();
     }
-    
+
 }

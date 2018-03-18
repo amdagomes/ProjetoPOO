@@ -3,6 +3,7 @@ package modelo;
 import java.util.Objects;
 
 public abstract class Servico {
+
     private float vInstalacao;
     private float vMesalidade;
     private String status;
@@ -18,6 +19,7 @@ public abstract class Servico {
     public float getvInstalacao() {
         return vInstalacao;
     }
+
     public void setvInstalacao(float vInstalacao) {
         this.vInstalacao = vInstalacao;
     }
@@ -25,21 +27,24 @@ public abstract class Servico {
     public float getvMesalidade() {
         return vMesalidade;
     }
+
     public void setvMesalidade(float vMesalidade) {
         this.vMesalidade = vMesalidade;
     }
-    
-    public String getStatus(){
+
+    public String getStatus() {
         return status;
     }
-    public void setStatus(String status){
+
+    public void setStatus(String status) {
         this.status = status;
     }
-    
-    public int getCodigo(){
+
+    public int getCodigo() {
         return codigo;
     }
-    public void setCodigo(int codigo){
+
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -80,5 +85,5 @@ public abstract class Servico {
     public String toString() {
         return "Valor da Instalacao: R$" + vInstalacao + "\tVaor da Mensalidade: R$" + vMesalidade + "\tStatus: " + status;
     }
-    
+
 }

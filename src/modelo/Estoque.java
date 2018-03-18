@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Estoque {
-    
+
     private static int codigo;
     private String tipo;
     private String nome;
@@ -21,13 +21,15 @@ public class Estoque {
     public static int getCodigo() {
         return codigo;
     }
+
     public static void setCodigo(int codigo) {
         Estoque.codigo = codigo;
     }
-    
+
     public String getTipo() {
         return tipo;
     }
+
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
@@ -35,6 +37,7 @@ public class Estoque {
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -42,6 +45,7 @@ public class Estoque {
     public int getQuantidade() {
         return quantidade;
     }
+
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
@@ -53,5 +57,5 @@ public class Estoque {
     public void setFuncionario(List<Assalariado> funcionario) {
         this.funcionario = funcionario;
     }
- 
+
 }

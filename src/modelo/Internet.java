@@ -2,7 +2,8 @@ package modelo;
 
 import java.util.Objects;
 
-public class Internet extends Servico{
+public class Internet extends Servico {
+
     private float upload;
     private float download;
     private int MB;
@@ -19,6 +20,7 @@ public class Internet extends Servico{
     public float getUpload() {
         return upload;
     }
+
     public void setUpload(float upload) {
         this.upload = upload;
     }
@@ -26,6 +28,7 @@ public class Internet extends Servico{
     public float getDownload() {
         return download;
     }
+
     public void setDownload(float download) {
         this.download = download;
     }
@@ -33,6 +36,7 @@ public class Internet extends Servico{
     public int getMB() {
         return MB;
     }
+
     public void setMB(int MB) {
         this.MB = MB;
     }
@@ -40,6 +44,7 @@ public class Internet extends Servico{
     public String getTecnologia() {
         return tecnologia;
     }
+
     public void setTecnologia(String tecnologia) {
         this.tecnologia = tecnologia;
     }
@@ -83,8 +88,8 @@ public class Internet extends Servico{
 
     @Override
     public String toString() {
-        return "\nServico de Internet\n" + "Upload: " + upload + "Mps \tDownload: " + download + "MB \nMB: " + MB + 
-                "\tTecnologia: " + tecnologia + "\n" + super.toString();
+        return "\nServico de Internet\n" + "Upload: " + upload + "Mps \tDownload: " + download + "MB \nMB: " + MB
+                + "\tTecnologia: " + tecnologia + "\n" + super.toString();
     }
-    
+
 }

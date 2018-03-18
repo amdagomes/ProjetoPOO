@@ -1,10 +1,9 @@
-
 package controle;
 
 /**
  * Essa classe contém metodos para realizar CRUD
  *
- * @author Rafaela
+ * @author
  * @param <T>
  * @version 1.0
  */

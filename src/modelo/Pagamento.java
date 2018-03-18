@@ -3,7 +3,7 @@ package modelo;
 import java.time.LocalDate;
 
 public class Pagamento {
-    
+
     private LocalDate vencimento;
     private float vAdicional;
     private String mesReferente;
@@ -67,6 +67,5 @@ public class Pagamento {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
 
 }
