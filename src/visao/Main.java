@@ -29,7 +29,6 @@ public class Main {
         cadServico.adiciona(new Internet(1, 40, 40, "Fibra Optica", 0, 99, "Ativo", 2));
         cadServico.adiciona(new TV(29, 0, (float) 19.90, "Ativo", 3));
 
-        System.out.println(cadServico.busca(1));
         Vendedor vendedor = new Vendedor(50, "Mario", "mario@gmail.com", "111.111.111-11", "111111", "TI",
                 "Superior incompleto", "9898", "(83) 99822-3333", "Atendente",
                 new Endereco("Centro", "Sousa", "58815-000", "Jardins", "Rua", 10, " ", " "), "123");
