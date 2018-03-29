@@ -15,6 +15,10 @@ public abstract class Servico {
         this.status = status;
         this.codigo = codigo;
     }
+    
+    public Servico(){
+        
+    }
 
     public float getvInstalacao() {
         return vInstalacao;

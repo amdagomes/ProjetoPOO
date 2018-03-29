@@ -17,6 +17,10 @@ public class Telefonia extends Servico {
         this.ligacaoOperadora = ligacaoOperadora;
     }
 
+    public Telefonia() {
+        
+    }
+
     public String getNumero() {
         return numero;
     }

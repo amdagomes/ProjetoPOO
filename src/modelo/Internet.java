@@ -17,6 +17,10 @@ public class Internet extends Servico {
         this.tecnologia = tecnologia;
     }
 
+    public Internet() {
+        
+    }
+
     public float getUpload() {
         return upload;
     }

@@ -9,6 +9,10 @@ public class TV extends Servico {
         this.quantCanais = quantCanais;
     }
 
+    public TV() {
+        
+    }
+
     public int getQuantCanais() {
         return quantCanais;
     }

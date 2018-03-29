@@ -9,12 +9,15 @@ import modelo.Endereco;
 import modelo.Internet;
 import modelo.Servico;
 import modelo.TV;
+import modelo.Telefonia;
 import modelo.Vendedor;
 
 /**
  *
  * @author Amanda
  */
+
+/*
 public class Main {
 
     public static void main(String[] args) {
@@ -24,10 +27,6 @@ public class Main {
         CadastroCompra cadCompra = new CadastroCompra();
         CadastroCliente cadCliente = new CadastroCliente();
         CadastroServico cadServico = new CadastroServico();
-
-        cadServico.adiciona(new Internet(1, 20, 20, "Fibra Optica", 0, 83, "Ativo", 1));
-        cadServico.adiciona(new Internet(1, 40, 40, "Fibra Optica", 0, 99, "Ativo", 2));
-        cadServico.adiciona(new TV(29, 0, (float) 19.90, "Ativo", 3));
 
         Vendedor vendedor = new Vendedor(50, "Mario", "mario@gmail.com", "111.111.111-11", "111111", "TI",
                 "Superior incompleto", "9898", "(83) 99822-3333", "Atendente",
@@ -47,7 +46,7 @@ public class Main {
             do {
 
                 System.out.printf("%s\t %s \t%s\n", "-", "MENU", "    -");
-                System.out.printf("1- Acessar menu de venda\n2- Acessar menu de Funcionario\n3- Acessar menu de cliente\n"
+                System.out.printf("1- Acessar menu de venda\n2- Acessar menu de Funcionario\n3- Acessar menu de cliente \n4- Menu de Serviço\n"
                         + "0- Sair\nOpção: ");
                 opcao = entrada.nextInt();
 
@@ -181,7 +180,112 @@ public class Main {
 
                         }
                         opcao2 = -1;
-                        break;
+                    
+                    case 4:
+                        while (opcao2 != 0) {
+                            System.out.println("\n-- Menu de Serviço --");
+                            System.out.printf("1- Cadastrar servico de Internet \n2- Cadastrar servico de TV "
+                                    + "\n3- Cadastrar Serviço de Telefonia \n4- Buscar Serviço \n5- Remover Serviço \n0 - Sair \nOpção: ");
+                            opcao2 = entrada.nextInt();
+                            
+                            switch(opcao2){
+                                case 1:
+                                    Internet internet = new Internet();
+                                    
+                                    System.out.printf("\nCódigo: ");
+                                    internet.setCodigo(entrada.nextInt());
+                                    System.out.printf("Quantidade de MB: ");
+                                    internet.setMB(entrada.nextInt());
+                                    System.out.printf("Taxa de Download: ");
+                                    internet.setDownload(entrada.nextInt());
+                                    System.out.printf("Taxa de Upload: ");
+                                    internet.setUpload(entrada.nextInt());
+                                    System.out.printf("Tecnologia: ");
+                                    internet.setTecnologia(entrada.next());
+                                    System.out.printf("Valor da instalação: ");
+                                    internet.setvInstalacao(entrada.nextFloat());
+                                    System.out.printf("Mensalidade: ");
+                                    internet.setvMesalidade(entrada.nextFloat());
+                                    
+                                    if(cadServico.adiciona(internet)){
+                                        System.out.println("\nCadastro realizado com sucesso\n");
+                                    } else{
+                                        System.out.println("\nErro ao cadastrar\n");
+                                    }
+                                    
+                                    break;
+                                    
+                                case 2: 
+                                    TV tv = new TV();
+                                    
+                                    System.out.printf("\nCódigo: ");
+                                    tv.setCodigo(entrada.nextInt());
+                                    System.out.printf("Quantidade de Canais: ");
+                                    tv.setQuantCanais(entrada.nextInt());
+                                    System.out.printf("Valor da Instalação: ");
+                                    tv.setvInstalacao(entrada.nextFloat());
+                                    System.out.printf("Valor da Mensalidade: ");
+                                    tv.setvMesalidade(entrada.nextFloat());
+                                    
+                                    if(cadServico.adiciona(tv)){
+                                        System.out.println("\nCadastro realizado com sucesso\n");
+                                    } else{
+                                        System.out.println("\nErro ao cadastrar\n");
+                                    }
+                                    
+                                    break;
+                                
+                                case 3: 
+                                    Telefonia telefonia = new Telefonia();
+                                    
+                                    System.out.printf("\nCódigo: ");
+                                    telefonia.setCodigo(entrada.nextInt());
+                                    System.out.printf("Valor da ligação local: ");
+                                    telefonia.setLigacaoLocal(entrada.nextFloat());
+                                    System.out.printf("Valor da ligação nacional: ");
+                                    telefonia.setLigacaoNacional(entrada.nextFloat());
+                                    System.out.printf("Valor da ligação para outra operadora: ");
+                                    telefonia.setLigacaoOperadora(entrada.nextFloat());
+                                    System.out.printf("Numero do telefone: ");
+                                    telefonia.setNumero(entrada.next());
+                                    System.out.printf("Valor da instalação: ");
+                                    telefonia.setvInstalacao(entrada.nextFloat());
+                                    System.out.printf("Valor da Mensalidade: ");
+                                    telefonia.setvMesalidade(entrada.nextFloat());
+                                    
+                                     if(cadServico.adiciona(telefonia)){
+                                        System.out.println("\nCadastro realizado com sucesso\n");
+                                    } else{
+                                        System.out.println("\nErro ao cadastrar\n");
+                                    }
+                                    
+                                    break;
+                                
+                                case 4:
+                                    System.out.printf("\nInsira o código do serviço: ");
+                                    opcao = entrada.nextInt();
+                                    
+                                    System.out.println(cadServico.busca(opcao));
+                                    
+                                    opcao = -1;
+                                    
+                                    break;
+                                    
+                                case 5:
+                                    System.out.printf("\nInsira o código do serviço: ");
+                                    opcao = entrada.nextInt();
+                                    
+                                    if(cadServico.remove(opcao)){
+                                        System.out.println("\nRemovido com sucesso\n");
+                                    } else{
+                                        System.out.println("\nErro ao tentar remover\n");
+                                    }
+                                    
+                                    opcao = -1;
+                                    
+                                    break;
+                            }
+                        }
                 }
 
             } while (opcao != 0);
@@ -193,3 +297,4 @@ public class Main {
     }
 
 }
+*/

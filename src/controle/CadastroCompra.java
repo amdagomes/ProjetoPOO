@@ -13,14 +13,12 @@ import modelo.Vendedor;
  *
  * @author
  */
+/*
 public class CadastroCompra implements Dao<Compra> {
 
     List<Compra> compras;
 
-    /**
-     * Construtor de compra
-     *
-     */
+    
     public CadastroCompra() {
         compras = new ArrayList<>();
     }
@@ -75,3 +73,5 @@ public class CadastroCompra implements Dao<Compra> {
     }
 
 }
+
+*/
