@@ -1,8 +1,9 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Cliente {
+public abstract class Cliente implements Serializable {
 
     private String email;
     private String telefone;

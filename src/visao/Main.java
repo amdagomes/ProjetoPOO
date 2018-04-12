@@ -1,7 +1,6 @@
 package visao;
 
 import controle.CadastroCliente;
-import controle.CadastroCompra;
 import controle.CadastroFuncionario;
 import controle.CadastroServico;
 import java.util.Scanner;

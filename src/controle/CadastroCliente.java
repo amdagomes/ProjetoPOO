@@ -1,12 +1,15 @@
 package controle;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 import modelo.Cliente;
-import modelo.ClientePessoaFisica;
-import modelo.ClientePessoaJuridica;
-import modelo.Endereco;
 
 /**
  * Classe de cadastro de Cliente
@@ -15,124 +18,81 @@ import modelo.Endereco;
  */
 public class CadastroCliente implements Dao<Cliente> {
 
-    Scanner entrada = new Scanner(System.in);
-    Endereco e = new Endereco();
-    List<Cliente> clientes;
+    private File file;
 
     /**
      * Construtor de cliente
      *
      */
-    public CadastroCliente() {
-        clientes = new ArrayList<>();
-    }
-
-    @Override
-    public boolean adiciona(Cliente obj) {
-        return clientes.add(obj);
-    }
-
-    @Override
-    public boolean remove(int cod) {
-        return clientes.remove(busca(cod));
-    }
-
-    @Override
-    public Cliente busca(int cod) {
-        if (clientes.isEmpty()) {
-            return null;
-        } else {
-            for (Cliente c : clientes) {
-                if (c.getCodigo() == cod) {
-                    return c;
-                }
-            }
-            return null;
+    public CadastroCliente() throws IOException {
+        file = new File("Arquivos/clientes.bin");
+        
+        if(!file.exists()){
+            file.createNewFile();
         }
     }
 
-    /**
-     * Metodo para realizar cadastro de cliente Pessoa Fisica
-     *
-     * @return Cadastro de Cliente Pessoa Fisica
-     */
-    public Cliente cadastraCF() {
-        ClientePessoaFisica cf = new ClientePessoaFisica();
-
-        System.out.printf("Codigo do cliente: ");
-        cf.setCodigo(entrada.nextInt());
-        System.out.printf("Nome: ");
-        cf.setNome(entrada.next());
-        System.out.printf("CPF: ");
-        cf.setCpf(entrada.next());
-        System.out.printf("RG: ");
-        cf.setRg(entrada.next());
-        System.out.printf("Email: ");
-        cf.setEmail(entrada.next());
-        System.out.printf("Telefone: ");
-        cf.setTelefone(entrada.next());
-
-        System.out.printf("Tipo de Logradouro: ");
-        e.setTipoDeLogradouro(entrada.next());
-        System.out.printf(e.getTipoDeLogradouro() + ": ");
-        e.setLogradouro(entrada.next());
-        System.out.printf("Numero: ");
-        e.setNumero(entrada.nextInt());
-        System.out.printf("Bairro: ");
-        e.setBairro(entrada.next());
-        System.out.printf("Complemento: ");
-        e.setComplemento(entrada.next());
-        System.out.printf("CEP: ");
-        e.setCep(entrada.next());
-        System.out.printf("Cidade: ");
-        e.setCidade(entrada.next());
-        System.out.printf("Ponto Referencia: ");
-        e.setPontoDeReferencia(entrada.next());
-
-        cf.setEndereco(e);
-        System.out.printf("Numero do Cartao: ");
-        cf.setNumeroDoCartao(entrada.next());
-
-        return cf;
+    @Override
+    public boolean salvar(Cliente obj) throws IOException, ClassNotFoundException  {
+        
+        List<Cliente> clientes = listar();
+         
+        if(clientes.add(obj)){
+            atualizaArquivo(clientes);
+            return true;
+        } else {
+            return false;
+        }
+         
     }
 
-    /**
-     * Metodo para realizar cadastro de Cliente Pessoa Juridica
-     *
-     * @return O cadastro de Cliente pessoa juridica
-     */
-    public Cliente cadastraCJ() {
-        ClientePessoaJuridica cj = new ClientePessoaJuridica();
+    @Override
+    public boolean remove(int cod) throws IOException, ClassNotFoundException{
+        
+        List<Cliente> clientes = listar();
+        Cliente cliente = busca(cod);
+        
+        return clientes.remove(cliente);
+        
+    }
 
-        System.out.printf("Codigo do cliente: ");
-        cj.setCodigo(entrada.nextInt());
-        System.out.printf("CNPJ: ");
-        cj.setCnpj(entrada.next());
-        System.out.printf("Razão Social: ");
-        cj.setRazaoSocial(entrada.next());
+    @Override
+    public Cliente busca(int cod) throws IOException, ClassNotFoundException{
+        
+        List<Cliente> clientes = listar();
+        
+        for(Cliente c : clientes){
+            if(c.getCodigo() == cod){
+                return c;
+            }
+        }
+        
+        return null;
+        
+    }
 
-        System.out.printf("Tipo de Logradouro: ");
-        e.setTipoDeLogradouro(entrada.next());
-        System.out.printf(e.getTipoDeLogradouro() + ": ");
-        e.setLogradouro(entrada.next());
-        System.out.printf("Numero: ");
-        e.setNumero(entrada.nextInt());
-        System.out.printf("Bairro: ");
-        e.setBairro(entrada.next());
-        System.out.printf("Complemento: ");
-        e.setComplemento(entrada.next());
-        System.out.printf("CEP: ");
-        e.setCep(entrada.next());
-        System.out.printf("Cidade: ");
-        e.setCidade(entrada.next());
-        System.out.printf("Ponto Referencia: ");
-        e.setPontoDeReferencia(entrada.next());
-
-        cj.setEndereco(e);
-        System.out.printf("Numero do Cartao: ");
-        cj.setNumeroDoCartao(entrada.next());
-
-        return cj;
+    @Override
+    public List listar() throws IOException, ClassNotFoundException {
+        
+        if(file.length() > 0){
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            return (List<Cliente>) in.readObject();
+        } else{
+            return new ArrayList<>();
+        }
+        
+    }
+    
+    private void atualizaArquivo(List<Cliente> clientes) throws IOException {
+        
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeObject(clientes);
+            out.close();
+        } catch(IOException ex){
+            JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
+        }
+   
     }
 
 }

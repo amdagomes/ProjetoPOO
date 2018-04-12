@@ -20,7 +20,7 @@ public interface DaoFuncionario<T extends Funcionario> {
      * @param obj Elemento a ser adicionado a lista
      * @return true caso seja adicionado o funcionario com sucesso
      */
-    public boolean salva(T obj) throws IOException, ClassNotFoundException ;
+    public boolean salvar(T obj) throws IOException, ClassNotFoundException ;
 
     /**
      * Remove um funcionário da lista através da busca pelo seu CPF

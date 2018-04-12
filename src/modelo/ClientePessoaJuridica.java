@@ -1,8 +1,9 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class ClientePessoaJuridica extends Cliente {
+public class ClientePessoaJuridica extends Cliente implements Serializable{
 
     private String razaoSocial;
     private String cnpj;

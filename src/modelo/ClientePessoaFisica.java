@@ -1,16 +1,17 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class ClientePessoaFisica extends Cliente {
+public class ClientePessoaFisica extends Cliente implements Serializable{
 
     private String nome;
     private String rg;
     private String cpf;
-    private LocalDate dataDeNascimento;
+    private String dataDeNascimento;
 
-    public ClientePessoaFisica(int codigo, String nome, String rg, String cpf, LocalDate dataDeNascimento, String email, String telefone, String numeroDoCartao, Endereco endereco) {
+    public ClientePessoaFisica(int codigo, String nome, String rg, String cpf, String dataDeNascimento, String email, String telefone, String numeroDoCartao, Endereco endereco) {
         super(codigo, email, telefone, numeroDoCartao, endereco);
         this.nome = nome;
         this.rg = rg;
@@ -46,11 +47,11 @@ public class ClientePessoaFisica extends Cliente {
         this.cpf = cpf;
     }
 
-    public LocalDate getDataDeNascimento() {
+    public String getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+    public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 

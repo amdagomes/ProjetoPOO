@@ -1,5 +1,8 @@
 package controle;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * Essa classe contém metodos para realizar CRUD
  *
@@ -15,7 +18,7 @@ public interface Dao<T> {
      * @param obj Elemento a ser adicionado na lista
      * @return true caso o cadastro seja feito com sucesso
      */
-    public boolean adiciona(T obj);
+    public boolean salvar(T obj) throws IOException, ClassNotFoundException;
 
     /**
      * Remove um cadastro em uma lista
@@ -23,7 +26,7 @@ public interface Dao<T> {
      * @param codigo Codigo do cadastro a ser removido
      * @return true caso o cadastro seja removido
      */
-    public boolean remove(int codigo);
+    public boolean remove(int codigo) throws IOException, ClassNotFoundException;
 
     /**
      * Faz a busca de um cadastro em uma lista a partir do seu codigo
@@ -31,5 +34,7 @@ public interface Dao<T> {
      * @param codigo Codigo do cadastro a ser retornado
      * @return o cadastro ao qual pertence o codigo
      */
-    public T busca(int codigo);
+    public T busca(int codigo) throws IOException, ClassNotFoundException;
+    
+    public List listar() throws IOException, ClassNotFoundException;
 }

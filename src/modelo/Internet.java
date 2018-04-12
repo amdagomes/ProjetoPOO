@@ -1,16 +1,17 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Internet extends Servico {
+public class Internet extends Servico implements Serializable {
 
     private float upload;
     private float download;
     private int MB;
     private String tecnologia;
 
-    public Internet(float upload, float download, int MB, String tecnologia, float vInstalacao, float vMesalidade, String status, int codigo) {
-        super(vInstalacao, vMesalidade, status, codigo);
+    public Internet(float upload, float download, int MB, String tecnologia, float vInstalacao, float vMesalidade, int codigo) {
+        super(vInstalacao, vMesalidade, codigo);
         this.upload = upload;
         this.download = download;
         this.MB = MB;

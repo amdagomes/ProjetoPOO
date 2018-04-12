@@ -1,18 +1,17 @@
 package modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Compra {
+public class Compra implements Serializable {
 
-    private Vendedor vendedor;
+    private Funcionario vendedor;
     private Cliente cliente;
     private Servico servico;
-    private int codigo;
+    private static int codigo;
 
-    public Compra(int codigo, Vendedor vendedor, Cliente cliente) {
-        this.codigo = codigo;
+    public Compra(Funcionario vendedor, Cliente cliente, Servico servico) {
+        codigo = ++codigo;
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.servico = servico;
@@ -22,7 +21,7 @@ public class Compra {
 
     }
 
-    public Vendedor getVendedor() {
+    public Funcionario getVendedor() {
         return vendedor;
     }
 

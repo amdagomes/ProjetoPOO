@@ -1,7 +1,14 @@
 package controle;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Servico;
 
 /**
@@ -11,48 +18,81 @@ import modelo.Servico;
  */
 public class CadastroServico implements Dao<Servico> {
 
-    List<Servico> servicos;
+    private File file;
 
     /**
      * Construtor de Servico
      *
      */
-    public CadastroServico() {
-        servicos = new ArrayList<>();
-    }
-
-    @Override
-    public boolean adiciona(Servico obj) {
-        return servicos.add(obj);
-    }
-
-    @Override
-    public boolean remove(int codigo) {
-        return servicos.remove(busca(codigo));
-    }
-
-    @Override
-    public Servico busca(int codigo) {
-        if (servicos.isEmpty()) {
-            return null;
-        } else {
-            for (Servico serv : servicos) {
-                if (serv.getCodigo() == codigo) {
-                    return serv;
-                }
-            }
-            return null;
+    public CadastroServico() throws IOException {
+        file = new File("Arquivos/servicos.bin");
+        
+        if(!file.exists()){
+            file.createNewFile();
         }
     }
 
-    /**
-     * Metodo para buscar cadastro do serviço pelo codigo
-     *
-     * @param codigo código do serviço
-     * @return o cadastro do servico que contém o código
-     */
-    public Servico cadastro(int codigo) {
-        return busca(codigo);
+   @Override
+    public boolean salvar(Servico obj) throws IOException, ClassNotFoundException  {
+        
+        List<Servico> servicos = listar();
+         
+        if(servicos.add(obj)){
+            atualizaArquivo(servicos);
+            return true;
+        } else {
+            return false;
+        }
+         
+    }
+
+    @Override
+    public boolean remove(int cod) throws IOException, ClassNotFoundException{
+        
+        List<Servico> servicos = listar();
+        Servico servico = busca(cod);
+        
+        return servicos.remove(servico);
+        
+    }
+
+    @Override
+    public Servico busca(int cod) throws IOException, ClassNotFoundException{
+        
+        List<Servico> servicos = listar();
+        
+        for(Servico s : servicos){
+            if(s.getCodigo()== cod){
+                return s;
+            }
+        }
+        
+        return null;
+        
+    }
+
+    @Override
+    public List listar() throws IOException, ClassNotFoundException {
+        
+        if(file.length() > 0){
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            return (List<Servico>) in.readObject();
+        } else{
+            return new ArrayList<>();
+        }
+        
+    }
+    
+    private void atualizaArquivo(List<Servico> servicos) throws IOException {
+        
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeObject(servicos);
+            out.close();
+        } catch(IOException ex){
+            JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
+        }
+   
     }
 
 }

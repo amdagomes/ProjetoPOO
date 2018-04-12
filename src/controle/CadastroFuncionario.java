@@ -2,13 +2,13 @@ package controle;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Funcionario;
 
 /**
@@ -16,7 +16,7 @@ import modelo.Funcionario;
  *
  * @author
  */
-public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
+public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
 
     private File file; 
 
@@ -25,7 +25,7 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
      *
      */
     public CadastroFuncionario() throws IOException {
-        file = new File("funcionarios.bin");
+        file = new File("Arquivos/funcionarios.bin");
         
         if(!file.exists()){
             file.createNewFile();
@@ -33,16 +33,16 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
     }
 
     @Override
-    public boolean salva(Funcionario obj) throws IOException, ClassNotFoundException  {
+    public boolean salvar(Funcionario obj) throws IOException, ClassNotFoundException  {
         
-         List<Funcionario> funcionarios = listar();
+        List<Funcionario> funcionarios = listar();
          
-         if(funcionarios.add(obj)){
-             atualizaArquivo(funcionarios);
-             return true;
-         } else {
-             return false;
-         }
+        if(funcionarios.add(obj)){
+            atualizaArquivo(funcionarios);
+            return true;
+        } else {
+            return false;
+        }
          
     }
 
@@ -52,15 +52,7 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
         List<Funcionario> funcionarios = listar();
         Funcionario funcionario = busca(cpf);
         
-        for(Funcionario f : funcionarios){
-            if(f.equals(funcionario)){
-                funcionarios.remove(f);
-                atualizaArquivo(funcionarios);
-                return true;
-            }
-        }
-        
-        return false;
+        return funcionarios.remove(funcionario);
         
     }
 
@@ -103,11 +95,16 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario> {
         return false;
     }
 
-    private void atualizaArquivo(List<Funcionario> funcionario) throws IOException {
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+    private void atualizaArquivo(List<Funcionario> funcionarios) throws IOException {
         
-        out.writeObject(funcionario);
-        out.close();
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeObject(funcionarios);
+            out.close();
+        } catch(IOException ex){
+            JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
+        }
+        
     }
   
 }

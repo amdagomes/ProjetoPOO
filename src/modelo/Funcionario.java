@@ -1,14 +1,14 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Funcionario {
+public class Funcionario implements Serializable{
 
     private String nome;
     private String email;
     private String cpf;
     private String rg;
-    private String curso;
     private String escolaridade;
     private String reservista;
     private String telefone;
@@ -16,12 +16,11 @@ public class Funcionario {
     private Endereco endereco;
     private String senha;
 
-    public Funcionario(String nome, String email, String cpf, String rg, String curso, String escolaridade, String reservista, String telefone, String cargo, Endereco endereco, String senha) {
+    public Funcionario(String nome, String email, String cpf, String rg, String escolaridade, String reservista, String telefone, String cargo, Endereco endereco, String senha) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.rg = rg;
-        this.curso = curso;
         this.escolaridade = escolaridade;
         this.reservista = reservista;
         this.telefone = telefone;
@@ -64,14 +63,6 @@ public class Funcionario {
 
     public void setRg(String rg) {
         this.rg = rg;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
     }
 
     public String getEscolaridade() {
@@ -129,7 +120,7 @@ public class Funcionario {
         hash = 89 * hash + Objects.hashCode(this.email);
         hash = 89 * hash + Objects.hashCode(this.cpf);
         hash = 89 * hash + Objects.hashCode(this.rg);
-        hash = 89 * hash + Objects.hashCode(this.curso);
+
         hash = 89 * hash + Objects.hashCode(this.escolaridade);
         hash = 89 * hash + Objects.hashCode(this.reservista);
         hash = 89 * hash + Objects.hashCode(this.telefone);
@@ -163,9 +154,6 @@ public class Funcionario {
         if (!Objects.equals(this.rg, other.rg)) {
             return false;
         }
-        if (!Objects.equals(this.curso, other.curso)) {
-            return false;
-        }
         if (!Objects.equals(this.escolaridade, other.escolaridade)) {
             return false;
         }
@@ -190,7 +178,7 @@ public class Funcionario {
     @Override
     public String toString() {
         return "\nInformações do Funcionario:\n" + "Nome: " + nome + "\tCPF: " + cpf
-                + "\tRG: " + rg + "\tReservista: " + reservista + "\nEmail: " + email + "\tCurso: " + curso + "\tEscolaridade: " + escolaridade
+                + "\tRG: " + rg + "\tReservista: " + reservista + "\nEmail: " + email + "\tEscolaridade: " + escolaridade
                 + "\nTelefone: " + telefone + "\tCargo: " + cargo + "\nEndereco: " + endereco;
     }
 

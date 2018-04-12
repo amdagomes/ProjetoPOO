@@ -1,13 +1,13 @@
 package modelo;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class Vendedor extends Funcionario {
+public class Vendedor extends Funcionario implements Serializable{
 
     private float comissao;
 
-    public Vendedor(float comissao, String nome, String email, String cpf, String rg, String curso, String escolaridade, String reservista, String telefone, String cargo, Endereco endereco, String senha) {
-        super(nome, email, cpf, rg, curso, escolaridade, reservista, telefone, cargo, endereco, senha);
+    public Vendedor(float comissao, String nome, String email, String cpf, String rg, String escolaridade, String reservista, String telefone, String cargo, Endereco endereco, String senha) {
+        super(nome, email, cpf, rg, escolaridade, reservista, telefone, cargo, endereco, senha);
         this.comissao = comissao;
     }
 

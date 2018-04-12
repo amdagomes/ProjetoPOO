@@ -6,6 +6,7 @@
 package visao;
 
 import controle.CadastroFuncionario;
+import controle.DaoFuncionario;
 import java.awt.Color;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -24,10 +25,27 @@ public class TelaLogin extends javax.swing.JFrame {
     
     int xMouse;
     int yMouse;
-    
-    public TelaLogin() {
+    private DaoFuncionario dao;
+    private final CadastroFuncionario cadFuncionario;
+    public TelaLogin() throws IOException {
+
+        cadFuncionario = new CadastroFuncionario();
+        /*
+        try{ 
+            cadFuncionario.salvar(new Vendedor(50, "Amanda", "amanda@gmail.com", "222.222.222-22", 
+                    "1111-1", "ADS", "Superior Incompleto", "(83) 99999-9999", "Atendente", 
+                    new Endereco("Centro", "Sousa", "58815-000", "José Viana", 204, " ", "F Sarmento Pneus"), "123"));
+            
+        } catch (IOException ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao criar funcionario");
+        } catch (ClassNotFoundException ex){
+            
+        }
+        */
+       
+        dao = new CadastroFuncionario();
         initComponents();
-        
         overflow_bg.setBackground(new Color(0,0,0,200));
     }
     
@@ -187,17 +205,16 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         
         try{
-            CadastroFuncionario cadFuncionario = new CadastroFuncionario();
-            System.out.println(cadFuncionario.listar());
-            if(cadFuncionario.autentica(campo_usuario.getText(), new String(campo_senha.getPassword()).trim())){
-                TelaHome home = new TelaHome();
+            
+            if(dao.autentica(campo_usuario.getText(), new String(campo_senha.getPassword()))){
+                TelaHome home = new TelaHome(campo_usuario.getText());
                 home.setVisible(true);
                 dispose();
             } else{
                 jLabel6.setText("Usuário ou senha inválidos");
             }
         } catch(IOException ex){
-            JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex){
             JOptionPane.showMessageDialog(null, "Login não encontrado", "ERROr", JOptionPane.ERROR_MESSAGE);
         }
@@ -255,23 +272,14 @@ public class TelaLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLogin().setVisible(true);
+                try{
+                    new TelaLogin().setVisible(true);
+                } catch(IOException ex){
+                    ex.printStackTrace();
+                }
             }
         });
-        
-         try{
-            CadastroFuncionario CadFuncionario = new CadastroFuncionario();
-            Endereco endereco = new Endereco();
-            
-            CadFuncionario.salva(new Vendedor(50, "Amanda", "amanda@gmail.com", "111.111.111-11", 
-                    "1111-1", "ADS", "Superior Incompleto", " ", "(83) 99999-9999", "Atendente", 
-                    new Endereco("Centro", "Sousa", "58888-000", "Conego Jose Viana", "Rua", 0, " ", " "), "123"));
-            
-        } catch (IOException ex){
-            
-        } catch (ClassNotFoundException ex){
-            
-        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

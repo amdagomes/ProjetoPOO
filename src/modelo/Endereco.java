@@ -1,24 +1,23 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Endereco {
+public class Endereco implements Serializable {
 
     private String bairro;
     private String cidade;
     private String cep;
     private String logradouro;
-    private String tipoDeLogradouro;
     private int numero;
     private String complemento;
     private String pontoDeReferencia;
 
-    public Endereco(String bairro, String cidade, String cep, String logradouro, String tipoDeLogradouro, int numero, String complemento, String pontoDeReferencia) {
+    public Endereco(String bairro, String cidade, String cep, String logradouro, int numero, String complemento, String pontoDeReferencia) {
         this.bairro = bairro;
         this.cidade = cidade;
         this.cep = cep;
         this.logradouro = logradouro;
-        this.tipoDeLogradouro = tipoDeLogradouro;
         this.numero = numero;
         this.complemento = complemento;
         this.pontoDeReferencia = pontoDeReferencia;
@@ -60,14 +59,6 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public String getTipoDeLogradouro() {
-        return tipoDeLogradouro;
-    }
-
-    public void setTipoDeLogradouro(String tipoDeLogradouro) {
-        this.tipoDeLogradouro = tipoDeLogradouro;
-    }
-
     public int getNumero() {
         return numero;
     }
@@ -99,7 +90,6 @@ public class Endereco {
         hash = 67 * hash + Objects.hashCode(this.cidade);
         hash = 67 * hash + Objects.hashCode(this.cep);
         hash = 67 * hash + Objects.hashCode(this.logradouro);
-        hash = 67 * hash + Objects.hashCode(this.tipoDeLogradouro);
         hash = 67 * hash + this.numero;
         hash = 67 * hash + Objects.hashCode(this.complemento);
         hash = 67 * hash + Objects.hashCode(this.pontoDeReferencia);
@@ -133,9 +123,6 @@ public class Endereco {
         if (!Objects.equals(this.logradouro, other.logradouro)) {
             return false;
         }
-        if (!Objects.equals(this.tipoDeLogradouro, other.tipoDeLogradouro)) {
-            return false;
-        }
         if (!Objects.equals(this.complemento, other.complemento)) {
             return false;
         }
@@ -147,7 +134,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "\nTipo de Logradouro: " + tipoDeLogradouro + "\tLogradouro: " + logradouro + "\tNumero: " + numero
+        return "\\ntLogradouro: " + logradouro + "\tNumero: " + numero
                 + "\nComplemento: " + complemento + "\tPonto de Referencia: " + pontoDeReferencia + "\nBairro: " + bairro + "\tCidade: " + cidade + "CEP: " + cep;
     }
 
