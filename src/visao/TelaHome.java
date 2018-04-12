@@ -251,6 +251,7 @@ public class TelaHome extends javax.swing.JFrame {
 
         btn_menu_venda.setForeground(new java.awt.Color(153, 153, 153));
         btn_menu_venda.setText("     Nova Venda");
+        btn_menu_venda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_menu_venda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_menu_vendaMouseClicked(evt);
@@ -706,9 +707,9 @@ public class TelaHome extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        telaVenda.getContentPane().add(jTelaVenda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 690, 500));
+        telaVenda.getContentPane().add(jTelaVenda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 690, 500));
 
-        jDesktopPane1.add(telaVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -33, 700, 540));
+        jDesktopPane1.add(telaVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -33, 690, 540));
 
         telaCadFunc.setBorder(null);
         telaCadFunc.setVisible(true);
@@ -1024,26 +1025,21 @@ public class TelaHome extends javax.swing.JFrame {
                                         .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jTelaCadFuncLayout.createSequentialGroup()
-                                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jTelaCadFuncLayout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(14, Short.MAX_VALUE))
+                            .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jTelaCadFuncLayout.createSequentialGroup()
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(49, 49, 49)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(jTelaCadFuncLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1051,6 +1047,12 @@ public class TelaHome extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaCadFuncLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
         jTelaCadFuncLayout.setVerticalGroup(
             jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1123,16 +1125,16 @@ public class TelaHome extends javax.swing.JFrame {
                     .addComponent(complemento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pontoReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addGap(60, 60, 60)
                 .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                .addGap(32, 32, 32))
         );
 
-        telaCadFunc.getContentPane().add(jTelaCadFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 680, 500));
+        telaCadFunc.getContentPane().add(jTelaCadFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 690, 500));
 
-        jDesktopPane1.add(telaCadFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -33, 700, 540));
+        jDesktopPane1.add(telaCadFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -33, 700, 540));
 
         telaClientes.setBorder(null);
         telaClientes.setVisible(true);
@@ -1551,7 +1553,7 @@ public class TelaHome extends javax.swing.JFrame {
         jDesktopPane1.add(telaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -33, 700, 540));
 
         getContentPane().add(jDesktopPane1);
-        jDesktopPane1.setBounds(160, 30, 690, 500);
+        jDesktopPane1.setBounds(174, 30, 675, 500);
 
         setSize(new java.awt.Dimension(847, 521));
         setLocationRelativeTo(null);
@@ -1562,12 +1564,21 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_menu_cadFuncionarioMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        try {
-            TelaLogin tl = new TelaLogin();
-            tl.setVisible(true);
-            dispose();
-        } catch (IOException ex) {
-            Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
+        
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?");
+        
+        switch(resposta){
+            case JOptionPane.YES_OPTION:
+                try {
+                    TelaLogin tl = new TelaLogin();
+                    tl.setVisible(true);
+                    dispose();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Não foi possivel acessar a tela de Login");
+                }
+                
+                break;
+            
         }
         
     }//GEN-LAST:event_jLabel3MouseClicked
