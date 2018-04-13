@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.ClientePessoaFisica;
 import modelo.Compra;
 import modelo.Funcionario;
 import modelo.Vendedor;
@@ -51,16 +52,22 @@ public class CadastroCompra implements Dao<Compra> {
         List<Compra> compras = listar();
         
         Compra compra = busca(cod);
+        System.out.println(compra);
         
-        for(Compra c : compras){
-            if(c.getCodigo() == cod){
-                c.setCliente(obj.getCliente());
-                c.setServico(obj.getServico());
-                c.setVendedor((Vendedor) obj.getVendedor());
+        for(int i = 0; i < compras.size(); i++){
+            if(compras.get(i).getCodigo() == compra.getCodigo()){
+                compras.get(i).setCliente(obj.getCliente());
+                compras.get(i).setServico(obj.getServico());
+                compras.get(i).setVendedor((Vendedor) obj.getVendedor());
+                
+                System.out.println("\n\n" + compras.get(i).toString());
+                
                 return true;
             }
         }
+             
         return false;
+
     }
 
     @Override
