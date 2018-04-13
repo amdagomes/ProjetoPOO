@@ -8,7 +8,7 @@ public class Compra implements Serializable  {
     private Funcionario vendedor;
     private Cliente cliente;
     private Servico servico;
-    private int codigo;
+    private final int codigo;
     private static int cont;
 
     public Compra(Funcionario vendedor, Cliente cliente, Servico servico) {
@@ -19,7 +19,7 @@ public class Compra implements Serializable  {
     }
 
     public Compra() {
-
+        codigo = ++cont;
     }
 
     public Funcionario getVendedor() {

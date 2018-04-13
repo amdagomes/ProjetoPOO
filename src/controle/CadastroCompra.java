@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Compra;
+import modelo.Funcionario;
+import modelo.Vendedor;
 
 /**
  * Classe de cadastro de compra
@@ -43,6 +45,22 @@ public class CadastroCompra implements Dao<Compra> {
             return false;
         }
          
+    }
+    
+    public boolean atualizar(int cod, Compra obj) throws IOException, ClassNotFoundException{
+        List<Compra> compras = listar();
+        
+        Compra compra = busca(cod);
+        
+        for(Compra c : compras){
+            if(c.getCodigo() == cod){
+                c.setCliente(obj.getCliente());
+                c.setServico(obj.getServico());
+                c.setVendedor((Vendedor) obj.getVendedor());
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

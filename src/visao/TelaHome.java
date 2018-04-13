@@ -11,6 +11,8 @@ import controle.CadastroFuncionario;
 import controle.CadastroServico;
 import java.awt.Color;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -1665,7 +1667,19 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferencia3ActionPerformed
 
     private void btnAtualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar3ActionPerformed
-        // TODO add your handling code here:
+        Compra compra = null;
+        try {
+            if(cadCompra.atualizar(Integer.parseInt(cBusca1.getText()), montaCompra())){
+                JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
+            } else{
+                JOptionPane.showMessageDialog(null, "Falha ao atualizar");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Código não existe");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao encontrar código da venda");
+        }
+        
     }//GEN-LAST:event_btnAtualizar3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
@@ -1674,7 +1688,6 @@ public class TelaHome extends javax.swing.JFrame {
         try {
            compra = montaCompra();
         } catch (IOException | ClassNotFoundException ex) {
-            ex.getStackTrace();
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
         }
@@ -1682,7 +1695,7 @@ public class TelaHome extends javax.swing.JFrame {
         try{
             if(cadCompra.salvar(compra)){
                 JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
-                
+                limpaVenda();
             } else{
                 JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
             }
@@ -1706,21 +1719,25 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado na busca");
         }
         
-        email3.setText(compra.getCliente().getEmail());
-        telefone3.setText(compra.getCliente().getTelefone());
-        bairro3.setText(compra.getCliente().getEndereco().getBairro());
-        cidade3.setText(compra.getCliente().getEndereco().getCidade());
-        rua3.setText(compra.getCliente().getEndereco().getLogradouro());
-        pontoReferencia3.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
-        cep3.setText(compra.getCliente().getEndereco().getCep());
-        complemento3.setText(compra.getCliente().getEndereco().getComplemento());
+        if(compra == null){
+            JOptionPane.showMessageDialog(null, "Código da venda não existe");
+        } else{
+            email3.setText(compra.getCliente().getEmail());
+            telefone3.setText(compra.getCliente().getTelefone());
+            bairro3.setText(compra.getCliente().getEndereco().getBairro());
+            cidade3.setText(compra.getCliente().getEndereco().getCidade());
+            rua3.setText(compra.getCliente().getEndereco().getLogradouro());
+            pontoReferencia3.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
+            cep3.setText(compra.getCliente().getEndereco().getCep());
+            complemento3.setText(compra.getCliente().getEndereco().getComplemento());
         
-        if(compra.getServico().getCodigo() == 1){
-            servico.setSelectedIndex(0);
-        } else if(compra.getServico().getCodigo() == 2){
-            servico.setSelectedIndex(1);
-        } if(compra.getServico().getCodigo() == 3){
-            servico.setSelectedIndex(2);
+            if(compra.getServico().getCodigo() == 1){
+                servico1.setSelectedIndex(0);
+            } else if(compra.getServico().getCodigo() == 2){
+                servico1.setSelectedIndex(1);
+            } if(compra.getServico().getCodigo() == 3){
+                servico1.setSelectedIndex(2);
+            }
         }
         
     }//GEN-LAST:event_jLabel53MouseClicked
@@ -1903,6 +1920,7 @@ public class TelaHome extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Compra montaCompra() throws IOException, ClassNotFoundException {
+        
         Compra compra = new Compra();
         ClientePessoaFisica cliente = new ClientePessoaFisica();
         
@@ -1952,6 +1970,25 @@ public class TelaHome extends javax.swing.JFrame {
      
         cadCompra.salvar(compra);
         return compra;
+        
+    }
+    
+    public void limpaVenda(){
+        
+        nome3.setText("");
+        cpf3.setText("");
+        dataNascimento1.setText("");
+        rg3.setText("");
+        email3.setText("");
+        telefone3.setText("");
+        
+        bairro3.setText("");
+        cidade3.setText("");
+        cep3.setText("");
+        numero3.setText("");
+        complemento3.setText("");
+        rua3.setText("");
+        pontoReferencia3.setText("");
         
     }
     
