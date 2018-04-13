@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class ClientePessoaFisica extends Cliente implements Serializable{
+public class ClientePessoaFisica extends Cliente {
 
     private String nome;
     private String rg;

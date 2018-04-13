@@ -1,6 +1,8 @@
 package modelo;
 
-public class Assalariado extends Funcionario {
+import java.io.Serializable;
+
+public class Assalariado extends Funcionario implements Serializable {
 
     private float salario;
 

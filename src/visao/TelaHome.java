@@ -5,6 +5,7 @@
  */
 package visao;
 
+import controle.CadastroCliente;
 import controle.CadastroCompra;
 import controle.CadastroFuncionario;
 import controle.CadastroServico;
@@ -20,6 +21,7 @@ import modelo.Compra;
 import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.Internet;
+import modelo.Vendedor;
 
 /**
  *
@@ -1722,12 +1724,14 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizar3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
-        Compra compra = null;
+       Compra compra=null;
+        
         try {
-            compra = montaCompra();
+           compra= montaCompra();
         } catch (IOException | ClassNotFoundException ex) {
             ex.getStackTrace();
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
+            ex.printStackTrace(System.err);
         }
         
         if(compra == null){
@@ -1736,15 +1740,18 @@ public class TelaHome extends javax.swing.JFrame {
             try{
             if(cadCompra.salvar(compra)){
                 JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
+                
             } else{
                 JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
             }
             } catch(IOException ex){
                 JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
+                ex.printStackTrace(System.err);
             } catch(ClassNotFoundException ex){
                 JOptionPane.showMessageDialog(null, "Classe não encontrada");
             }
         }
+         System.out.println(compra);
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
@@ -1954,6 +1961,7 @@ public class TelaHome extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Compra montaCompra() throws IOException, ClassNotFoundException {
+        Compra compra = new Compra();
         ClientePessoaFisica cliente = new ClientePessoaFisica();
         
         cliente.setNome(nome2.getText());
@@ -1993,7 +2001,13 @@ public class TelaHome extends javax.swing.JFrame {
         cliente.setEndereco(endereco);
         CadastroFuncionario cadFunc = new CadastroFuncionario();
         Funcionario func = cadFunc.busca(funcLogado);
-        return new Compra(func, cliente, serv);
+        CadastroCliente cadcliente =new CadastroCliente();
+        cadcliente.salvar(cliente);
+       compra.setCliente(cliente);
+        compra.setServico(serv);
+        compra.setVendedor((Vendedor) func);
+        return compra;
         
     }
+    
 }

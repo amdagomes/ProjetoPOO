@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Internet extends Servico implements Serializable {
+public class Internet extends Servico implements Serializable  {
 
     private float upload;
     private float download;

@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Servico implements Serializable{
+public abstract class Servico  {
 
     private float vInstalacao;
     private float vMesalidade;

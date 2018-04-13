@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class ClientePessoaJuridica extends Cliente implements Serializable{
+public class ClientePessoaJuridica extends Cliente {
 
     private String razaoSocial;
     private String cnpj;

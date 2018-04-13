@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Compra implements Serializable {
+public class Compra implements Serializable  {
 
     private Funcionario vendedor;
     private Cliente cliente;

@@ -2,7 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 
-public class Vendedor extends Funcionario implements Serializable{
+public class Vendedor extends Funcionario implements Serializable {
 
     private float comissao;
 

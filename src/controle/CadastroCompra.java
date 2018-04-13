@@ -19,6 +19,7 @@ import modelo.Compra;
 
 public class CadastroCompra implements Dao<Compra> {
 
+    
     private File file;
 
     

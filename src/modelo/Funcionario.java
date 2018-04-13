@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Funcionario implements Serializable{
+public class Funcionario implements Serializable {
 
     private String nome;
     private String email;
