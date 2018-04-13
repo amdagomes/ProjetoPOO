@@ -11,8 +11,6 @@ import controle.CadastroFuncionario;
 import controle.CadastroServico;
 import java.awt.Color;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,21 +37,9 @@ public class TelaHome extends javax.swing.JFrame {
     private CadastroCompra cadCompra;
     private String funcLogado;
     private CadastroServico cadServ;
+    private CadastroCliente cadCliente;
     
     public TelaHome(){
-        
-        
-        /*
-        try {
-            cadServ.salvar((new Internet(2, 10, 10, "Fibra Óptica", 100, 63, 1)));
-            cadServ.salvar((new Internet(5, 20, 20, "Fibra Óptica", 100, 83, 2)));
-            cadServ.salvar((new Internet(9, 40, 40, "Fibra Óptica", 100, 99, 3)));
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
-        }
-        */
         initComponents();
     }
     
@@ -63,12 +49,19 @@ public class TelaHome extends javax.swing.JFrame {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de compra");
         }
+        
         try {
             cadServ = new CadastroServico();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de Serviços");
         }
-        /*
+        
+        try {
+            cadCliente = new CadastroCliente();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de Clientes");
+        }
+        /* //CRIAÇÃO DOS SERVIÇOS DE INTERNET
         try {
             cadServ.salvar((new Internet(2, 10, 10, "Fibra Óptica", 100, 63, 1)));
             cadServ.salvar((new Internet(5, 20, 20, "Fibra Óptica", 100, 83, 2)));
@@ -239,7 +232,7 @@ public class TelaHome extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(28, 27, 27));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Amanda\\Documents\\Amanda\\ADS\\3P\\POO\\ProjetoPOO\\img\\logo_173px.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\logo_173px.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 36, 173, 80));
 
         btn_menu_cadFuncionario.setForeground(new java.awt.Color(153, 153, 153));
@@ -320,7 +313,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel39.setForeground(new java.awt.Color(102, 102, 102));
         jLabel39.setText("Nome");
 
-        nome3.setBackground(new java.awt.Color(255, 255, 255));
         nome3.setForeground(new java.awt.Color(102, 102, 102));
         nome3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         nome3.addActionListener(new java.awt.event.ActionListener() {
@@ -339,7 +331,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel41.setForeground(new java.awt.Color(102, 102, 102));
         jLabel41.setText("CPF");
 
-        cBusca1.setBackground(new java.awt.Color(255, 255, 255));
         cBusca1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         cBusca1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
         cBusca1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -349,7 +340,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel42.setForeground(new java.awt.Color(102, 102, 102));
         jLabel42.setText("RG");
 
-        telefone3.setBackground(new java.awt.Color(255, 255, 255));
         telefone3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             telefone3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -373,7 +363,6 @@ public class TelaHome extends javax.swing.JFrame {
 
         jSeparator9.setForeground(new java.awt.Color(102, 102, 102));
 
-        email3.setBackground(new java.awt.Color(255, 255, 255));
         email3.setForeground(new java.awt.Color(102, 102, 102));
         email3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         email3.addActionListener(new java.awt.event.ActionListener() {
@@ -392,7 +381,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel47.setForeground(new java.awt.Color(102, 102, 102));
         jLabel47.setText("Rua/nº");
 
-        rua3.setBackground(new java.awt.Color(255, 255, 255));
         rua3.setForeground(new java.awt.Color(102, 102, 102));
         rua3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         rua3.addActionListener(new java.awt.event.ActionListener() {
@@ -401,7 +389,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        bairro3.setBackground(new java.awt.Color(255, 255, 255));
         bairro3.setForeground(new java.awt.Color(102, 102, 102));
         bairro3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         bairro3.addActionListener(new java.awt.event.ActionListener() {
@@ -420,7 +407,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel49.setForeground(new java.awt.Color(102, 102, 102));
         jLabel49.setText("Cidade");
 
-        cidade3.setBackground(new java.awt.Color(255, 255, 255));
         cidade3.setForeground(new java.awt.Color(102, 102, 102));
         cidade3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         cidade3.addActionListener(new java.awt.event.ActionListener() {
@@ -434,7 +420,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel50.setForeground(new java.awt.Color(102, 102, 102));
         jLabel50.setText("CEP");
 
-        cep3.setBackground(new java.awt.Color(255, 255, 255));
         cep3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cep3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
@@ -442,7 +427,6 @@ public class TelaHome extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        complemento3.setBackground(new java.awt.Color(255, 255, 255));
         complemento3.setForeground(new java.awt.Color(102, 102, 102));
         complemento3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         complemento3.addActionListener(new java.awt.event.ActionListener() {
@@ -456,7 +440,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel51.setForeground(new java.awt.Color(102, 102, 102));
         jLabel51.setText("Complemento");
 
-        pontoReferencia3.setBackground(new java.awt.Color(255, 255, 255));
         pontoReferencia3.setForeground(new java.awt.Color(102, 102, 102));
         pontoReferencia3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         pontoReferencia3.addActionListener(new java.awt.event.ActionListener() {
@@ -490,7 +473,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        dataNascimento1.setBackground(new java.awt.Color(255, 255, 255));
         dataNascimento1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             dataNascimento1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -499,14 +481,13 @@ public class TelaHome extends javax.swing.JFrame {
         }
 
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel53.setIcon(new javax.swing.ImageIcon("C:\\Users\\Amanda\\Documents\\Amanda\\ADS\\3P\\POO\\ProjetoPOO\\img\\Search_20px.png")); // NOI18N
+        jLabel53.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\Search_20px.png")); // NOI18N
         jLabel53.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel53MouseClicked(evt);
             }
         });
 
-        cpf3.setBackground(new java.awt.Color(255, 255, 255));
         cpf3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cpf3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -524,13 +505,11 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel54.setForeground(new java.awt.Color(102, 102, 102));
         jLabel54.setText("Serviço");
 
-        servico1.setBackground(new java.awt.Color(255, 255, 255));
         servico1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         servico1.setForeground(new java.awt.Color(102, 102, 102));
         servico1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10 MB FIBRA", "20 MB FIBRA", "40 MB FIBRA", " " }));
         servico1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        rg3.setBackground(new java.awt.Color(255, 255, 255));
         rg3.setForeground(new java.awt.Color(102, 102, 102));
         rg3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         rg3.addActionListener(new java.awt.event.ActionListener() {
@@ -539,7 +518,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        numero3.setBackground(new java.awt.Color(255, 255, 255));
         numero3.setForeground(new java.awt.Color(102, 102, 102));
         numero3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         numero3.addActionListener(new java.awt.event.ActionListener() {
@@ -728,7 +706,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Nome");
 
-        nome.setBackground(new java.awt.Color(255, 255, 255));
         nome.setForeground(new java.awt.Color(102, 102, 102));
         nome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         nome.addActionListener(new java.awt.event.ActionListener() {
@@ -742,7 +719,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Escolaridade");
 
-        escolaridade.setBackground(new java.awt.Color(255, 255, 255));
         escolaridade.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         escolaridade.setForeground(new java.awt.Color(102, 102, 102));
         escolaridade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fundamental Completo", "Fundamental Incompleto", "Superior Completo", "Superior Incompleto" }));
@@ -753,7 +729,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Cargo");
 
-        cargo.setBackground(new java.awt.Color(255, 255, 255));
         cargo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cargo.setForeground(new java.awt.Color(102, 102, 102));
         cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendente", "Técnico", "Estoquista", "Gerente" }));
@@ -764,7 +739,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("CPF");
 
-        bCpf.setBackground(new java.awt.Color(255, 255, 255));
         bCpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             bCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -777,7 +751,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("RG");
 
-        telefone.setBackground(new java.awt.Color(255, 255, 255));
         telefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -791,7 +764,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Telefone");
 
-        rg.setBackground(new java.awt.Color(255, 255, 255));
         rg.setForeground(new java.awt.Color(102, 102, 102));
         rg.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         rg.addActionListener(new java.awt.event.ActionListener() {
@@ -805,7 +777,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(102, 102, 102));
         jLabel10.setText("Reservista");
 
-        reservista.setBackground(new java.awt.Color(255, 255, 255));
         reservista.setForeground(new java.awt.Color(102, 102, 102));
         reservista.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         reservista.addActionListener(new java.awt.event.ActionListener() {
@@ -824,7 +795,6 @@ public class TelaHome extends javax.swing.JFrame {
 
         jSeparator3.setForeground(new java.awt.Color(102, 102, 102));
 
-        email.setBackground(new java.awt.Color(255, 255, 255));
         email.setForeground(new java.awt.Color(102, 102, 102));
         email.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         email.addActionListener(new java.awt.event.ActionListener() {
@@ -843,7 +813,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
         jLabel14.setText("Rua/nº");
 
-        rua.setBackground(new java.awt.Color(255, 255, 255));
         rua.setForeground(new java.awt.Color(102, 102, 102));
         rua.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         rua.addActionListener(new java.awt.event.ActionListener() {
@@ -852,7 +821,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        numero.setBackground(new java.awt.Color(255, 255, 255));
         numero.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
@@ -860,7 +828,6 @@ public class TelaHome extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        bairro.setBackground(new java.awt.Color(255, 255, 255));
         bairro.setForeground(new java.awt.Color(102, 102, 102));
         bairro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         bairro.addActionListener(new java.awt.event.ActionListener() {
@@ -879,7 +846,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(102, 102, 102));
         jLabel16.setText("Cidade");
 
-        cidade.setBackground(new java.awt.Color(255, 255, 255));
         cidade.setForeground(new java.awt.Color(102, 102, 102));
         cidade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         cidade.addActionListener(new java.awt.event.ActionListener() {
@@ -893,7 +859,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(102, 102, 102));
         jLabel17.setText("CEP");
 
-        cep.setBackground(new java.awt.Color(255, 255, 255));
         cep.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
@@ -901,7 +866,6 @@ public class TelaHome extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        complemento.setBackground(new java.awt.Color(255, 255, 255));
         complemento.setForeground(new java.awt.Color(102, 102, 102));
         complemento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         complemento.addActionListener(new java.awt.event.ActionListener() {
@@ -915,7 +879,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(102, 102, 102));
         jLabel18.setText("Complemento");
 
-        pontoReferencia.setBackground(new java.awt.Color(255, 255, 255));
         pontoReferencia.setForeground(new java.awt.Color(102, 102, 102));
         pontoReferencia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         pontoReferencia.addActionListener(new java.awt.event.ActionListener() {
@@ -949,7 +912,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        cpf.setBackground(new java.awt.Color(255, 255, 255));
         cpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -958,7 +920,6 @@ public class TelaHome extends javax.swing.JFrame {
         }
 
         btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Amanda\\Documents\\Amanda\\ADS\\3P\\POO\\ProjetoPOO\\img\\Search_20px.png")); // NOI18N
 
         javax.swing.GroupLayout jTelaCadFuncLayout = new javax.swing.GroupLayout(jTelaCadFunc);
         jTelaCadFunc.setLayout(jTelaCadFuncLayout);
@@ -1153,7 +1114,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(102, 102, 102));
         jLabel22.setText("Nome");
 
-        nome2.setBackground(new java.awt.Color(255, 255, 255));
         nome2.setForeground(new java.awt.Color(102, 102, 102));
         nome2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         nome2.addActionListener(new java.awt.event.ActionListener() {
@@ -1172,7 +1132,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(102, 102, 102));
         jLabel25.setText("CPF");
 
-        cBusca.setBackground(new java.awt.Color(255, 255, 255));
         cBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cBusca.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
@@ -1186,7 +1145,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(102, 102, 102));
         jLabel26.setText("RG");
 
-        telefone2.setBackground(new java.awt.Color(255, 255, 255));
         telefone2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             telefone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -1210,7 +1168,6 @@ public class TelaHome extends javax.swing.JFrame {
 
         jSeparator6.setForeground(new java.awt.Color(102, 102, 102));
 
-        email2.setBackground(new java.awt.Color(255, 255, 255));
         email2.setForeground(new java.awt.Color(102, 102, 102));
         email2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         email2.addActionListener(new java.awt.event.ActionListener() {
@@ -1229,7 +1186,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
         jLabel32.setText("Rua/nº");
 
-        rua2.setBackground(new java.awt.Color(255, 255, 255));
         rua2.setForeground(new java.awt.Color(102, 102, 102));
         rua2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         rua2.addActionListener(new java.awt.event.ActionListener() {
@@ -1238,7 +1194,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        bairro2.setBackground(new java.awt.Color(255, 255, 255));
         bairro2.setForeground(new java.awt.Color(102, 102, 102));
         bairro2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         bairro2.addActionListener(new java.awt.event.ActionListener() {
@@ -1257,7 +1212,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel34.setForeground(new java.awt.Color(102, 102, 102));
         jLabel34.setText("Cidade");
 
-        cidade2.setBackground(new java.awt.Color(255, 255, 255));
         cidade2.setForeground(new java.awt.Color(102, 102, 102));
         cidade2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         cidade2.addActionListener(new java.awt.event.ActionListener() {
@@ -1271,7 +1225,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel35.setForeground(new java.awt.Color(102, 102, 102));
         jLabel35.setText("CEP");
 
-        cep2.setBackground(new java.awt.Color(255, 255, 255));
         cep2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cep2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
@@ -1279,7 +1232,6 @@ public class TelaHome extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        complemento2.setBackground(new java.awt.Color(255, 255, 255));
         complemento2.setForeground(new java.awt.Color(102, 102, 102));
         complemento2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         complemento2.addActionListener(new java.awt.event.ActionListener() {
@@ -1293,7 +1245,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel36.setForeground(new java.awt.Color(102, 102, 102));
         jLabel36.setText("Complemento");
 
-        pontoReferencia2.setBackground(new java.awt.Color(255, 255, 255));
         pontoReferencia2.setForeground(new java.awt.Color(102, 102, 102));
         pontoReferencia2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         pontoReferencia2.addActionListener(new java.awt.event.ActionListener() {
@@ -1327,7 +1278,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        dataNascimento.setBackground(new java.awt.Color(255, 255, 255));
         dataNascimento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             dataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -1336,14 +1286,12 @@ public class TelaHome extends javax.swing.JFrame {
         }
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel38.setIcon(new javax.swing.ImageIcon("C:\\Users\\Amanda\\Documents\\Amanda\\ADS\\3P\\POO\\ProjetoPOO\\img\\Search_20px.png")); // NOI18N
         jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel38MouseClicked(evt);
             }
         });
 
-        cpf2.setBackground(new java.awt.Color(255, 255, 255));
         cpf2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cpf2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -1361,13 +1309,11 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setText("Serviço");
 
-        servico.setBackground(new java.awt.Color(255, 255, 255));
         servico.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         servico.setForeground(new java.awt.Color(102, 102, 102));
         servico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10 MB FIBRA", "20 MB FIBRA", "40 MB FIBRA", " " }));
         servico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
-        rg2.setBackground(new java.awt.Color(255, 255, 255));
         rg2.setForeground(new java.awt.Color(102, 102, 102));
         rg2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         rg2.addActionListener(new java.awt.event.ActionListener() {
@@ -1376,7 +1322,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        numero2.setBackground(new java.awt.Color(255, 255, 255));
         numero2.setForeground(new java.awt.Color(102, 102, 102));
         numero2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         numero2.addActionListener(new java.awt.event.ActionListener() {
@@ -1724,54 +1669,51 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizar3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
-       Compra compra=null;
+       Compra compra = null;
         
         try {
-           compra= montaCompra();
+           compra = montaCompra();
         } catch (IOException | ClassNotFoundException ex) {
             ex.getStackTrace();
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
         }
         
-        if(compra == null){
-            JOptionPane.showMessageDialog(null, "Valores Nulos");
-        } else{
-            try{
+        try{
             if(cadCompra.salvar(compra)){
                 JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
                 
             } else{
                 JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
             }
-            } catch(IOException ex){
-                JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
-                ex.printStackTrace(System.err);
-            } catch(ClassNotFoundException ex){
-                JOptionPane.showMessageDialog(null, "Classe não encontrada");
-            }
+        } catch(IOException ex){
+            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
+            ex.printStackTrace(System.err);
+        } catch(ClassNotFoundException ex){
+            JOptionPane.showMessageDialog(null, "Classe não encontrada");
         }
-         System.out.println(compra);
+        
+        System.out.println(compra);
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
         Compra compra = null;
         try {
-           compra = cadCompra.busca(Integer.parseInt(cBusca1.getSelectedText()));
+           compra = cadCompra.busca(Integer.parseInt(cBusca1.getText()));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo na busca");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado na busca");
         }
         
-        email2.setText(compra.getCliente().getEmail());
-        telefone2.setText(compra.getCliente().getTelefone());
-        bairro2.setText(compra.getCliente().getEndereco().getBairro());
-        cidade2.setText(compra.getCliente().getEndereco().getCidade());
-        rua2.setText(compra.getCliente().getEndereco().getLogradouro());
-        pontoReferencia2.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
-        cep2.setText(compra.getCliente().getEndereco().getCep());
-        complemento2.setText(compra.getCliente().getEndereco().getComplemento());
+        email3.setText(compra.getCliente().getEmail());
+        telefone3.setText(compra.getCliente().getTelefone());
+        bairro3.setText(compra.getCliente().getEndereco().getBairro());
+        cidade3.setText(compra.getCliente().getEndereco().getCidade());
+        rua3.setText(compra.getCliente().getEndereco().getLogradouro());
+        pontoReferencia3.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
+        cep3.setText(compra.getCliente().getEndereco().getCep());
+        complemento3.setText(compra.getCliente().getEndereco().getComplemento());
         
         if(compra.getServico().getCodigo() == 1){
             servico.setSelectedIndex(0);
@@ -1964,48 +1906,51 @@ public class TelaHome extends javax.swing.JFrame {
         Compra compra = new Compra();
         ClientePessoaFisica cliente = new ClientePessoaFisica();
         
-        cliente.setNome(nome2.getText());
-        cliente.setCpf(cpf2.getText());
-        cliente.setDataDeNascimento(dataNascimento.getText());
-        cliente.setRg(rg2.getText());
-        cliente.setEmail(email2.getText());
-        cliente.setTelefone(telefone2.getText());
+        cliente.setNome(nome3.getText());
+        cliente.setCpf(cpf3.getText());
+        cliente.setDataDeNascimento(dataNascimento1.getText());
+        cliente.setRg(rg3.getText());
+        cliente.setEmail(email3.getText());
+        cliente.setTelefone(telefone3.getText());
         
         Endereco endereco = new Endereco();
         
-        endereco.setBairro(bairro2.getText());
-        endereco.setCidade(cidade2.getText());
-        endereco.setCep(cep2.getText());
-        endereco.setComplemento(complemento2.getText());
-        endereco.setLogradouro(rua2.getText());
+        endereco.setBairro(bairro3.getText());
+        endereco.setCidade(cidade3.getText());
+        endereco.setCep(cep3.getText());
+        endereco.setNumero(Integer.parseInt(numero3.getText()));
+        endereco.setComplemento(complemento3.getText());
+        endereco.setLogradouro(rua3.getText());
+        endereco.setPontoDeReferencia(pontoReferencia3.getText());
         
-        endereco.setPontoDeReferencia(pontoReferencia2.getText());
+        cliente.setEndereco(endereco);
         
         Internet serv = new Internet();
         
-        switch ((String) servico.getSelectedItem()) {
-            case "10 MB FIBRA":
-                serv = (Internet) cadServ.busca(0);
-                break;
-            case "20 MB FIBRA":
+        switch (servico1.getSelectedIndex()) {
+            case 0:
                 serv = (Internet) cadServ.busca(1);
                 break;
-            case "40 MB FIBRA":
+            case 1:
+                serv = (Internet) cadServ.busca(2);
+                break;
+            case 2:
                 serv = (Internet) cadServ.busca(3);
                 break;
             default:
                 break;
         }
         
-        
-        cliente.setEndereco(endereco);
         CadastroFuncionario cadFunc = new CadastroFuncionario();
         Funcionario func = cadFunc.busca(funcLogado);
-        CadastroCliente cadcliente =new CadastroCliente();
-        cadcliente.salvar(cliente);
-       compra.setCliente(cliente);
+
+        cadCliente.salvar(cliente);
+        
+        compra.setCliente(cliente);
         compra.setServico(serv);
         compra.setVendedor((Vendedor) func);
+     
+        cadCompra.salvar(compra);
         return compra;
         
     }

@@ -1,10 +1,9 @@
 package modelo;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
-public class ClientePessoaFisica extends Cliente {
+public class ClientePessoaFisica extends Cliente implements Serializable{
 
     private String nome;
     private String rg;
@@ -95,7 +94,7 @@ public class ClientePessoaFisica extends Cliente {
     @Override
     public String toString() {
         return "\n Informações Cliente Pessoa Fisica:\n" + "Nome: " + nome + "\nRG: " + rg + "\tCPF: " + cpf
-                + "\tNascimento: " + dataDeNascimento + "\n";
+                + "\tNascimento: " + dataDeNascimento + "\n" + super.toString();
     }
 
 }

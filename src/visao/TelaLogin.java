@@ -173,7 +173,7 @@ public class TelaLogin extends javax.swing.JFrame {
         overflow_bg.setBackground(new java.awt.Color(0, 0, 0));
         overflow_bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Amanda\\Documents\\Amanda\\ADS\\3P\\POO\\ProjetoPOO\\img\\logo.png")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\logo.png")); // NOI18N
         overflow_bg.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 195, -1, 100));
         logo.getAccessibleContext().setAccessibleName("logo");
 
@@ -184,7 +184,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel1.add(overflow_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 490));
 
-        bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\Amanda\\Documents\\Amanda\\ADS\\3P\\POO\\ProjetoPOO\\img\\bg.jpg")); // NOI18N
+        bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\bg.jpg")); // NOI18N
         jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
