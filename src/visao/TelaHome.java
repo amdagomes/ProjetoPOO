@@ -30,36 +30,41 @@ public class TelaHome extends javax.swing.JFrame {
     /**
      * Creates new form TelaHome
      */
-    
     int xMouse;
     int yMouse;
-    
+
     private CadastroCompra cadCompra;
     private String funcLogado;
     private CadastroServico cadServ;
     private CadastroCliente cadCliente;
-    
-    public TelaHome(){
+    private CadastroFuncionario cadFuncionario;
+
+    public TelaHome() {
         initComponents();
     }
-    
-    public TelaHome(String cpf){
+
+    public TelaHome(String cpf) {
         try {
             cadCompra = new CadastroCompra();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de compra");
         }
-        
+
         try {
             cadServ = new CadastroServico();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de Serviços");
         }
-        
+
         try {
             cadCliente = new CadastroCliente();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de Clientes");
+        }
+        try {
+            cadFuncionario = new CadastroFuncionario();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de compra");
         }
         /* //CRIAÇÃO DOS SERVIÇOS DE INTERNET
         try {
@@ -71,22 +76,22 @@ public class TelaHome extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
         }
-        */
+         */
         this.funcLogado = cpf;
         initComponents();
     }
 
     //ativa os frames internos
-    public void activer(JInternalFrame fr){
+    public void activer(JInternalFrame fr) {
         telaCadFunc.setVisible(false);
         telaClientes.setVisible(false);
         fr.setVisible(true);
     }
-    
-    public void menuAtivo(JLabel lb){
+
+    public void menuAtivo(JLabel lb) {
         btn_menu_venda.setBackground(Color.LIGHT_GRAY);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -820,11 +825,12 @@ public class TelaHome extends javax.swing.JFrame {
         });
 
         numero.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        try {
-            numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        numero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroActionPerformed(evt);
+            }
+        });
 
         bairro.setForeground(new java.awt.Color(102, 102, 102));
         bairro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -1509,10 +1515,10 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_menu_cadFuncionarioMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        
+
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?");
-        
-        switch(resposta){
+
+        switch (resposta) {
             case JOptionPane.YES_OPTION:
                 try {
                     TelaLogin tl = new TelaLogin();
@@ -1521,11 +1527,11 @@ public class TelaHome extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Não foi possivel acessar a tela de Login");
                 }
-                
+
                 break;
-            
+
         }
-        
+
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void btn_menu_vendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menu_vendaMouseClicked
@@ -1574,7 +1580,30 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        Funcionario funcionario = null;
+        try {
+            funcionario = montaFuncionario();
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
+            ex.printStackTrace(System.err);
+        }
+
+        try {
+            if (cadFuncionario.salvar(funcionario)) {
+                JOptionPane.showMessageDialog(null, "Funcionario Cadastrado  com sucesso");
+                limpaVenda();
+            } else {
+                JOptionPane.showMessageDialog(null, "Falha ao realizar cadastro");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
+            ex.printStackTrace(System.err);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Classe não encontrada");
+        }
+
+        System.out.println(funcionario);
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void rua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rua2ActionPerformed
@@ -1602,8 +1631,8 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizar2ActionPerformed
 
     private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
-        
-        
+
+
     }//GEN-LAST:event_btnSalvar2ActionPerformed
 
     private void nome2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nome2ActionPerformed
@@ -1627,7 +1656,7 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_numero2ActionPerformed
 
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-        
+
     }//GEN-LAST:event_jLabel38MouseClicked
 
     private void btn_menu_cadFuncionario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menu_cadFuncionario1MouseClicked
@@ -1665,9 +1694,9 @@ public class TelaHome extends javax.swing.JFrame {
     private void btnAtualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar3ActionPerformed
         Compra compra = null;
         try {
-            if(cadCompra.atualizar(Integer.parseInt(cBusca1.getText()), montaCompra())){
+            if (cadCompra.atualizar(Integer.parseInt(cBusca1.getText()), montaCompra())) {
                 JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Falha ao atualizar");
             }
         } catch (IOException ex) {
@@ -1675,51 +1704,51 @@ public class TelaHome extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao encontrar código da venda");
         }
-        
+
     }//GEN-LAST:event_btnAtualizar3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
-       Compra compra = null;
-        
+        Compra compra = null;
+
         try {
-           compra = montaCompra();
+            compra = montaCompra();
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
         }
-        
-        try{
-            if(cadCompra.salvar(compra)){
+
+        try {
+            if (cadCompra.salvar(compra)) {
                 JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
                 limpaVenda();
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
             }
-        } catch(IOException ex){
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
-        } catch(ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
         }
-        
+
         System.out.println(compra);
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
         Compra compra = null;
         try {
-           compra = cadCompra.busca(Integer.parseInt(cBusca1.getText()));
+            compra = cadCompra.busca(Integer.parseInt(cBusca1.getText()));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo na busca");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado na busca");
         }
-        
-        if(compra == null){
+
+        if (compra == null) {
             JOptionPane.showMessageDialog(null, "Código da venda não existe");
-        } else{
+        } else {
             ClientePessoaFisica cliente = (ClientePessoaFisica) compra.getCliente();
-            
+
             nome3.setText(cliente.getNome());
             cpf3.setText(cliente.getCpf());
             dataNascimento1.setText(cliente.getDataDeNascimento());
@@ -1732,16 +1761,17 @@ public class TelaHome extends javax.swing.JFrame {
             pontoReferencia3.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
             cep3.setText(compra.getCliente().getEndereco().getCep());
             complemento3.setText(compra.getCliente().getEndereco().getComplemento());
-        
-            if(compra.getServico().getCodigo() == 1){
+
+            if (compra.getServico().getCodigo() == 1) {
                 servico1.setSelectedIndex(0);
-            } else if(compra.getServico().getCodigo() == 2){
+            } else if (compra.getServico().getCodigo() == 2) {
                 servico1.setSelectedIndex(1);
-            } if(compra.getServico().getCodigo() == 3){
+            }
+            if (compra.getServico().getCodigo() == 3) {
                 servico1.setSelectedIndex(2);
             }
         }
-        
+
     }//GEN-LAST:event_jLabel53MouseClicked
 
     private void cpf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpf3ActionPerformed
@@ -1755,6 +1785,10 @@ public class TelaHome extends javax.swing.JFrame {
     private void numero3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numero3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numero3ActionPerformed
+
+    private void numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1922,36 +1956,36 @@ public class TelaHome extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Compra montaCompra() throws IOException, ClassNotFoundException {
-        
+
         Compra compra = new Compra();
         ClientePessoaFisica cliente = new ClientePessoaFisica();
-        
+
         cliente.setNome(nome3.getText());
         cliente.setCpf(cpf3.getText());
         cliente.setDataDeNascimento(dataNascimento1.getText());
         cliente.setRg(rg3.getText());
         cliente.setEmail(email3.getText());
         cliente.setTelefone(telefone3.getText());
-        
+
         Endereco endereco = new Endereco();
-        
+
         endereco.setBairro(bairro3.getText());
         endereco.setCidade(cidade3.getText());
         endereco.setCep(cep3.getText());
         //Se o JTextField estiver vazio preenche o campo numero com o valor 0
-        if(numero3.getText().isEmpty()){
+        if (numero3.getText().isEmpty()) {
             endereco.setNumero(0);
-        } else{
+        } else {
             endereco.setNumero(Integer.parseInt(numero3.getText()));
         }
         endereco.setComplemento(complemento3.getText());
         endereco.setLogradouro(rua3.getText());
         endereco.setPontoDeReferencia(pontoReferencia3.getText());
-        
+
         cliente.setEndereco(endereco);
-        
+
         Internet serv = new Internet();
-        
+
         switch (servico1.getSelectedIndex()) {
             case 0:
                 serv = (Internet) cadServ.busca(1);
@@ -1965,30 +1999,30 @@ public class TelaHome extends javax.swing.JFrame {
             default:
                 break;
         }
-        
+
         CadastroFuncionario cadFunc = new CadastroFuncionario();
         Funcionario func = cadFunc.busca(funcLogado);
 
         cadCliente.salvar(cliente);
-        
+
         compra.setCliente((ClientePessoaFisica) cliente);
         compra.setServico(serv);
         compra.setVendedor((Vendedor) func);
-     
+
         cadCompra.salvar(compra);
         return compra;
-        
+
     }
-    
-    public void limpaVenda(){
-        
+
+    public void limpaVenda() {
+
         nome3.setText("");
         cpf3.setText("");
         dataNascimento1.setText("");
         rg3.setText("");
         email3.setText("");
         telefone3.setText("");
-        
+
         bairro3.setText("");
         cidade3.setText("");
         cep3.setText("");
@@ -1996,7 +2030,34 @@ public class TelaHome extends javax.swing.JFrame {
         complemento3.setText("");
         rua3.setText("");
         pontoReferencia3.setText("");
-        
+
     }
-    
+
+    private Funcionario montaFuncionario() throws IOException, ClassNotFoundException {
+        Funcionario funcionario = new Funcionario();
+
+        funcionario.setNome(nome.getText());
+        funcionario.setCpf(cpf.getText());
+        funcionario.setEmail(email.getText());
+        funcionario.setCargo((String) cargo.getSelectedItem());
+        funcionario.setRg(rg.getText());
+        funcionario.setReservista(reservista.getText());
+        funcionario.setEscolaridade((String) escolaridade.getSelectedItem());
+        funcionario.setTelefone(telefone.getText());
+
+        Endereco endereco = new Endereco();
+
+        endereco.setBairro(bairro.getText());
+        endereco.setCidade(cidade.getText());
+        endereco.setCep(cep.getText());
+        endereco.setNumero(Integer.parseInt(numero.getText()));
+        endereco.setComplemento(complemento.getText());
+        endereco.setLogradouro(rua.getText());
+        endereco.setPontoDeReferencia(pontoReferencia.getText());
+
+        funcionario.setEndereco(endereco);
+        cadFuncionario.salvar(funcionario);
+        return funcionario;
+    }
+
 }
