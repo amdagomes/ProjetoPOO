@@ -2050,7 +2050,11 @@ public class TelaHome extends javax.swing.JFrame {
         endereco.setBairro(bairro.getText());
         endereco.setCidade(cidade.getText());
         endereco.setCep(cep.getText());
-        endereco.setNumero(Integer.parseInt(numero.getText()));
+        if (numero.getText().isEmpty()) {
+            endereco.setNumero(0);
+        } else {
+            endereco.setNumero(Integer.parseInt(numero.getText()));
+        }
         endereco.setComplemento(complemento.getText());
         endereco.setLogradouro(rua.getText());
         endereco.setPontoDeReferencia(pontoReferencia.getText());
