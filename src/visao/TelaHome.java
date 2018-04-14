@@ -11,9 +11,13 @@ import controle.CadastroFuncionario;
 import controle.CadastroServico;
 import java.awt.Color;
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.ClientePessoaFisica;
 import modelo.Compra;
 import modelo.Endereco;
@@ -98,7 +102,7 @@ public class TelaHome extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btn_menu_cadFuncionario = new javax.swing.JLabel();
+        btnClientes = new javax.swing.JLabel();
         btn_menu_venda = new javax.swing.JLabel();
         btn_menu_cadFuncionario1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -187,42 +191,11 @@ public class TelaHome extends javax.swing.JFrame {
         telaClientes = new javax.swing.JInternalFrame();
         jTelaCliente = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        nome2 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         cBusca = new javax.swing.JFormattedTextField();
-        jLabel26 = new javax.swing.JLabel();
-        telefone2 = new javax.swing.JFormattedTextField();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel30 = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        email2 = new javax.swing.JTextField();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        rua2 = new javax.swing.JTextField();
-        bairro2 = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        cidade2 = new javax.swing.JTextField();
-        jLabel35 = new javax.swing.JLabel();
-        cep2 = new javax.swing.JFormattedTextField();
-        complemento2 = new javax.swing.JTextField();
-        jLabel36 = new javax.swing.JLabel();
-        pontoReferencia2 = new javax.swing.JTextField();
-        jLabel37 = new javax.swing.JLabel();
-        btnAtualizar2 = new javax.swing.JButton();
-        btnSalvar2 = new javax.swing.JButton();
-        dataNascimento = new javax.swing.JFormattedTextField();
-        jLabel38 = new javax.swing.JLabel();
-        cpf2 = new javax.swing.JFormattedTextField();
-        jLabel28 = new javax.swing.JLabel();
-        servico = new javax.swing.JComboBox<>();
-        rg2 = new javax.swing.JTextField();
-        numero2 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable = new javax.swing.JTable();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -235,14 +208,14 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\logo_173px.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 36, 173, 80));
 
-        btn_menu_cadFuncionario.setForeground(new java.awt.Color(153, 153, 153));
-        btn_menu_cadFuncionario.setText("     Clientes");
-        btn_menu_cadFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnClientes.setForeground(new java.awt.Color(153, 153, 153));
+        btnClientes.setText("     Clientes");
+        btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_menu_cadFuncionarioMouseClicked(evt);
+                btnClientesMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_menu_cadFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 40));
+        jPanel1.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 40));
 
         btn_menu_venda.setForeground(new java.awt.Color(153, 153, 153));
         btn_menu_venda.setText("     Nova Venda");
@@ -1105,30 +1078,7 @@ public class TelaHome extends javax.swing.JFrame {
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel21.setText("Cadastro de Venda");
-
-        jLabel22.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel22.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel22.setText("Nome");
-
-        nome2.setForeground(new java.awt.Color(102, 102, 102));
-        nome2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        nome2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nome2ActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel23.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel23.setText("Data de nascimento");
-
-        jLabel25.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel25.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel25.setText("CPF");
+        jLabel21.setText("Clientes");
 
         cBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
@@ -1138,364 +1088,64 @@ public class TelaHome extends javax.swing.JFrame {
         }
         cBusca.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        jLabel26.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel26.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel26.setText("RG");
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        telefone2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        try {
-            telefone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        telefone2.setText("");
+            },
+            new String [] {
+                "Código", "Nome", "CPF", "RG", "Nº Cartão", "Serviço"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        jLabel27.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel27.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel27.setText("Telefone");
-
-        jLabel29.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel29.setText("Dados Pessoais");
-
-        jSeparator5.setForeground(new java.awt.Color(102, 102, 102));
-
-        jLabel30.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel30.setText("Endereço");
-
-        jSeparator6.setForeground(new java.awt.Color(102, 102, 102));
-
-        email2.setForeground(new java.awt.Color(102, 102, 102));
-        email2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        email2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                email2ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(jTable);
 
-        jLabel31.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel31.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel31.setText("Email");
-
-        jLabel32.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel32.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel32.setText("Rua/nº");
-
-        rua2.setForeground(new java.awt.Color(102, 102, 102));
-        rua2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        rua2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rua2ActionPerformed(evt);
-            }
-        });
-
-        bairro2.setForeground(new java.awt.Color(102, 102, 102));
-        bairro2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        bairro2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bairro2ActionPerformed(evt);
-            }
-        });
-
-        jLabel33.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel33.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel33.setText("Bairro");
-
-        jLabel34.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel34.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel34.setText("Cidade");
-
-        cidade2.setForeground(new java.awt.Color(102, 102, 102));
-        cidade2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        cidade2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cidade2ActionPerformed(evt);
-            }
-        });
-
-        jLabel35.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel35.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel35.setText("CEP");
-
-        cep2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        try {
-            cep2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        complemento2.setForeground(new java.awt.Color(102, 102, 102));
-        complemento2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        complemento2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                complemento2ActionPerformed(evt);
-            }
-        });
-
-        jLabel36.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel36.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel36.setText("Complemento");
-
-        pontoReferencia2.setForeground(new java.awt.Color(102, 102, 102));
-        pontoReferencia2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        pontoReferencia2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pontoReferencia2ActionPerformed(evt);
-            }
-        });
-
-        jLabel37.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel37.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel37.setText("Ponto de Referência");
-
-        btnAtualizar2.setBackground(new java.awt.Color(0, 51, 204));
-        btnAtualizar2.setForeground(new java.awt.Color(255, 255, 255));
-        btnAtualizar2.setText("Atualizar");
-        btnAtualizar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        btnAtualizar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizar2ActionPerformed(evt);
-            }
-        });
-
-        btnSalvar2.setBackground(new java.awt.Color(0, 51, 204));
-        btnSalvar2.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalvar2.setText("Salvar");
-        btnSalvar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        btnSalvar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvar2ActionPerformed(evt);
-            }
-        });
-
-        dataNascimento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        try {
-            dataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel38MouseClicked(evt);
-            }
-        });
-
-        cpf2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        try {
-            cpf2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        cpf2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpf2ActionPerformed(evt);
-            }
-        });
-
-        jLabel28.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel28.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel28.setText("Serviço");
-
-        servico.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        servico.setForeground(new java.awt.Color(102, 102, 102));
-        servico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10 MB FIBRA", "20 MB FIBRA", "40 MB FIBRA", " " }));
-        servico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        rg2.setForeground(new java.awt.Color(102, 102, 102));
-        rg2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        rg2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rg2ActionPerformed(evt);
-            }
-        });
-
-        numero2.setForeground(new java.awt.Color(102, 102, 102));
-        numero2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        numero2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numero2ActionPerformed(evt);
-            }
-        });
+        jLabel20.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\Search_20px.png")); // NOI18N
 
         javax.swing.GroupLayout jTelaClienteLayout = new javax.swing.GroupLayout(jTelaCliente);
         jTelaCliente.setLayout(jTelaClienteLayout);
         jTelaClienteLayout.setHorizontalGroup(
             jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTelaClienteLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jTelaClienteLayout.createSequentialGroup()
-                        .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                .addComponent(jLabel36)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(complemento2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel37)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pontoReferencia2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel30)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29)
-                            .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nome2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cpf2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rg2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                        .addComponent(jLabel32)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rua2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                        .addComponent(jLabel34)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cidade2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numero2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                        .addGap(108, 108, 108)
-                                        .addComponent(jLabel28)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(servico, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                                .addComponent(jLabel33)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bairro2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(cep2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                    .addComponent(btnSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnAtualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jTelaClienteLayout.createSequentialGroup()
-                                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(email2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jTelaClienteLayout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(telefone2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(jTelaClienteLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaClienteLayout.createSequentialGroup()
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))))
+                        .addComponent(cBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         jTelaClienteLayout.setVerticalGroup(
             jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTelaClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel29)
-                .addGap(4, 4, 4)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jTelaClienteLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaClienteLayout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cpf2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(rg2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(nome2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(telefone2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaClienteLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(email2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(servico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(22, 22, 22)
-                .addComponent(jLabel30)
-                .addGap(4, 4, 4)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bairro2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rua2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(numero2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cidade2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cep2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(complemento2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pontoReferencia2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAtualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(552, 552, 552))
         );
 
-        telaClientes.getContentPane().add(jTelaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 690, 500));
+        telaClientes.getContentPane().add(jTelaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 690, 500));
 
-        jDesktopPane1.add(telaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -33, 700, 540));
+        jDesktopPane1.add(telaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -33, 700, 540));
 
         getContentPane().add(jDesktopPane1);
         jDesktopPane1.setBounds(174, 30, 675, 500);
@@ -1504,9 +1154,14 @@ public class TelaHome extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_menu_cadFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menu_cadFuncionarioMouseClicked
-        activer(telaCadFunc);
-    }//GEN-LAST:event_btn_menu_cadFuncionarioMouseClicked
+    private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
+        try {
+            insereCliente();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        activer(telaClientes);
+    }//GEN-LAST:event_btnClientesMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         
@@ -1576,59 +1231,6 @@ public class TelaHome extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void rua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rua2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rua2ActionPerformed
-
-    private void bairro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairro2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bairro2ActionPerformed
-
-    private void cidade2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidade2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cidade2ActionPerformed
-
-    private void complemento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complemento2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_complemento2ActionPerformed
-
-    private void pontoReferencia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pontoReferencia2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pontoReferencia2ActionPerformed
-
-    private void btnAtualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtualizar2ActionPerformed
-
-    private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
-        
-        
-    }//GEN-LAST:event_btnSalvar2ActionPerformed
-
-    private void nome2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nome2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nome2ActionPerformed
-
-    private void email2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_email2ActionPerformed
-
-    private void cpf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpf2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpf2ActionPerformed
-
-    private void rg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rg2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rg2ActionPerformed
-
-    private void numero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numero2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numero2ActionPerformed
-
-    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-        
-    }//GEN-LAST:event_jLabel38MouseClicked
 
     private void btn_menu_cadFuncionario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menu_cadFuncionario1MouseClicked
         activer(telaCadFunc);
@@ -1706,9 +1308,10 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
+        //Faz a busca da venda pelo codigo e seta os valores os jTexts
         Compra compra = null;
         try {
-           compra = cadCompra.busca(Integer.parseInt(cBusca1.getText()));
+            compra = cadCompra.busca(Integer.parseInt(cBusca1.getText()));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo na busca");
         } catch (ClassNotFoundException ex) {
@@ -1794,37 +1397,28 @@ public class TelaHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField bCpf;
     private javax.swing.JTextField bairro;
-    private javax.swing.JTextField bairro2;
     private javax.swing.JTextField bairro3;
     private javax.swing.JButton btnAtualizar;
-    private javax.swing.JButton btnAtualizar2;
     private javax.swing.JButton btnAtualizar3;
     private javax.swing.JLabel btnBuscar;
+    private javax.swing.JLabel btnClientes;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnSalvar2;
     private javax.swing.JButton btnSalvar3;
-    private javax.swing.JLabel btn_menu_cadFuncionario;
     private javax.swing.JLabel btn_menu_cadFuncionario1;
     private javax.swing.JLabel btn_menu_venda;
     private javax.swing.JFormattedTextField cBusca;
     private javax.swing.JFormattedTextField cBusca1;
     private javax.swing.JComboBox<String> cargo;
     private javax.swing.JFormattedTextField cep;
-    private javax.swing.JFormattedTextField cep2;
     private javax.swing.JFormattedTextField cep3;
     private javax.swing.JTextField cidade;
-    private javax.swing.JTextField cidade2;
     private javax.swing.JTextField cidade3;
     private javax.swing.JTextField complemento;
-    private javax.swing.JTextField complemento2;
     private javax.swing.JTextField complemento3;
     private javax.swing.JFormattedTextField cpf;
-    private javax.swing.JFormattedTextField cpf2;
     private javax.swing.JFormattedTextField cpf3;
-    private javax.swing.JFormattedTextField dataNascimento;
     private javax.swing.JFormattedTextField dataNascimento1;
     private javax.swing.JTextField email;
-    private javax.swing.JTextField email2;
     private javax.swing.JTextField email3;
     private javax.swing.JComboBox<String> escolaridade;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -1840,25 +1434,10 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
@@ -1883,41 +1462,34 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTable jTable;
     private javax.swing.JPanel jTelaCadFunc;
     private javax.swing.JPanel jTelaCliente;
     private javax.swing.JPanel jTelaVenda1;
     private javax.swing.JTextField nome;
-    private javax.swing.JTextField nome2;
     private javax.swing.JTextField nome3;
     private javax.swing.JFormattedTextField numero;
-    private javax.swing.JTextField numero2;
     private javax.swing.JTextField numero3;
     private javax.swing.JTextField pontoReferencia;
-    private javax.swing.JTextField pontoReferencia2;
     private javax.swing.JTextField pontoReferencia3;
     private javax.swing.JTextField reservista;
     private javax.swing.JTextField rg;
-    private javax.swing.JTextField rg2;
     private javax.swing.JTextField rg3;
     private javax.swing.JTextField rua;
-    private javax.swing.JTextField rua2;
     private javax.swing.JTextField rua3;
-    private javax.swing.JComboBox<String> servico;
     private javax.swing.JComboBox<String> servico1;
     private javax.swing.JInternalFrame telaCadFunc;
     private javax.swing.JInternalFrame telaClientes;
     private javax.swing.JInternalFrame telaVenda;
     private javax.swing.JFormattedTextField telefone;
-    private javax.swing.JFormattedTextField telefone2;
     private javax.swing.JFormattedTextField telefone3;
     // End of variables declaration//GEN-END:variables
 
@@ -1998,5 +1570,39 @@ public class TelaHome extends javax.swing.JFrame {
         pontoReferencia3.setText("");
         
     }
+
+    private void insereCliente() throws IOException {
+       
+        DefaultTableModel mod = (DefaultTableModel) jTable.getModel();
+        CadastroCompra cad = new CadastroCompra();
+        List<Compra> vendas = null;
+        try {
+            vendas = cad.listar();
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possivel listar os clientes");
+        }
+        
+        String serv = "";
+        
+        if(vendas.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Lista de cliente vazia");
+        } else{
+            
+            for(Compra c : vendas){
+            
+                ClientePessoaFisica cl = (ClientePessoaFisica) c.getCliente();
+                switch(c.getServico().getCodigo()){
+                    case 1: serv = "10 MB FIBRA";
+                    case 2: serv = "20 MB FIBRA";
+                    case 3: serv = "40 MB FIBRA";
+                }
+                // adiciona linha na tabela
+                mod.addRow(new String[]{Integer.toString(cl.getCodigo()), cl.getNome(), cl.getCpf(), cl.getRg(), cl.getNumeroDoCartao(), serv});
+            
+            }  
+            
+        } // fim else
+        
+    } // fim insereCliente()
     
 }

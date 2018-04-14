@@ -1,6 +1,5 @@
 package modelo;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 public class ClientePessoaJuridica extends Cliente {
@@ -8,8 +7,8 @@ public class ClientePessoaJuridica extends Cliente {
     private String razaoSocial;
     private String cnpj;
 
-    public ClientePessoaJuridica(int codigo, String razaoSocial, String cnpj, String email, String telefone, String numeroDoCartao, Endereco endereco) {
-        super(codigo, email, telefone, numeroDoCartao, endereco);
+    public ClientePessoaJuridica(String razaoSocial, String cnpj, String email, String telefone, String numeroDoCartao, Endereco endereco) {
+        super(email, telefone, numeroDoCartao, endereco);
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
     }

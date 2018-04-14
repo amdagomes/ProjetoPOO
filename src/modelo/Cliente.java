@@ -9,26 +9,25 @@ public abstract class Cliente implements Serializable {
     private String telefone;
     private String numeroDoCartao;
     private Endereco endereco;
-    private int codigo;
+    private final int codigo;
+    private static int cont;
 
-    public Cliente(int codigo, String email, String telefone, String numeroDoCartao, Endereco endereco) {
-        this.codigo = codigo;
+    public Cliente(String email, String telefone, String numeroDoCartao, Endereco endereco) {
+        codigo = ++cont;
         this.email = email;
         this.telefone = telefone;
         this.numeroDoCartao = numeroDoCartao;
     }
 
     public Cliente() {
-
+        codigo = ++cont;
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+   
 
     public String getEmail() {
         return email;

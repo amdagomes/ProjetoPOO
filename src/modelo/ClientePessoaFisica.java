@@ -10,8 +10,8 @@ public class ClientePessoaFisica extends Cliente implements Serializable{
     private String cpf;
     private String dataDeNascimento;
 
-    public ClientePessoaFisica(int codigo, String nome, String rg, String cpf, String dataDeNascimento, String email, String telefone, String numeroDoCartao, Endereco endereco) {
-        super(codigo, email, telefone, numeroDoCartao, endereco);
+    public ClientePessoaFisica(String nome, String rg, String cpf, String dataDeNascimento, String email, String telefone, String numeroDoCartao, Endereco endereco) {
+        super(email, telefone, numeroDoCartao, endereco);
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;

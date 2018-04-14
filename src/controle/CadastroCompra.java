@@ -9,15 +9,13 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelo.ClientePessoaFisica;
 import modelo.Compra;
-import modelo.Funcionario;
 import modelo.Vendedor;
 
 /**
  * Classe de cadastro de compra
  *
- * @author
+ * @author Amanda e Rafaela
  */
 
 public class CadastroCompra implements Dao<Compra> {
@@ -56,12 +54,14 @@ public class CadastroCompra implements Dao<Compra> {
         
         for(int i = 0; i < compras.size(); i++){
             if(compras.get(i).getCodigo() == compra.getCodigo()){
-                compras.get(i).setCliente(obj.getCliente());
-                compras.get(i).setServico(obj.getServico());
-                compras.get(i).setVendedor((Vendedor) obj.getVendedor());
                 
+                compra.setCliente(obj.getCliente());
+                compra.setServico(obj.getServico());
+                compra.setVendedor((Vendedor) obj.getVendedor());
+                compras.add(i, compra);
                 System.out.println("\n\n" + compras.get(i).toString());
                 
+                atualizaArquivo(compras);
                 return true;
             }
         }
