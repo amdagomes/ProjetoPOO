@@ -35,16 +35,26 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
     @Override
     public boolean salvar(Funcionario obj) throws IOException, ClassNotFoundException  {
         
-        List<Funcionario> funcionarios = listar();
-         
-        if(funcionarios.add(obj)){
-            atualizaArquivo(funcionarios);
-            return true;
+        
+
+            
+        if (busca(obj.getCpf()) == null) {
+
+            List<Funcionario> funcionarios = listar();
+
+            if (funcionarios.add(obj)) {
+                atualizaArquivo(funcionarios);
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
-         
-    }
+        } 
+        
+    
+    
 
     @Override
     public boolean remove(String cpf) throws IOException, ClassNotFoundException {
@@ -106,5 +116,21 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
         }
         
     }
+    
+    @Override
+     public boolean atualizar(Funcionario obj) throws IOException, ClassNotFoundException{
+       List <Funcionario> funcionarios = listar();
+       for(int i=0;i<funcionarios.size();i++){
+           if(funcionarios.get(i).getCpf().equals(obj.getCpf())){
+               funcionarios.set(i,obj);
+               atualizaArquivo(funcionarios);
+               return true;
+           }
+       }
+       return false;
+    }
+
+
+    }
   
-}
+

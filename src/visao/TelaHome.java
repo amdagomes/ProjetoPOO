@@ -11,6 +11,8 @@ import controle.CadastroFuncionario;
 import controle.CadastroServico;
 import java.awt.Color;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -188,7 +190,7 @@ public class TelaHome extends javax.swing.JFrame {
         btnAtualizar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         cpf = new javax.swing.JFormattedTextField();
-        btnBuscar = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         telaClientes = new javax.swing.JInternalFrame();
         jTelaCliente = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -923,7 +925,14 @@ public class TelaHome extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jButton1.setBackground(new java.awt.Color(0, 51, 204));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jTelaCadFuncLayout = new javax.swing.GroupLayout(jTelaCadFunc);
         jTelaCadFunc.setLayout(jTelaCadFuncLayout);
@@ -1010,8 +1019,8 @@ public class TelaHome extends javax.swing.JFrame {
                     .addGroup(jTelaCadFuncLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
                         .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaCadFuncLayout.createSequentialGroup()
@@ -1025,12 +1034,11 @@ public class TelaHome extends javax.swing.JFrame {
             jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTelaCadFuncLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
+                .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
@@ -1576,24 +1584,35 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferenciaActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        // TODO add your handling code here:
+        Funcionario funcionario;
+        try {
+            funcionario = montaFuncionario();
+            if (cadFuncionario.atualizar(funcionario)) {
+                JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
+                limpaFuncionario();
+            } else {
+                JOptionPane.showMessageDialog(null, "nao atualizado");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Cpf não existe");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao encontrar Cpf de funcionario");
+        }
+
+        
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Funcionario funcionario = null;
-        try {
-            funcionario = montaFuncionario();
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
-            ex.printStackTrace(System.err);
-        }
 
+        Funcionario funcionario = montaFuncionario();
         try {
             if (cadFuncionario.salvar(funcionario)) {
+
                 JOptionPane.showMessageDialog(null, "Funcionario Cadastrado  com sucesso");
-                limpaVenda();
+                limpaFuncionario();
+
             } else {
-                JOptionPane.showMessageDialog(null, "Falha ao realizar cadastro");
+                JOptionPane.showMessageDialog(null, "Falha ao registrar ");
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
@@ -1602,7 +1621,8 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
         }
 
-        System.out.println(funcionario);
+        
+
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -1731,7 +1751,7 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
         }
 
-        System.out.println(compra);
+        
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
@@ -1790,6 +1810,42 @@ public class TelaHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Funcionario funcionario = null;
+
+        try {
+            funcionario = cadFuncionario.busca(bCpf.getText());
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao Buscar");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "classe nao encontrada");
+        }
+        if (funcionario == null) {
+            JOptionPane.showMessageDialog(null, "Funcionario nao encontrado");
+        } else {
+
+            nome.setText(funcionario.getNome());
+            cpf.setText(funcionario.getCpf());
+            email.setText(funcionario.getEmail());
+            cargo.setSelectedItem(funcionario.getCargo());
+            rg.setText(funcionario.getRg());
+            reservista.setText(funcionario.getReservista());
+            escolaridade.setSelectedItem(funcionario.getEscolaridade());
+            telefone.setText(funcionario.getTelefone());
+          
+            bairro.setText(funcionario.getEndereco().getBairro());
+            cidade.setText(funcionario.getEndereco().getCidade());
+            cep.setText(funcionario.getEndereco().getCep());
+            
+            complemento.setText(funcionario.getEndereco().getComplemento());
+            rua.setText(funcionario.getEndereco().getLogradouro());
+            pontoReferencia.setText(funcionario.getEndereco().getPontoDeReferencia());
+
+            //botao de busca funcionario
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1821,6 +1877,7 @@ public class TelaHome extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaHome().setVisible(true);
+
             }
         });
     }
@@ -1833,7 +1890,6 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnAtualizar2;
     private javax.swing.JButton btnAtualizar3;
-    private javax.swing.JLabel btnBuscar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvar2;
     private javax.swing.JButton btnSalvar3;
@@ -1861,6 +1917,7 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JTextField email2;
     private javax.swing.JTextField email3;
     private javax.swing.JComboBox<String> escolaridade;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2033,7 +2090,26 @@ public class TelaHome extends javax.swing.JFrame {
 
     }
 
-    private Funcionario montaFuncionario() throws IOException, ClassNotFoundException {
+    public void limpaFuncionario() {
+
+        nome.setText("");
+        cpf.setText("");
+        rg.setText("");
+        email.setText("");
+        telefone.setText("");
+        bairro.setText("");
+        cidade.setText("");
+        cep.setText("");
+        numero.setText("");
+        complemento.setText("");
+        rua.setText("");
+        pontoReferencia.setText("");
+        reservista.setText("");
+        bCpf.setText("");
+
+    }
+
+    private Funcionario montaFuncionario() {
         Funcionario funcionario = new Funcionario();
 
         funcionario.setNome(nome.getText());
@@ -2060,7 +2136,7 @@ public class TelaHome extends javax.swing.JFrame {
         endereco.setPontoDeReferencia(pontoReferencia.getText());
 
         funcionario.setEndereco(endereco);
-        cadFuncionario.salvar(funcionario);
+
         return funcionario;
     }
 

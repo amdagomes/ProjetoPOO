@@ -39,6 +39,15 @@ public interface DaoFuncionario<T extends Funcionario> {
     public T busca(String cpf) throws IOException, ClassNotFoundException ;
     
     public List listar() throws IOException, ClassNotFoundException ;
+    /**
+     * 
+     * @param cpf cpf do funcionario que deseja atualizar o cadastro
+     * @param obj funcionario
+     * @return true caso o funcionario seja atualizado
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
+    public boolean atualizar(Funcionario obj) throws IOException, ClassNotFoundException;
 
     /**
      * Autentica o login de funcionário
