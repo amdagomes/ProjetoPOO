@@ -75,7 +75,7 @@ public class TelaHome extends javax.swing.JFrame {
         try {
             cadFuncionario = new CadastroFuncionario();
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de compra");
+            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo de Funcionario");
         }
         /* //CRIAÇÃO DOS SERVIÇOS DE INTERNET
         try {
@@ -113,6 +113,7 @@ public class TelaHome extends javax.swing.JFrame {
         btn_menu_cadFuncionario = new javax.swing.JLabel();
         btn_menu_venda = new javax.swing.JLabel();
         btn_menu_cadFuncionario1 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -206,8 +207,9 @@ public class TelaHome extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jLabel55 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
+        jBDetalhes = new javax.swing.JButton();
+        jBRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -247,11 +249,23 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_menu_cadFuncionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 30));
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 173, 530);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel4MouseDragged(evt);
+            }
+        });
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel4MousePressed(evt);
+            }
+        });
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -262,23 +276,10 @@ public class TelaHome extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(648, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(818, 0, 26, 30));
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(170, 0, 680, 30);
+        jPanel4.setBounds(0, 0, 850, 30);
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1130,21 +1131,30 @@ public class TelaHome extends javax.swing.JFrame {
 
         jLabel55.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\Search_20px.png")); // NOI18N
 
-        jButton3.setBackground(new java.awt.Color(0, 51, 204));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Alterar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBAlterar.setBackground(new java.awt.Color(0, 51, 204));
+        jBAlterar.setForeground(new java.awt.Color(255, 255, 255));
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBAlterarActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(0, 51, 204));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Detalhes");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBDetalhes.setBackground(new java.awt.Color(0, 51, 204));
+        jBDetalhes.setForeground(new java.awt.Color(255, 255, 255));
+        jBDetalhes.setText("Detalhes");
+        jBDetalhes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBDetalhesActionPerformed(evt);
+            }
+        });
+
+        jBRemover.setBackground(new java.awt.Color(0, 51, 204));
+        jBRemover.setForeground(new java.awt.Color(255, 255, 255));
+        jBRemover.setText("Remover");
+        jBRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRemoverActionPerformed(evt);
             }
         });
 
@@ -1154,20 +1164,22 @@ public class TelaHome extends javax.swing.JFrame {
             jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTelaClienteLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaClienteLayout.createSequentialGroup()
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel55)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE))
-                    .addGroup(jTelaClienteLayout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaClienteLayout.createSequentialGroup()
+                        .addComponent(jBDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
         jTelaClienteLayout.setVerticalGroup(
@@ -1185,11 +1197,12 @@ public class TelaHome extends javax.swing.JFrame {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(34, 34, 34)
                 .addGroup(jTelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(482, 482, 482))
+                    .addComponent(jBAlterar)
+                    .addComponent(jBDetalhes)
+                    .addComponent(jBRemover))
+                .addGap(486, 486, 486))
         );
 
         telaClientes.getContentPane().add(jTelaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 690, 500));
@@ -1366,21 +1379,22 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferencia3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
-
         try{
-            if(cadCompra.salvar(montaCompra())){
-                JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
-                clienteTable.insere();
-                limpaVenda();
-            } else{
-                JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
-            }
+            if(validaCliente()){
+                if(cadCompra.salvar(montaCompra())){
+                    JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
+                    clienteTable.insere();
+                    limpaVenda();
+                } else{
+                    JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
+                }    
+            } 
         } catch(IOException ex){
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
         } catch(ClassNotFoundException ex){
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
-        }
+        } 
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
@@ -1435,7 +1449,7 @@ public class TelaHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numero3ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
 
         if(jTable.getSelectedRow() != -1){
             AtualizarCliente atCliente;
@@ -1451,9 +1465,9 @@ public class TelaHome extends javax.swing.JFrame {
         } else{
             JOptionPane.showMessageDialog(null, "Nenhuma linha da tabela foi selecionada");
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jBDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDetalhesActionPerformed
         if(jTable.getSelectedRow() != -1){
             try {
                 DetalheCliente tela = new DetalheCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(),0));
@@ -1466,7 +1480,7 @@ public class TelaHome extends javax.swing.JFrame {
         } else{
             JOptionPane.showMessageDialog(null, "Nenhuma linha da tabela foi selecionada");
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jBDetalhesActionPerformed
 
     private void jbtBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtBuscarMouseClicked
         Funcionario funcionario = null;
@@ -1504,41 +1518,33 @@ public class TelaHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbtBuscarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
+        if(jTable.getSelectedRow() != -1){
+            try {
+                if(cadCompra.remove((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0),jTable.getSelectedRow())){
+                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                } else{
+                    JOptionPane.showMessageDialog(null, "Falha ao remover cliente");
                 }
+            } catch (IOException ex) {
+                Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jBRemoverActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaHome().setVisible(true);
+    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanel4MousePressed
 
-            }
-        });
-    }
+    private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jPanel4MouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField bCpf;
@@ -1565,9 +1571,10 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JTextField email3;
     private javax.swing.JComboBox<String> escolaridade;
+    private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBDetalhes;
+    private javax.swing.JButton jBRemover;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1583,6 +1590,7 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel39;
@@ -1686,15 +1694,11 @@ public class TelaHome extends javax.swing.JFrame {
                 break;
         }
         
-        CadastroFuncionario cadFunc = new CadastroFuncionario();
-        Funcionario func = cadFunc.busca(funcLogado);
-        
         compra.setCliente(cliente);
         compra.setServico(serv);
-        compra.setVendedor((Vendedor) func);
-
-        return compra;
+        compra.setVendedor((Vendedor) cadFuncionario.busca(funcLogado));
         
+        return compra;
     }
 
     public void limpaVenda() {
@@ -1782,6 +1786,38 @@ public class TelaHome extends javax.swing.JFrame {
         } else {
             return false;
         }
-
     }
+    
+    public boolean validaCliente(){
+        if (nome3.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (cpf3.getText().equals("   .   .   -  ")) {
+            JOptionPane.showMessageDialog(null, "Campo CPF é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (rg3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo RG é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (dataNascimento1.getText().trim().equals("  /  /    ")) {
+            JOptionPane.showMessageDialog(null, "Campo Data de Nascimento é obrigatório, por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (rua3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Rua é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (cidade3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Cidade é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (telefone3.getText().equals("(  )     -    ")) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+  
 }

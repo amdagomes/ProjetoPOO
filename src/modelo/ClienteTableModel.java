@@ -138,8 +138,16 @@ public class ClienteTableModel extends AbstractTableModel {
         setValueAt(obj.getTelefone(), linha, 6);
         setValueAt(obj.getNumeroDoCartao(), linha, 7);
                 
-        fireTableDataChanged();
+        fireTableRowsUpdated(linha, linha);
         return true;    
+    }
+    
+    public boolean remove(int linha) throws IOException, ClassNotFoundException{
+        List<Cliente> clientes = listar();
+        
+        this.fireTableRowsDeleted(linha, linha);
+        this.fireTableDataChanged();
+        return true;
     }
     
     public List listar() throws IOException, ClassNotFoundException {

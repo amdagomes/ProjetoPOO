@@ -41,8 +41,8 @@ public class TelaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao criar funcionario");
         } catch (ClassNotFoundException ex){
             
-        }
-        */
+        }*/
+        
        
         dao = new CadastroFuncionario();
         initComponents();

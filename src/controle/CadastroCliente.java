@@ -62,12 +62,17 @@ public class CadastroCliente implements Dao<Cliente> {
     }
 
     @Override
-    public boolean remove(int cod) throws IOException, ClassNotFoundException{
+    public boolean remove(int cod, int linha) throws IOException, ClassNotFoundException{
         
         List<Cliente> clientes = listar();
         Cliente cliente = busca(cod);
         
-        return clientes.remove(cliente);
+        if(clientes.remove(cliente)){
+            atualizaArquivo(clientes);
+            return true;
+        }
+        
+        return false;
         
     }
 
@@ -108,6 +113,20 @@ public class CadastroCliente implements Dao<Cliente> {
             JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
         }
    
+    }
+
+    @Override
+    public boolean remove(int cod) throws IOException, ClassNotFoundException {
+        List<Cliente> clientes = listar();
+        Cliente cliente = busca(cod);
+        CadastroCliente cadCliente = new CadastroCliente();
+        
+        if(clientes.remove(cliente)){
+            atualizaArquivo(clientes);
+            return true;
+        }
+        
+        return false;
     }
 
 }

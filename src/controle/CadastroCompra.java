@@ -45,7 +45,6 @@ public class CadastroCompra implements Dao<Compra> {
         } else {
             return false;
         }
-         
     }
     
     public boolean atualizar(Compra obj) throws IOException, ClassNotFoundException{
@@ -70,15 +69,21 @@ public class CadastroCompra implements Dao<Compra> {
         return false;
 
     }
-
+    
     @Override
-    public boolean remove(int cod) throws IOException, ClassNotFoundException{
+    public boolean remove(int cod, int linha) throws IOException, ClassNotFoundException{
         
         List<Compra> compras = listar();
         Compra compra = busca(cod);
+        CadastroCliente cadCliente = new CadastroCliente();
         
-        return compras.remove(compra);
+        if(cadCliente.remove(compra.getCliente().getCodigo(), linha)){
+            compras.remove(compra);
+            atualizaArquivo(compras);
+            return true;
+        }
         
+        return false;
     }
 
     @Override
@@ -118,6 +123,21 @@ public class CadastroCompra implements Dao<Compra> {
             JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
         }
    
+    }
+
+    @Override
+    public boolean remove(int cod) throws IOException, ClassNotFoundException {
+        List<Compra> compras = listar();
+        Compra compra = busca(cod);
+        CadastroCliente cadCliente = new CadastroCliente();
+        
+        if(cadCliente.remove(compra.getCliente().getCodigo())){
+            compras.remove(compra);
+            atualizaArquivo(compras);
+            return true;
+        }
+        
+        return false;
     }
 
 }

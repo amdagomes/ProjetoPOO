@@ -26,8 +26,9 @@ public interface Dao<T> {
      * @param codigo Codigo do cadastro a ser removido
      * @return true caso o cadastro seja removido
      */
-    public boolean remove(int codigo) throws IOException, ClassNotFoundException;
-
+    public boolean remove(int codigo, int linha) throws IOException, ClassNotFoundException;   
+    
+    public boolean remove(int codigo) throws IOException, ClassNotFoundException; 
     /**
      * Faz a busca de um cadastro em uma lista a partir do seu codigo
      *

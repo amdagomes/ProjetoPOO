@@ -95,4 +95,19 @@ public class CadastroServico implements Dao<Servico> {
    
     }
 
+    @Override
+    public boolean remove(int cod, int linha) throws IOException, ClassNotFoundException{
+        
+        List<Servico> servicos = listar();
+        Servico servico = busca(cod);
+        
+        if(servicos.remove(servico)){
+            atualizaArquivo(servicos);
+            return true;
+        }
+        
+        return false;
+        
+    }
+    
 }

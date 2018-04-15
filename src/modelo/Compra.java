@@ -55,11 +55,11 @@ public class Compra implements Serializable  {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.vendedor);
-        hash = 73 * hash + Objects.hashCode(this.cliente);
-        hash = 73 * hash + Objects.hashCode(this.servico);
-        hash = 73 * hash + this.codigo;
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.vendedor);
+        hash = 83 * hash + Objects.hashCode(this.cliente);
+        hash = 83 * hash + Objects.hashCode(this.servico);
+        hash = 83 * hash + this.codigo;
         return hash;
     }
 
@@ -88,7 +88,7 @@ public class Compra implements Serializable  {
             return false;
         }
         return true;
-    }   
+    }
 
     @Override
     public String toString() {
