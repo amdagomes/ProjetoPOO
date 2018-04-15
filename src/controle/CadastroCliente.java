@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 
@@ -37,6 +38,18 @@ public class CadastroCliente implements Dao<Cliente> {
         
         List<Cliente> clientes = listar();
         obj.setCodigo(clientes.size() + 1);
+        //verifica se existe numero de cartão repetido e cria outro aleatorio
+        Random num = new Random();
+        String nCartao = Integer.toString(num.nextInt(1000) + 1000) + "-" + Integer.toString(num.nextInt(80) + 10);
+        for(Cliente c : clientes){
+            if(c.getNumeroDoCartao().equals(nCartao)){
+                nCartao = Integer.toString(num.nextInt(1000) + 1000) + "-" + Integer.toString(num.nextInt(80) + 10);
+            } else{
+                obj.setNumeroDoCartao(nCartao);
+                break;
+            }
+        }
+        
         if(clientes.add(obj)){
             atualizaArquivo(clientes);
             return true;
