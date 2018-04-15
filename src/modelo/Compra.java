@@ -8,18 +8,17 @@ public class Compra implements Serializable  {
     private Funcionario vendedor;
     private Cliente cliente;
     private Servico servico;
-    private final int codigo;
-    private static int cont;
+    private int codigo;
+   
 
     public Compra(Funcionario vendedor, Cliente cliente, Servico servico) {
-        codigo = ++cont;
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.servico = servico;
     }
 
     public Compra() {
-        codigo = ++cont;
+        
     }
 
     public Funcionario getVendedor() {
@@ -49,15 +48,18 @@ public class Compra implements Serializable  {
     public int getCodigo() {
         return codigo;
     }
+    
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.vendedor);
-        hash = 97 * hash + Objects.hashCode(this.cliente);
-        hash = 97 * hash + Objects.hashCode(this.servico);
-        hash = 97 * hash + this.codigo;
-        hash = 97 * hash + this.cont;
+        int hash = 7;
+        hash = 73 * hash + Objects.hashCode(this.vendedor);
+        hash = 73 * hash + Objects.hashCode(this.cliente);
+        hash = 73 * hash + Objects.hashCode(this.servico);
+        hash = 73 * hash + this.codigo;
         return hash;
     }
 
@@ -76,9 +78,6 @@ public class Compra implements Serializable  {
         if (this.codigo != other.codigo) {
             return false;
         }
-        if (this.cont != other.cont) {
-            return false;
-        }
         if (!Objects.equals(this.vendedor, other.vendedor)) {
             return false;
         }
@@ -89,7 +88,7 @@ public class Compra implements Serializable  {
             return false;
         }
         return true;
-    }
+    }   
 
     @Override
     public String toString() {

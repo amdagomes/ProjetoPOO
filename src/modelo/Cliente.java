@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Cliente implements Serializable {
 
-    private final int codigo;
+    private int codigo;
     private String nome;
     private String rg;
     private String cpf;
@@ -14,10 +14,8 @@ public class Cliente implements Serializable {
     private String telefone;
     private String numeroDoCartao;
     private Endereco endereco;
-    private static int cont;
 
     public Cliente(String nome, String rg, String cpf, String dataDeNascimento, String email, String telefone, String numeroDoCartao, Endereco endereco) {
-        codigo = ++cont;
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
@@ -29,7 +27,7 @@ public class Cliente implements Serializable {
     }
     
     public Cliente(){
-        codigo = ++cont;
+     
     }
 
     public String getNome() {
@@ -100,18 +98,22 @@ public class Cliente implements Serializable {
         return this.codigo;
     }
 
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + this.codigo;
-        hash = 43 * hash + Objects.hashCode(this.nome);
-        hash = 43 * hash + Objects.hashCode(this.rg);
-        hash = 43 * hash + Objects.hashCode(this.cpf);
-        hash = 43 * hash + Objects.hashCode(this.dataDeNascimento);
-        hash = 43 * hash + Objects.hashCode(this.email);
-        hash = 43 * hash + Objects.hashCode(this.telefone);
-        hash = 43 * hash + Objects.hashCode(this.numeroDoCartao);
-        hash = 43 * hash + Objects.hashCode(this.endereco);
+        int hash = 5;
+        hash = 37 * hash + this.codigo;
+        hash = 37 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + Objects.hashCode(this.rg);
+        hash = 37 * hash + Objects.hashCode(this.cpf);
+        hash = 37 * hash + Objects.hashCode(this.dataDeNascimento);
+        hash = 37 * hash + Objects.hashCode(this.email);
+        hash = 37 * hash + Objects.hashCode(this.telefone);
+        hash = 37 * hash + Objects.hashCode(this.numeroDoCartao);
+        hash = 37 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -156,7 +158,7 @@ public class Cliente implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", rg=" + rg + ", cpf=" + cpf + ", dataDeNascimento=" + dataDeNascimento + ", email=" + email + ", telefone=" + telefone + ", numeroDoCartao=" + numeroDoCartao + ", endereco=" + endereco + '}';

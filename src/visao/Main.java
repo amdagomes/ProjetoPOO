@@ -1,9 +1,15 @@
 package visao;
 
 import controle.CadastroCliente;
+import controle.CadastroCompra;
 import controle.CadastroFuncionario;
 import controle.CadastroServico;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.Compra;
 import modelo.Endereco;
 import modelo.Internet;
 import modelo.Servico;
@@ -15,6 +21,21 @@ import modelo.Vendedor;
  *
  * @author Amanda
  */
+
+public class Main{
+    public static void main(String[] args) {
+        try {
+            CadastroCompra cad = new CadastroCompra();
+            List<Compra> compra = cad.listar();
+            for(Compra c : compra){
+                System.out.println(c.toString());
+            }
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println("Não leu a lista de compras");
+        } 
+        
+    }
+}
 
 /*
 public class Main {

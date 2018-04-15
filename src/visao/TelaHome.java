@@ -1264,9 +1264,11 @@ public class TelaHome extends javax.swing.JFrame {
     private void btnAtualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizar3ActionPerformed
         Compra compra = null;
         try {
-            if(cadCompra.atualizar(Integer.parseInt(cBusca1.getText()), montaCompra())){
-                clienteTable.atualizaTabela(cadCliente.busca(Integer.parseInt(cBusca1.getText())));
+            compra = montaCompra();
+            if(cadCompra.atualizar(Integer.parseInt(cBusca1.getText()), compra)){
                 JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
+                clienteTable.atualizaTabela(compra.getCliente());
+                
             } else{
                 JOptionPane.showMessageDialog(null, "Falha ao atualizar");
             }
@@ -1275,22 +1277,15 @@ public class TelaHome extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao encontrar código da venda");
         }
-     
+        
     }//GEN-LAST:event_btnAtualizar3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
-       Compra compra = null;
-        
-        try {
-           compra = montaCompra();
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
-            ex.printStackTrace(System.err);
-        }
-        
+       
         try{
-            if(cadCompra.salvar(compra)){
+            if(cadCompra.salvar(montaCompra())){
                 JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
+                clienteTable.insere();
                 limpaVenda();
             } else{
                 JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
@@ -1300,9 +1295,7 @@ public class TelaHome extends javax.swing.JFrame {
             ex.printStackTrace(System.err);
         } catch(ClassNotFoundException ex){
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
-        }
-        clienteTable.addRow(compra.getCliente());
-        System.out.println(compra);
+        }   
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
@@ -1358,9 +1351,7 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_numero3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jTable.getSelectedRow() != -1){
-            
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -1509,14 +1500,11 @@ public class TelaHome extends javax.swing.JFrame {
         
         CadastroFuncionario cadFunc = new CadastroFuncionario();
         Funcionario func = cadFunc.busca(funcLogado);
-
-        cadCliente.salvar(cliente);
         
         compra.setCliente(cliente);
         compra.setServico(serv);
         compra.setVendedor((Vendedor) func);
-     
-        cadCompra.salvar(compra);
+
         return compra;
         
     }
@@ -1540,7 +1528,4 @@ public class TelaHome extends javax.swing.JFrame {
         
     }
     
-    public JTable getJTable(){
-        return this.jTable;
-    }
 }

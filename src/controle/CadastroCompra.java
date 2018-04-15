@@ -37,8 +37,10 @@ public class CadastroCompra implements Dao<Compra> {
     public boolean salvar(Compra obj) throws IOException, ClassNotFoundException  {
         
         List<Compra> compras = listar();
-    
+        obj.setCodigo(compras.size() + 1);
         if(compras.add(obj)){
+            CadastroCliente cadCliente = new CadastroCliente();
+            cadCliente.salvar(obj.getCliente());
             atualizaArquivo(compras);
             return true;
         } else {
@@ -52,23 +54,21 @@ public class CadastroCompra implements Dao<Compra> {
         List<Compra> compras = listar();
         
         CadastroCliente cadCliente = new CadastroCliente();
-        cadCliente.atualizar(obj.getCliente());
-      
-        Compra compra = busca(cod);
              
         for(int i = 0; i < compras.size(); i++){
-            if(compras.get(i).getCodigo() == compra.getCodigo()){
-                compras.remove(i);
+            if(compras.get(i).getCodigo() == cod){
+                cadCliente.atualizar(obj.getCliente());
+                Compra compra = compras.get(i);
                 compra.setCliente(obj.getCliente());
                 compra.setServico(obj.getServico());
                 compra.setVendedor((Vendedor) obj.getVendedor());
-                compras.add(compra);
+                compras.add(i, compra);
                 
                 atualizaArquivo(compras);
                 return true;
             }
         }
-             
+             JOptionPane.showMessageDialog(null, "Erro em atualizar venda");
         return false;
 
     }

@@ -9,8 +9,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
@@ -21,7 +19,7 @@ public class ClienteTableModel extends AbstractTableModel {
     private String[] colunas = {"Código" , "Nome", "RG", "CPF", "Nascimento",  "Email", "Telefone", "NºCartao"};
     
     public ClienteTableModel() throws IOException, ClassNotFoundException{
-        file = new File("Arquivos/dadosTabela.bin");
+        file = new File("Arquivos/clientes.bin");
         
         if(!file.exists()){
             file.createNewFile();
@@ -108,48 +106,41 @@ public class ClienteTableModel extends AbstractTableModel {
         return colunas[column];
     }
     
-    public void addRow(Cliente c){ // adiciona linha a tabela
-        List<Cliente> dados;
-        try {
-            dados = listar();
-            dados.add(c);
-            atualizaArquivo(dados);
-            this.fireTableDataChanged();
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel listar os clientes");
-        }   
-    }
     
-    public void atualizaTabela(Cliente cliente){
+    
+    public void insere(){
         List<Cliente> dados = null;
         
         try {
-            dados = listar(); 
-            for (int i = 0 ; i < dados.size(); i++){
-                if(dados.get(i).getCodigo() == cliente.getCodigo()){
-                    dados.add(i, cliente);
-                    this.setValueAt(cliente.getNome(), i, 1);
-                    this.setValueAt(cliente.getRg(), i, 2);
-                    this.setValueAt(cliente.getCpf(), i, 3);
-                    this.setValueAt(cliente.getDataDeNascimento(), i, 4);
-                    this.setValueAt(cliente.getEmail(), i, 5);
-                    this.setValueAt(cliente.getTelefone(), i, 6);
-                    this.setValueAt(cliente.getNumeroDoCartao(), i, 7);
-                    
-                    break;
-                }
-            }     
-            try {
-            atualizaArquivo(dados);
-            this.fireTableDataChanged();
-        } catch (IOException ex) {
-             JOptionPane.showConfirmDialog(null, "Não foi possivel atualizar a tabela de clientes");
-        }
+           dados = listar(); 
+           this.fireTableDataChanged(); 
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possivel listar os clientes");
         } 
         
     }
+    
+    public boolean atualizaTabela(Cliente obj) throws IOException, ClassNotFoundException{
+        CadastroCliente cadCliente = new CadastroCliente();
+        List<Cliente> clientes = listar();
+        
+        for(int i = 0; i < clientes.size(); i++){
+            if(clientes.get(i).getCodigo() == obj.getCodigo()){
+                this.setValueAt(obj.getNome(), i, 1);
+                this.setValueAt(obj.getRg(), i, 2);
+                this.setValueAt(obj.getCpf(), i, 3);
+                this.setValueAt(obj.getDataDeNascimento(), i, 4);
+                this.setValueAt(obj.getEmail(), i, 5);
+                this.setValueAt(obj.getTelefone(), i, 6);
+                this.setValueAt(obj.getNumeroDoCartao(), i, 7);
+                
+                this.fireTableDataChanged();
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public List listar() throws IOException, ClassNotFoundException {
         
         if(file.length() > 0){
