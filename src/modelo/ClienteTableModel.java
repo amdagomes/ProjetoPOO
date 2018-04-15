@@ -32,7 +32,7 @@ public class ClienteTableModel extends AbstractTableModel {
         try {
             dados = listar();
         } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel listar os clientes");
+            JOptionPane.showMessageDialog(null, "Erro no numero de linhas da tabela cliente");
         } 
         return dados.size();
     }
@@ -84,21 +84,28 @@ public class ClienteTableModel extends AbstractTableModel {
         switch(coluna){
             case 1:
                 dados.get(linha).setNome((String) valor);
+                break;
             case 2:
                 dados.get(linha).setRg((String) valor);
+                break;
             case 3:
                 dados.get(linha).setCpf((String) valor);
+                break;
             case 4:
                 dados.get(linha).setDataDeNascimento((String) valor);
+                break;
             case 5:
                 dados.get(linha).setEmail((String) valor);
+                break;
             case 6:
                 dados.get(linha).setTelefone((String) valor);
+                break;
             case 7:
                 dados.get(linha).setNumeroDoCartao((String) valor);
+                break;
         }
         
-        this.fireTableDataChanged();
+        this.fireTableRowsUpdated(linha, linha);
     }
     
     @Override
@@ -120,25 +127,19 @@ public class ClienteTableModel extends AbstractTableModel {
         
     }
     
-    public boolean atualizaTabela(Cliente obj) throws IOException, ClassNotFoundException{
-        CadastroCliente cadCliente = new CadastroCliente();
+    public boolean atualizaTabela(int linha, Cliente obj) throws IOException, ClassNotFoundException{
         List<Cliente> clientes = listar();
         
-        for(int i = 0; i < clientes.size(); i++){
-            if(clientes.get(i).getCodigo() == obj.getCodigo()){
-                this.setValueAt(obj.getNome(), i, 1);
-                this.setValueAt(obj.getRg(), i, 2);
-                this.setValueAt(obj.getCpf(), i, 3);
-                this.setValueAt(obj.getDataDeNascimento(), i, 4);
-                this.setValueAt(obj.getEmail(), i, 5);
-                this.setValueAt(obj.getTelefone(), i, 6);
-                this.setValueAt(obj.getNumeroDoCartao(), i, 7);
+        setValueAt(obj.getNome(), linha, 1);
+        setValueAt(obj.getRg(), linha, 2);
+        setValueAt(obj.getCpf(), linha, 3);
+        setValueAt(obj.getDataDeNascimento(), linha, 4);
+        setValueAt(obj.getEmail(), linha, 5);
+        setValueAt(obj.getTelefone(), linha, 6);
+        setValueAt(obj.getNumeroDoCartao(), linha, 7);
                 
-                this.fireTableDataChanged();
-                return true;
-            }
-        }
-        return false;
+        fireTableDataChanged();
+        return true;    
     }
     
     public List listar() throws IOException, ClassNotFoundException {
@@ -152,7 +153,7 @@ public class ClienteTableModel extends AbstractTableModel {
         
     }
     
-    private void atualizaArquivo(List<Cliente> dados) throws IOException {
+    private void atualizaArquivo(List<Cliente> dados) {
         
         try{
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));

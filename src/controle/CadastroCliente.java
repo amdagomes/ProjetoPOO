@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
-import modelo.ClienteTableModel;
 
 /**
  * Classe de cadastro de Cliente
@@ -52,12 +51,12 @@ public class CadastroCliente implements Dao<Cliente> {
         
         for(int i = 0; i < clientes.size(); i++){
             if(clientes.get(i).getCodigo() == obj.getCodigo()){
-                clientes.add(i, obj);
+                clientes.set(i, obj);
                 atualizaArquivo(clientes);
                 return true;
             }
         }
-        
+       
         return false;
         
     }

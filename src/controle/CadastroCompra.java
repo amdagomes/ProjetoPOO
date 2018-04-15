@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelo.Cliente;
 import modelo.Compra;
 import modelo.Vendedor;
 
@@ -49,26 +48,25 @@ public class CadastroCompra implements Dao<Compra> {
          
     }
     
-    public boolean atualizar(int cod, Compra obj) throws IOException, ClassNotFoundException{
+    public boolean atualizar(Compra obj) throws IOException, ClassNotFoundException{
         //obj se refere-se a um objeto de compra com os novos valores
         List<Compra> compras = listar();
         
         CadastroCliente cadCliente = new CadastroCliente();
              
         for(int i = 0; i < compras.size(); i++){
-            if(compras.get(i).getCodigo() == cod){
+            if(compras.get(i).getCodigo() == obj.getCodigo()){
                 cadCliente.atualizar(obj.getCliente());
                 Compra compra = compras.get(i);
                 compra.setCliente(obj.getCliente());
                 compra.setServico(obj.getServico());
                 compra.setVendedor((Vendedor) obj.getVendedor());
-                compras.add(i, compra);
+                compras.set(i, compra);
                 
                 atualizaArquivo(compras);
                 return true;
             }
         }
-             JOptionPane.showMessageDialog(null, "Erro em atualizar venda");
         return false;
 
     }
@@ -110,7 +108,7 @@ public class CadastroCompra implements Dao<Compra> {
         
     }
     
-    private void atualizaArquivo(List<Compra> compras) throws IOException {
+    private void atualizaArquivo(List<Compra> compras){
         
         try{
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
