@@ -22,21 +22,6 @@ import modelo.Vendedor;
  * @author Amanda
  */
 
-public class Main{
-    public static void main(String[] args) {
-        try {
-            CadastroCompra cad = new CadastroCompra();
-            List<Compra> compra = cad.listar();
-            for(Compra c : compra){
-                System.out.println(c.toString());
-            }
-        } catch (IOException | ClassNotFoundException ex) {
-            System.out.println("Não leu a lista de compras");
-        } 
-        
-    }
-}
-
 /*
 public class Main {
 
