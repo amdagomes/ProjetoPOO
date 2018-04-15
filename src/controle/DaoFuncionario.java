@@ -23,12 +23,12 @@ public interface DaoFuncionario<T extends Funcionario> {
     public boolean salvar(T obj) throws IOException, ClassNotFoundException ;
 
     /**
-     * Remove um funcionário da lista através da busca pelo seu CPF
+     * Remove um funcionário da lista 
      *
      * @param cpf Cpf do funcionario a ser adicionado
      * @return true caso seja encontrado o funcionario e ele seja removido
      */
-    public boolean remove(String cpf) throws IOException, ClassNotFoundException ;
+    public boolean remove(Funcionario obj) throws IOException, ClassNotFoundException ;
 
     /**
      * Busca um cadastro na lista atraves do CPF

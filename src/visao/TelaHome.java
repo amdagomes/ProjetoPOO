@@ -23,6 +23,7 @@ import modelo.Funcionario;
 import modelo.Internet;
 import modelo.Vendedor;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Amanda
@@ -167,7 +168,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         rg = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        reservista = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
@@ -193,6 +193,8 @@ public class TelaHome extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         senhaFunc = new javax.swing.JPasswordField();
         jLabel20 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        reservista = new javax.swing.JTextField();
         telaClientes = new javax.swing.JInternalFrame();
         jTelaCliente = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -784,14 +786,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(102, 102, 102));
         jLabel10.setText("Reservista");
 
-        reservista.setForeground(new java.awt.Color(102, 102, 102));
-        reservista.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        reservista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reservistaActionPerformed(evt);
-            }
-        });
-
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setText("Dados Pessoais");
 
@@ -941,6 +935,26 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(102, 102, 102));
         jLabel20.setText("senha");
 
+        jButton2.setBackground(new java.awt.Color(0, 51, 204));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Excluir");
+        jButton2.setMaximumSize(new java.awt.Dimension(33, 17));
+        jButton2.setMinimumSize(new java.awt.Dimension(33, 17));
+        jButton2.setPreferredSize(new java.awt.Dimension(33, 17));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        reservista.setForeground(new java.awt.Color(102, 102, 102));
+        reservista.setMinimumSize(new java.awt.Dimension(33, 16));
+        reservista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservistaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jTelaCadFuncLayout = new javax.swing.GroupLayout(jTelaCadFunc);
         jTelaCadFunc.setLayout(jTelaCadFuncLayout);
         jTelaCadFuncLayout.setHorizontalGroup(
@@ -1014,7 +1028,7 @@ public class TelaHome extends javax.swing.JFrame {
                                         .addComponent(jLabel10))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaCadFuncLayout.createSequentialGroup()
+                                        .addGroup(jTelaCadFuncLayout.createSequentialGroup()
                                             .addComponent(reservista, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel9)
@@ -1040,6 +1054,8 @@ public class TelaHome extends javax.swing.JFrame {
                         .addContainerGap(24, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTelaCadFuncLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1077,11 +1093,11 @@ public class TelaHome extends javax.swing.JFrame {
                         .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(escolaridade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(reservista, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(reservista, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1122,7 +1138,8 @@ public class TelaHome extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -1574,10 +1591,6 @@ public class TelaHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rgActionPerformed
 
-    private void reservistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservistaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_reservistaActionPerformed
-
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
@@ -1625,10 +1638,14 @@ public class TelaHome extends javax.swing.JFrame {
 
         Funcionario funcionario = montaFuncionario();
         try {
-            if (VerificarCampos()==false) {
-               cadFuncionario.salvar(funcionario);  
-                JOptionPane.showMessageDialog(null, "Funcionario Cadastrado  com sucesso");
-                limpaFuncionario();
+            if (VerificarCampos() == false) {
+                if (cadFuncionario.salvar(funcionario)) {
+                    JOptionPane.showMessageDialog(null, "Funcionario Cadastrado  com sucesso");
+                    limpaFuncionario();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Falha ao registrar ");
+
+                }
 
             } else {
                 JOptionPane.showMessageDialog(null, "Falha ao registrar ");
@@ -1858,10 +1875,31 @@ public class TelaHome extends javax.swing.JFrame {
             complemento.setText(funcionario.getEndereco().getComplemento());
             rua.setText(funcionario.getEndereco().getLogradouro());
             pontoReferencia.setText(funcionario.getEndereco().getPontoDeReferencia());
-
+            bCpf.setText("");
             //botao de busca funcionario
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Funcionario funcionario = montaFuncionario();
+        try {
+            if (cadFuncionario.remove(funcionario)) {
+                JOptionPane.showMessageDialog(null, "removido com sucesso");
+                limpaFuncionario();
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possivel remover");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possivel remover");
+
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao remover");
+        }        //Ecluir funcionario
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void reservistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservistaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reservistaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1935,6 +1973,7 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JTextField email3;
     private javax.swing.JComboBox<String> escolaridade;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2158,24 +2197,23 @@ public class TelaHome extends javax.swing.JFrame {
 
         return funcionario;
     }
-    public boolean VerificarCampos(){
-      
-        if (nome.getText().trim().equals("")){
-        JOptionPane.showMessageDialog(null,"Campo nome é Obrigatório,por favor Preencher!","ATENÇÃO",JOptionPane.WARNING_MESSAGE);
-         return true;
+
+    public boolean VerificarCampos() {
+
+        if (nome.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        if (cpf.getText().equals("   .   .   -  ")) {
+            JOptionPane.showMessageDialog(null, "Campo Cpf é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        if (senhaFunc.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Senha é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return true;
+        } else {
+            return false;
+        }
+
     }
-         if (cpf.getText().equals("   .   .   -  ")){
-        JOptionPane.showMessageDialog(null,"Campo Cpf é obrigatório,por favor preencher!","ATENÇÃO",JOptionPane.WARNING_MESSAGE);
-         return true;
-    }
-          if (senhaFunc.getText().trim().equals("")){
-        JOptionPane.showMessageDialog(null,"Campo Senha é obrigatório,Por favor preencher!","ATENÇÃO",JOptionPane.WARNING_MESSAGE);
-         return true;
-    }
-          
-        
-        else return false; 
-        
-    
-}
 }

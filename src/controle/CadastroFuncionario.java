@@ -57,12 +57,19 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
     
 
     @Override
-    public boolean remove(String cpf) throws IOException, ClassNotFoundException {
+    public boolean remove(Funcionario funcionario) throws IOException, ClassNotFoundException {
         
         List<Funcionario> funcionarios = listar();
-        Funcionario funcionario = busca(cpf);
         
-        return funcionarios.remove(funcionario);
+     if(funcionarios.remove(funcionario)){
+          atualizaArquivo(funcionarios);
+          return true;
+      }
+      else{
+          return false;
+      
+      }
+      
         
     }
 
