@@ -127,7 +127,7 @@ public class ClienteTableModel extends AbstractTableModel {
             dados = listar(); 
             for (int i = 0 ; i < dados.size(); i++){
                 if(dados.get(i).getCodigo() == cliente.getCodigo()){
-                    dados.add(i, cliente);
+                    dados.set(i, cliente);
                     this.setValueAt(cliente.getNome(), i, 1);
                     this.setValueAt(cliente.getRg(), i, 2);
                     this.setValueAt(cliente.getCpf(), i, 3);

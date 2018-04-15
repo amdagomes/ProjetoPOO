@@ -15,7 +15,7 @@ import modelo.ClienteTableModel;
 /**
  * Classe de cadastro de Cliente
  *
- * @author
+ * @author Amanda e Rafaela
  */
 public class CadastroCliente implements Dao<Cliente> {
 

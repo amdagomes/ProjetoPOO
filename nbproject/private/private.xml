@@ -5,10 +5,7 @@
         <group>
             <file>file:/C:/Users/Cliente/Desktop/ProjetoPOO/src/visao/TelaHome.java</file>
             <file>file:/C:/Users/Cliente/Desktop/ProjetoPOO/src/controle/CadastroFuncionario.java</file>
-            <file>file:/C:/Users/Cliente/Desktop/ProjetoPOO/src/controle/CadastroCompra.java</file>
-            <file>file:/C:/Users/Cliente/Desktop/ProjetoPOO/src/controle/DaoFuncionario.java</file>
-            <file>file:/C:/Users/Cliente/Desktop/ProjetoPOO/src/modelo/Cliente.java</file>
-            <file>file:/C:/Users/Cliente/Desktop/ProjetoPOO/src/visao/TelaLogin.java</file>
+            <file>file:/C:/Users/Cliente/Desktop/ProjetoPOO/src/modelo/ClienteTableModel.java</file>
         </group>
     </open-files>
 </project-private>

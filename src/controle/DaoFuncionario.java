@@ -7,7 +7,7 @@ import modelo.Funcionario;
 /**
  * Essa classe contém metódos para realizar CRUD de funcionario
  *
- * @author
+ * @author Amanda e Rafaela
  * @param <T> -
  * @version 1.0
  *

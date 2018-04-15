@@ -15,7 +15,7 @@ import modelo.Vendedor;
 
 /**
  *
- * @author Amanda
+ * @author Amanda e Rafaela
  */
 public class TelaLogin extends javax.swing.JFrame {
 
