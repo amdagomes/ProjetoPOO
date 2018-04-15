@@ -36,7 +36,7 @@ public class CadastroCliente implements Dao<Cliente> {
     public boolean salvar(Cliente obj) throws IOException, ClassNotFoundException  {
         
         List<Cliente> clientes = listar();
-         
+        obj.setCodigo(clientes.size() + 1);
         if(clientes.add(obj)){
             atualizaArquivo(clientes);
             return true;
@@ -44,6 +44,21 @@ public class CadastroCliente implements Dao<Cliente> {
             return false;
         }
          
+    }
+    
+    public boolean atualizar(Cliente obj) throws IOException, ClassNotFoundException{
+        List<Cliente> clientes = listar();
+        
+        for(int i = 0; i < clientes.size(); i++){
+            if(clientes.get(i).getCodigo() == obj.getCodigo()){
+                clientes.set(i, obj);
+                atualizaArquivo(clientes);
+                return true;
+            }
+        }
+       
+        return false;
+        
     }
 
     @Override

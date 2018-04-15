@@ -3,31 +3,63 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Cliente implements Serializable {
+public class Cliente implements Serializable {
 
+    private int codigo;
+    private String nome;
+    private String rg;
+    private String cpf;
+    private String dataDeNascimento;
     private String email;
     private String telefone;
     private String numeroDoCartao;
     private Endereco endereco;
-    private int codigo;
 
-    public Cliente(int codigo, String email, String telefone, String numeroDoCartao, Endereco endereco) {
-        this.codigo = codigo;
+    public Cliente(String nome, String rg, String cpf, String dataDeNascimento, String email, String telefone, String numeroDoCartao, Endereco endereco) {
+        this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.dataDeNascimento = dataDeNascimento;
         this.email = email;
         this.telefone = telefone;
         this.numeroDoCartao = numeroDoCartao;
+        this.endereco = endereco;
+    }
+    
+    public Cliente(){
+     
     }
 
-    public Cliente() {
-
+    public String getNome() {
+        return nome;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(String dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
     }
 
     public String getEmail() {
@@ -61,15 +93,27 @@ public abstract class Cliente implements Serializable {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+    
+    public int getCodigo() {
+        return this.codigo;
+    }
+
+    public void setCodigo(int codigo){
+        this.codigo = codigo;
+    }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.email);
-        hash = 79 * hash + Objects.hashCode(this.telefone);
-        hash = 79 * hash + Objects.hashCode(this.numeroDoCartao);
-        hash = 79 * hash + Objects.hashCode(this.endereco);
-        hash = 79 * hash + this.codigo;
+        hash = 37 * hash + this.codigo;
+        hash = 37 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + Objects.hashCode(this.rg);
+        hash = 37 * hash + Objects.hashCode(this.cpf);
+        hash = 37 * hash + Objects.hashCode(this.dataDeNascimento);
+        hash = 37 * hash + Objects.hashCode(this.email);
+        hash = 37 * hash + Objects.hashCode(this.telefone);
+        hash = 37 * hash + Objects.hashCode(this.numeroDoCartao);
+        hash = 37 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -88,6 +132,18 @@ public abstract class Cliente implements Serializable {
         if (this.codigo != other.codigo) {
             return false;
         }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.rg, other.rg)) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataDeNascimento, other.dataDeNascimento)) {
+            return false;
+        }
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
@@ -102,11 +158,10 @@ public abstract class Cliente implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
-        return "Codigo do Cliente: " + codigo + "\tEmail: " + email + "\tTelefone: " + telefone
-                + "\tNumero do Cartao: " + numeroDoCartao + "\nEndereco: " + endereco;
+        return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", rg=" + rg + ", cpf=" + cpf + ", dataDeNascimento=" + dataDeNascimento + ", email=" + email + ", telefone=" + telefone + ", numeroDoCartao=" + numeroDoCartao + ", endereco=" + endereco + '}';
     }
-
+    
 }
