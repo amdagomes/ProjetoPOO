@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.Cliente;
 import modelo.Compra;
 import modelo.Vendedor;
 
@@ -36,7 +37,7 @@ public class CadastroCompra implements Dao<Compra> {
     public boolean salvar(Compra obj) throws IOException, ClassNotFoundException  {
         
         List<Compra> compras = listar();
-         
+    
         if(compras.add(obj)){
             atualizaArquivo(compras);
             return true;
@@ -47,19 +48,21 @@ public class CadastroCompra implements Dao<Compra> {
     }
     
     public boolean atualizar(int cod, Compra obj) throws IOException, ClassNotFoundException{
+        //obj se refere-se a um objeto de compra com os novos valores
         List<Compra> compras = listar();
         
+        CadastroCliente cadCliente = new CadastroCliente();
+        cadCliente.atualizar(obj.getCliente());
+      
         Compra compra = busca(cod);
-        System.out.println(compra);
-        
+             
         for(int i = 0; i < compras.size(); i++){
             if(compras.get(i).getCodigo() == compra.getCodigo()){
-                
+                compras.remove(i);
                 compra.setCliente(obj.getCliente());
                 compra.setServico(obj.getServico());
                 compra.setVendedor((Vendedor) obj.getVendedor());
-                compras.add(i, compra);
-                System.out.println("\n\n" + compras.get(i).toString());
+                compras.add(compra);
                 
                 atualizaArquivo(compras);
                 return true;

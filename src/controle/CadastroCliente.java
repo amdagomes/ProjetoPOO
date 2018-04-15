@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
+import modelo.ClienteTableModel;
 
 /**
  * Classe de cadastro de Cliente
@@ -36,7 +37,7 @@ public class CadastroCliente implements Dao<Cliente> {
     public boolean salvar(Cliente obj) throws IOException, ClassNotFoundException  {
         
         List<Cliente> clientes = listar();
-         
+
         if(clientes.add(obj)){
             atualizaArquivo(clientes);
             return true;
@@ -44,6 +45,18 @@ public class CadastroCliente implements Dao<Cliente> {
             return false;
         }
          
+    }
+    
+    public boolean atualizar(Cliente obj) throws IOException, ClassNotFoundException{
+        List<Cliente> clientes = listar();
+        ClienteTableModel modCliente = new ClienteTableModel();
+        Cliente cliente = busca(obj.getCodigo());
+        
+        clientes.add(clientes.indexOf(cliente), cliente);
+        atualizaArquivo(clientes); 
+        modCliente.atualizaTabela(obj);
+        return true;
+        
     }
 
     @Override

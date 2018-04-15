@@ -53,10 +53,11 @@ public class Compra implements Serializable  {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.vendedor);
-        hash = 41 * hash + Objects.hashCode(this.cliente);
-        hash = 41 * hash + Objects.hashCode(this.servico);
-        hash = 41 * hash + this.codigo;
+        hash = 97 * hash + Objects.hashCode(this.vendedor);
+        hash = 97 * hash + Objects.hashCode(this.cliente);
+        hash = 97 * hash + Objects.hashCode(this.servico);
+        hash = 97 * hash + this.codigo;
+        hash = 97 * hash + this.cont;
         return hash;
     }
 
@@ -73,6 +74,9 @@ public class Compra implements Serializable  {
         }
         final Compra other = (Compra) obj;
         if (this.codigo != other.codigo) {
+            return false;
+        }
+        if (this.cont != other.cont) {
             return false;
         }
         if (!Objects.equals(this.vendedor, other.vendedor)) {
