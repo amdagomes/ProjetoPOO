@@ -1754,18 +1754,27 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campo Data de Nascimento é obrigatório, por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        if (telefone3.getText().equals("(  )     -    ")) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
         if (rua3.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Rua é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (bairro3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Bairro é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (cidade3.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Cidade é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        if (telefone3.getText().equals("(  )     -    ")) {
-            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+        if (cep3.getText().equals("  .   -   ")) {
+            JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        
         return true;
     }
 
