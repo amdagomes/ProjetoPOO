@@ -14,7 +14,7 @@ import modelo.Funcionario;
 /**
  * Classe de cadastro de funcionário
  *
- * @author
+ * @author Amanda e Rafaela
  */
 public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
 

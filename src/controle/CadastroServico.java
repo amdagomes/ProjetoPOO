@@ -14,7 +14,7 @@ import modelo.Servico;
 /**
  * Classe de cadastro de Servico
  *
- * @author
+ * @author Amanda e Rafaela
  */
 public class CadastroServico implements Dao<Servico> {
 

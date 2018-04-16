@@ -7,7 +7,7 @@ import modelo.Funcionario;
 /**
  * Essa classe contém metódos para realizar CRUD de funcionario
  *
- * @author
+ * @author amanda e Rafaela
  * @param <T> -
  * @version 1.0
  *
@@ -25,7 +25,7 @@ public interface DaoFuncionario<T extends Funcionario> {
     /**
      * Remove um funcionário da lista 
      *
-     * @param cpf Cpf do funcionario a ser adicionado
+     * @param obj Elemento a ser removido na lista
      * @return true caso seja encontrado o funcionario e ele seja removido
      */
     public boolean remove(Funcionario obj) throws IOException, ClassNotFoundException ;
@@ -37,11 +37,16 @@ public interface DaoFuncionario<T extends Funcionario> {
      * @return o cadastro do funcionario a que o cpf pertence
      */
     public T busca(String cpf) throws IOException, ClassNotFoundException ;
-    
+    /**
+     * Lista os elementos da lista
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public List listar() throws IOException, ClassNotFoundException ;
     /**
      * 
-     * @param cpf cpf do funcionario que deseja atualizar o cadastro
+     
      * @param obj funcionario
      * @return true caso o funcionario seja atualizado
      * @throws IOException

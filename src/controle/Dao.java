@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Essa classe contém metodos para realizar CRUD
  *
- * @author
+ * @author amanda e Rafaela
  * @param <T>
  * @version 1.0
  */
@@ -36,6 +36,11 @@ public interface Dao<T> {
      * @return o cadastro ao qual pertence o codigo
      */
     public T busca(int codigo) throws IOException, ClassNotFoundException;
-    
+    /**
+     * Lista o cadastro
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public List listar() throws IOException, ClassNotFoundException;
 }

@@ -1026,10 +1026,11 @@ public class TelaHome extends javax.swing.JFrame {
             jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTelaCadFuncLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1277,7 +1278,8 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferenciaActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        Funcionario funcionario;
+       //Salvar funcionario
+       Funcionario funcionario;
         try {
             funcionario = montaFuncionario();
             if (cadFuncionario.atualizar(funcionario)) {
@@ -1299,7 +1301,7 @@ public class TelaHome extends javax.swing.JFrame {
 
         Funcionario funcionario = montaFuncionario();
         try {
-            if (VerificarCampos() == false) {
+            if (VerificarCampos()) {
                 if (cadFuncionario.salvar(funcionario)) {
                     JOptionPane.showMessageDialog(null, "Funcionario Cadastrado  com sucesso");
                     limpaFuncionario();
@@ -1308,9 +1310,7 @@ public class TelaHome extends javax.swing.JFrame {
 
                 }
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Falha ao registrar ");
-            }
+            } 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
@@ -1343,7 +1343,7 @@ public class TelaHome extends javax.swing.JFrame {
 
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao remover");
-        }        //Ecluir funcionario
+        }        //Excluir funcionario
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void reservistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservistaActionPerformed
@@ -1771,24 +1771,42 @@ public class TelaHome extends javax.swing.JFrame {
     }
 
     public boolean VerificarCampos() {
-
+        //metodo para verificar campos vazios
         if (nome.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            return true;
+            return false;
         }
         if (cpf.getText().equals("   .   .   -  ")) {
             JOptionPane.showMessageDialog(null, "Campo Cpf é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            return true;
+            return false;
         }
         if (senhaFunc.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Senha é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            return true;
-        } else {
             return false;
+        }
+        if (rg.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo RG é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        if (rua.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Rua é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (cidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Cidade é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (telefone.getText().equals("(  )     -    ")) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;}
+        else {
+            return true;
         }
     }
     
     public boolean validaCliente(){
+        //Metodo para validar campos clientes
         if (nome3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
