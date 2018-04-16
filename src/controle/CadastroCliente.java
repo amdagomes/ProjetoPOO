@@ -39,10 +39,8 @@ public class CadastroCliente implements Dao<Cliente> {
         List<Cliente> clientes = listar();
         obj.setCodigo(clientes.size() + 1);
         //verifica se existe numero de cartão repetido e cria outro aleatorio
-        Random num = new Random();
-        String nCartao = Integer.toString(num.nextInt(1000) + 1000) + "-" + Integer.toString(num.nextInt(80) + 10);
-        
-        
+        obj.setNumeroDoCartao(geraNumero(clientes));
+    
         if(clientes.add(obj)){
             atualizaArquivo(clientes);
             return true;
@@ -133,6 +131,28 @@ public class CadastroCliente implements Dao<Cliente> {
         }
         
         return false;
+    }
+
+    private String geraNumero(List<Cliente> clientes) {
+        Random num = new Random();
+        String nCartao = Integer.toString(num.nextInt(1000) + 1000) + "-" + Integer.toString(num.nextInt(80) + 10);
+        int cont = 0;
+        
+        if(clientes.size() > 0){
+            while(true){
+                for(Cliente c : clientes){
+                    if(c.getNumeroDoCartao().equals(nCartao)){
+                        cont++;
+                    }
+                }
+                if(cont == 0){
+                    break;
+                } else{
+                    nCartao = Integer.toString(num.nextInt(1000) + 1000) + "-" + Integer.toString(num.nextInt(80) + 10);
+                }
+            }
+        } 
+        return nCartao;
     }
 
 }
