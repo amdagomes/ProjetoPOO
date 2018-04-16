@@ -25,9 +25,9 @@ public class Cliente implements Serializable {
         this.numeroDoCartao = numeroDoCartao;
         this.endereco = endereco;
     }
-    
-    public Cliente(){
-     
+
+    public Cliente() {
+
     }
 
     public String getNome() {
@@ -93,27 +93,27 @@ public class Cliente implements Serializable {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public int getCodigo() {
         return this.codigo;
     }
 
-    public void setCodigo(int codigo){
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 37 * hash + this.codigo;
-        hash = 37 * hash + Objects.hashCode(this.nome);
-        hash = 37 * hash + Objects.hashCode(this.rg);
-        hash = 37 * hash + Objects.hashCode(this.cpf);
-        hash = 37 * hash + Objects.hashCode(this.dataDeNascimento);
-        hash = 37 * hash + Objects.hashCode(this.email);
-        hash = 37 * hash + Objects.hashCode(this.telefone);
-        hash = 37 * hash + Objects.hashCode(this.numeroDoCartao);
-        hash = 37 * hash + Objects.hashCode(this.endereco);
+        hash = 79 * hash + this.codigo;
+        hash = 79 * hash + Objects.hashCode(this.nome);
+        hash = 79 * hash + Objects.hashCode(this.rg);
+        hash = 79 * hash + Objects.hashCode(this.cpf);
+        hash = 79 * hash + Objects.hashCode(this.dataDeNascimento);
+        hash = 79 * hash + Objects.hashCode(this.email);
+        hash = 79 * hash + Objects.hashCode(this.telefone);
+        hash = 79 * hash + Objects.hashCode(this.numeroDoCartao);
+        hash = 79 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -158,10 +158,10 @@ public class Cliente implements Serializable {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", rg=" + rg + ", cpf=" + cpf + ", dataDeNascimento=" + dataDeNascimento + ", email=" + email + ", telefone=" + telefone + ", numeroDoCartao=" + numeroDoCartao + ", endereco=" + endereco + '}';
     }
-    
+
 }

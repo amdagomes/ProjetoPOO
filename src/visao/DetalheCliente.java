@@ -22,18 +22,18 @@ public class DetalheCliente extends javax.swing.JFrame {
      */
     int xMouse;
     int yMouse;
-    
+
     private int codCliente;
     private List<Compra> compras;
     private CadastroCompra cadCompra;
-    
+
     public DetalheCliente(int cod) throws IOException, ClassNotFoundException {
         cadCompra = new CadastroCompra();
         compras = cadCompra.listar();
         codCliente = cod;
-        
+
         initComponents();
-        
+
         nome.setEditable(false);
         rg.setEditable(false);
         cpf.setEditable(false);
@@ -447,13 +447,12 @@ public class DetalheCliente extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(codigo)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel55)
-                        .addComponent(jLabel39)
-                        .addComponent(nCartao)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel55)
+                    .addComponent(jLabel39)
+                    .addComponent(nCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -587,7 +586,7 @@ public class DetalheCliente extends javax.swing.JFrame {
     private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
+
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jLabel1MouseDragged
 
@@ -639,46 +638,46 @@ public class DetalheCliente extends javax.swing.JFrame {
     private javax.swing.JTextField servico;
     private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
-    
-    public void preencheInfo(int cod){
+
+    public void preencheInfo(int cod) {
         Compra compra = null;
-        
-        for(Compra c : compras){
-            if(c.getCliente().getCodigo() == cod){
+
+        for (Compra c : compras) {
+            if (c.getCliente().getCodigo() == cod) {
                 compra = c;
                 break;
             }
         }
-        
-        if(compra != null){
+
+        if (compra != null) {
             codigo.setText(Integer.toString(compra.getCliente().getCodigo()));
-        nCartao.setText(compra.getCliente().getNumeroDoCartao());
-        nome.setText(compra.getCliente().getNome());
-        rg.setText(compra.getCliente().getRg());
-        cpf.setText(compra.getCliente().getCpf());
-        telefone.setText(compra.getCliente().getTelefone());
-        email.setText(compra.getCliente().getEmail());
-        dataNascimento.setText(compra.getCliente().getDataDeNascimento());
-        rua.setText(compra.getCliente().getEndereco().getLogradouro());
-        bairro.setText(compra.getCliente().getEndereco().getLogradouro());
-        numero.setText(Integer.toString(compra.getCliente().getEndereco().getNumero()));
-        complemento.setText(compra.getCliente().getEndereco().getComplemento());
-        pontoReferencia.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
-        cidade.setText(compra.getCliente().getEndereco().getCidade());
-        cep.setText(compra.getCliente().getEndereco().getCep());
-        
-        switch(compra.getServico().getCodigo()){
-            case 1: 
-                servico.setText("10 MB FIBRA");
-                break;
-            case 2: 
-                servico.setText("20 MB FIBRA");
-                break;
-            case 3: 
-                servico.setText("30 MB FIBRA");
-                break;
-        }
-        } else{
+            nCartao.setText(compra.getCliente().getNumeroDoCartao());
+            nome.setText(compra.getCliente().getNome());
+            rg.setText(compra.getCliente().getRg());
+            cpf.setText(compra.getCliente().getCpf());
+            telefone.setText(compra.getCliente().getTelefone());
+            email.setText(compra.getCliente().getEmail());
+            dataNascimento.setText(compra.getCliente().getDataDeNascimento());
+            rua.setText(compra.getCliente().getEndereco().getLogradouro());
+            bairro.setText(compra.getCliente().getEndereco().getLogradouro());
+            numero.setText(Integer.toString(compra.getCliente().getEndereco().getNumero()));
+            complemento.setText(compra.getCliente().getEndereco().getComplemento());
+            pontoReferencia.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
+            cidade.setText(compra.getCliente().getEndereco().getCidade());
+            cep.setText(compra.getCliente().getEndereco().getCep());
+
+            switch (compra.getServico().getCodigo()) {
+                case 1:
+                    servico.setText("10 MB FIBRA");
+                    break;
+                case 2:
+                    servico.setText("20 MB FIBRA");
+                    break;
+                case 3:
+                    servico.setText("30 MB FIBRA");
+                    break;
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Não foi possivel listar cliente");
         }
     }

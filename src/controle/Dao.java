@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Essa classe contém metodos para realizar CRUD
+ * Essa Classe que contém métodos para realizar CRUD
  *
- * @author amanda e Rafaela
+ * @author Amanda e Rafaela
  * @param <T>
- * @version 1.0
  */
 public interface Dao<T> {
 
@@ -16,31 +15,48 @@ public interface Dao<T> {
      * Adiciona o cadastro a uma lista
      *
      * @param obj Elemento a ser adicionado na lista
-     * @return true caso o cadastro seja feito com sucesso
+     * @return true caso o cadastro seja realizado com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
     public boolean salvar(T obj) throws IOException, ClassNotFoundException;
 
     /**
-     * Remove um cadastro em uma lista
+     * Metodo para remover compra
      *
-     * @param codigo Codigo do cadastro a ser removido
-     * @return true caso o cadastro seja removido
+     * @param codigo-codigo da compra
+     * @param linha referente a linha da tabela
+     * @return true se for removido com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
-    public boolean remove(int codigo, int linha) throws IOException, ClassNotFoundException;   
-    
-    public boolean remove(int codigo) throws IOException, ClassNotFoundException; 
+    public boolean remove(int codigo, int linha) throws IOException, ClassNotFoundException;
+
     /**
-     * Faz a busca de um cadastro em uma lista a partir do seu codigo
      *
-     * @param codigo Codigo do cadastro a ser retornado
-     * @return o cadastro ao qual pertence o codigo
+     * @param codigo- codigo do Objeto a ser removido
+     * @return true se for removido com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public boolean remove(int codigo) throws IOException, ClassNotFoundException;
+
+    /**
+     * Metodo para fazer busca
+     *
+     * @param codigo- codigo do cadastro a ser buscado
+     * @return obj
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
     public T busca(int codigo) throws IOException, ClassNotFoundException;
+
     /**
-     * Lista o cadastro
-     * @return
+     * Metodo para listar
+     *
+     * @return retorna a lista
      * @throws IOException
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     public List listar() throws IOException, ClassNotFoundException;
 }

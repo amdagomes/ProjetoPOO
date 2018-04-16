@@ -10,7 +10,7 @@ public class TV extends Servico {
     }
 
     public TV() {
-        
+
     }
 
     public int getQuantCanais() {

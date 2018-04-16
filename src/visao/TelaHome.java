@@ -20,7 +20,7 @@ import modelo.Internet;
 import modelo.Vendedor;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
-import modelo.ClienteTableModel;
+import controle.ClienteTableModel;
 
 /**
  *
@@ -54,7 +54,7 @@ public class TelaHome extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "NotFoundClassException TableModel");
         }
-        
+
         try {
             cadCompra = new CadastroCompra();
         } catch (IOException ex) {
@@ -125,7 +125,6 @@ public class TelaHome extends javax.swing.JFrame {
         nome3 = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        cBusca1 = new javax.swing.JFormattedTextField();
         jLabel42 = new javax.swing.JLabel();
         telefone3 = new javax.swing.JFormattedTextField();
         jLabel43 = new javax.swing.JLabel();
@@ -149,12 +148,11 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel52 = new javax.swing.JLabel();
         btnSalvar3 = new javax.swing.JButton();
         dataNascimento1 = new javax.swing.JFormattedTextField();
-        jLabel53 = new javax.swing.JLabel();
         cpf3 = new javax.swing.JFormattedTextField();
         jLabel54 = new javax.swing.JLabel();
         servico1 = new javax.swing.JComboBox<>();
         rg3 = new javax.swing.JTextField();
-        numero3 = new javax.swing.JTextField();
+        numero3 = new javax.swing.JFormattedTextField();
         telaCadFunc = new javax.swing.JInternalFrame();
         jTelaCadFunc = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -317,10 +315,6 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel41.setForeground(new java.awt.Color(102, 102, 102));
         jLabel41.setText("CPF");
 
-        cBusca1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        cBusca1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
-        cBusca1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
         jLabel42.setBackground(new java.awt.Color(102, 102, 102));
         jLabel42.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(102, 102, 102));
@@ -456,14 +450,6 @@ public class TelaHome extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel53.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cliente\\Desktop\\ProjetoPOO\\img\\Search_20px.png")); // NOI18N
-        jLabel53.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel53MouseClicked(evt);
-            }
-        });
-
         cpf3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         try {
             cpf3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -494,13 +480,9 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
 
-        numero3.setForeground(new java.awt.Color(102, 102, 102));
         numero3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        numero3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numero3ActionPerformed(evt);
-            }
-        });
+        numero3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        numero3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout jTelaVenda1Layout = new javax.swing.GroupLayout(jTelaVenda1);
         jTelaVenda1.setLayout(jTelaVenda1Layout);
@@ -510,12 +492,7 @@ public class TelaHome extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jTelaVenda1Layout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jTelaVenda1Layout.createSequentialGroup()
                         .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel45)
@@ -567,36 +544,35 @@ public class TelaHome extends javax.swing.JFrame {
                                             .addComponent(jLabel49)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(cidade3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jTelaVenda1Layout.createSequentialGroup()
-                                            .addGap(108, 108, 108)
+                                            .addGap(166, 166, 166)
                                             .addComponent(jLabel54)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(servico1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jTelaVenda1Layout.createSequentialGroup()
-                                            .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jTelaVenda1Layout.createSequentialGroup()
+                                                    .addGap(58, 58, 58)
+                                                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(jTelaVenda1Layout.createSequentialGroup()
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jTelaVenda1Layout.createSequentialGroup()
                                                     .addComponent(jLabel48)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(bairro3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(cep3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addGap(14, 14, 14))))
+                                                .addComponent(cep3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jTelaVenda1Layout.setVerticalGroup(
             jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTelaVenda1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel44)
@@ -637,9 +613,9 @@ public class TelaHome extends javax.swing.JFrame {
                 .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rua3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bairro3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bairro3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jTelaVenda1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1278,10 +1254,9 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferenciaActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-       //Salvar funcionario
-       Funcionario funcionario;
+        Vendedor funcionario;
         try {
-            funcionario = montaFuncionario();
+            funcionario = (Vendedor) montaFuncionario();
             if (cadFuncionario.atualizar(funcionario)) {
                 JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
                 limpaFuncionario();
@@ -1294,12 +1269,11 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Falha ao encontrar Cpf de funcionario");
         }
 
-
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        Funcionario funcionario = montaFuncionario();
+        Vendedor funcionario = montaFuncionario();
         try {
             if (VerificarCampos()) {
                 if (cadFuncionario.salvar(funcionario)) {
@@ -1307,17 +1281,15 @@ public class TelaHome extends javax.swing.JFrame {
                     limpaFuncionario();
                 } else {
                     JOptionPane.showMessageDialog(null, "Falha ao registrar ");
-
                 }
 
-            } 
+            }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
         }
-
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -1330,7 +1302,7 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_numeroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Funcionario funcionario = montaFuncionario();
+        Vendedor funcionario = (Vendedor) montaFuncionario();
         try {
             if (cadFuncionario.remove(funcionario)) {
                 JOptionPane.showMessageDialog(null, "removido com sucesso");
@@ -1343,7 +1315,7 @@ public class TelaHome extends javax.swing.JFrame {
 
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao remover");
-        }        //Excluir funcionario
+        }        //Ecluir funcionario
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void reservistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservistaActionPerformed
@@ -1379,63 +1351,23 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferencia3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
-        try{
-            if(validaCliente()){
-                if(cadCompra.salvar(montaCompra())){
+        try {
+            if (validaCliente()) {
+                if (cadCompra.salvar(montaCompra())) {
                     JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
                     clienteTable.insere();
                     limpaVenda();
-                } else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
-                }    
-            } 
-        } catch(IOException ex){
+                }
+            }
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
-        } catch(ClassNotFoundException ex){
-            JOptionPane.showMessageDialog(null, "Classe não encontrada");
-        } 
-    }//GEN-LAST:event_btnSalvar3ActionPerformed
-
-    private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
-        //Faz a busca da venda pelo codigo e seta os valores os jTexts
-        Compra compra = null;
-        try {
-            compra = cadCompra.busca(Integer.parseInt(cBusca1.getText()));
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo na busca");
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado na busca");
+            JOptionPane.showMessageDialog(null, "Classe não encontrada");
         }
-
-        if(compra == null){
-            JOptionPane.showMessageDialog(null, "Código da venda não existe");
-        } else{
-            Cliente cliente = compra.getCliente();
-
-            nome3.setText(cliente.getNome());
-            cpf3.setText(cliente.getCpf());
-            dataNascimento1.setText(cliente.getDataDeNascimento());
-            rg3.setText(cliente.getRg());
-            email3.setText(compra.getCliente().getEmail());
-            telefone3.setText(compra.getCliente().getTelefone());
-            bairro3.setText(compra.getCliente().getEndereco().getBairro());
-            cidade3.setText(compra.getCliente().getEndereco().getCidade());
-            rua3.setText(compra.getCliente().getEndereco().getLogradouro());
-            pontoReferencia3.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
-            cep3.setText(compra.getCliente().getEndereco().getCep());
-            complemento3.setText(compra.getCliente().getEndereco().getComplemento());
-
-            if(compra.getServico().getCodigo() == 1){
-                servico1.setSelectedIndex(0);
-            } else if(compra.getServico().getCodigo() == 2){
-                servico1.setSelectedIndex(1);
-            } if(compra.getServico().getCodigo() == 3){
-                servico1.setSelectedIndex(2);
-            }
-        }
-
-    }//GEN-LAST:event_jLabel53MouseClicked
+    }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void cpf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpf3ActionPerformed
         // TODO add your handling code here:
@@ -1445,16 +1377,12 @@ public class TelaHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rg3ActionPerformed
 
-    private void numero3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numero3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numero3ActionPerformed
-
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
 
-        if(jTable.getSelectedRow() != -1){
+        if (jTable.getSelectedRow() != -1) {
             AtualizarCliente atCliente;
             try {
-                atCliente = new AtualizarCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(),0), jTable.getSelectedRow(), funcLogado);
+                atCliente = new AtualizarCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0), jTable.getSelectedRow(), funcLogado);
                 atCliente.setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
@@ -1462,22 +1390,22 @@ public class TelaHome extends javax.swing.JFrame {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha da tabela foi selecionada");
         }
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDetalhesActionPerformed
-        if(jTable.getSelectedRow() != -1){
+        if (jTable.getSelectedRow() != -1) {
             try {
-                DetalheCliente tela = new DetalheCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(),0));
+                DetalheCliente tela = new DetalheCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0));
                 tela.setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (ClassNotFoundException ex) {
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha da tabela foi selecionada");
         }
     }//GEN-LAST:event_jBDetalhesActionPerformed
@@ -1519,13 +1447,16 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtBuscarMouseClicked
 
     private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
-        if(jTable.getSelectedRow() != -1){
+        if (jTable.getSelectedRow() != -1) {
             try {
-                if(cadCompra.remove((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0),jTable.getSelectedRow())){
+
+                if (cadCompra.remove((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0), jTable.getSelectedRow())) {
                     JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-                } else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Falha ao remover cliente");
                 }
+                jTable.clearSelection();
+
             } catch (IOException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -1542,7 +1473,7 @@ public class TelaHome extends javax.swing.JFrame {
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
+
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jPanel4MouseDragged
 
@@ -1557,7 +1488,6 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JLabel btn_menu_cadFuncionario1;
     private javax.swing.JLabel btn_menu_venda;
     private javax.swing.JFormattedTextField cBusca;
-    private javax.swing.JFormattedTextField cBusca1;
     private javax.swing.JComboBox<String> cargo;
     private javax.swing.JFormattedTextField cep;
     private javax.swing.JFormattedTextField cep3;
@@ -1609,7 +1539,6 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
@@ -1634,7 +1563,7 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JTextField nome;
     private javax.swing.JTextField nome3;
     private javax.swing.JFormattedTextField numero;
-    private javax.swing.JTextField numero3;
+    private javax.swing.JFormattedTextField numero3;
     private javax.swing.JTextField pontoReferencia;
     private javax.swing.JTextField pontoReferencia3;
     private javax.swing.JTextField reservista;
@@ -1652,36 +1581,36 @@ public class TelaHome extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Compra montaCompra() throws IOException, ClassNotFoundException {
-        
+
         Compra compra = new Compra();
         Cliente cliente = new Cliente();
-        
+
         cliente.setNome(nome3.getText());
         cliente.setCpf(cpf3.getText());
         cliente.setDataDeNascimento(dataNascimento1.getText());
         cliente.setRg(rg3.getText());
         cliente.setEmail(email3.getText());
         cliente.setTelefone(telefone3.getText());
-        
+
         Endereco endereco = new Endereco();
-        
+
         endereco.setBairro(bairro3.getText());
         endereco.setCidade(cidade3.getText());
         endereco.setCep(cep3.getText());
         //Se o JTextField estiver vazio preenche o campo numero com o valor 0
-        if(numero3.getText().isEmpty()){
+        if (numero3.getText().isEmpty()) {
             endereco.setNumero(0);
-        } else{
+        } else {
             endereco.setNumero(Integer.parseInt(numero3.getText()));
         }
         endereco.setComplemento(complemento3.getText());
         endereco.setLogradouro(rua3.getText());
         endereco.setPontoDeReferencia(pontoReferencia3.getText());
-        
+
         cliente.setEndereco(endereco);
-        
+
         Internet serv = new Internet();
-        
+
         switch (servico1.getSelectedIndex()) {
             case 0:
                 serv = (Internet) cadServ.busca(1);
@@ -1693,11 +1622,11 @@ public class TelaHome extends javax.swing.JFrame {
                 serv = (Internet) cadServ.busca(3);
                 break;
         }
-        
+
         compra.setCliente(cliente);
         compra.setServico(serv);
-        compra.setVendedor((Vendedor) cadFuncionario.busca(funcLogado));
-        
+        compra.setVendedor(cadFuncionario.busca(funcLogado));
+
         return compra;
     }
 
@@ -1739,8 +1668,8 @@ public class TelaHome extends javax.swing.JFrame {
         senhaFunc.setText("");
     }
 
-    private Funcionario montaFuncionario() {
-        Funcionario funcionario = new Funcionario();
+    private Vendedor montaFuncionario() {
+        Vendedor funcionario = new Vendedor();
 
         funcionario.setNome(nome.getText());
         funcionario.setCpf(cpf.getText());
@@ -1771,7 +1700,7 @@ public class TelaHome extends javax.swing.JFrame {
     }
 
     public boolean VerificarCampos() {
-        //metodo para verificar campos vazios
+
         if (nome.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
@@ -1788,7 +1717,7 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campo RG é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        
+
         if (rua.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Rua é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
@@ -1799,14 +1728,13 @@ public class TelaHome extends javax.swing.JFrame {
         }
         if (telefone.getText().equals("(  )     -    ")) {
             JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            return false;}
-        else {
+            return false;
+        } else {
             return true;
         }
     }
-    
-    public boolean validaCliente(){
-        //Metodo para validar campos clientes
+
+    public boolean validaCliente() {
         if (nome3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
@@ -1823,19 +1751,28 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campo Data de Nascimento é obrigatório, por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        if (telefone3.getText().equals("(  )     -    ")) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
         if (rua3.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Rua é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (bairro3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Bairro é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (cidade3.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Cidade é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        if (telefone3.getText().equals("(  )     -    ")) {
-            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+        if (cep3.getText().equals("  .   -   ")) {
+            JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+
         return true;
     }
-  
+
 }

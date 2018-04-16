@@ -5,61 +5,70 @@ import java.util.List;
 import modelo.Funcionario;
 
 /**
- * Essa classe contém metódos para realizar CRUD de funcionario
+ * Essa classe contém metodos para o CRUD de funcionario
  *
- * @author amanda e Rafaela
- * @param <T> -
- * @version 1.0
- *
+ * @author Amanda e Rafaela
+ * @param <T>
  */
-public interface DaoFuncionario<T extends Funcionario> {
+public interface DaoFuncionario<T> {
 
     /**
-     * Adiciona um funcionario a lista
+     * Método para salvar um obj
      *
-     * @param obj Elemento a ser adicionado a lista
-     * @return true caso seja adicionado o funcionario com sucesso
+     * @param obj obj a ser salvo
+     * @return true caso o cadastro seja realizado com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
-    public boolean salvar(T obj) throws IOException, ClassNotFoundException ;
+    public boolean salvar(T obj) throws IOException, ClassNotFoundException;
 
     /**
-     * Remove um funcionário da lista 
+     * Metodo para remover obj
      *
-     * @param obj Elemento a ser removido na lista
-     * @return true caso seja encontrado o funcionario e ele seja removido
+     * @param obj obj a ser removido
+     * @return true caso a remoção ocorra com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
-    public boolean remove(Funcionario obj) throws IOException, ClassNotFoundException ;
+    public boolean remove(T obj) throws IOException, ClassNotFoundException;
 
     /**
-     * Busca um cadastro na lista atraves do CPF
+     * Método para fazer busca
      *
-     * @param cpf Cpf do funcionario a ser removido
-     * @return o cadastro do funcionario a que o cpf pertence
+     * @param cpf Cpf do funcionario que deseja buscar
+     * @return obj T
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
-    public T busca(String cpf) throws IOException, ClassNotFoundException ;
+    public T busca(String cpf) throws IOException, ClassNotFoundException;
+
     /**
-     * Lista os elementos da lista
+     * Método para listar
+     *
+     * @return obj T
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public List listar() throws IOException, ClassNotFoundException;
+
+    /**
+     * Metodo para atualizar
+     *
+     * @param obj T
+     * @return true caso a atualização seja realizada com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public boolean atualizar(T obj) throws IOException, ClassNotFoundException;
+
+    /**
+     * Método para Autenticar Login
+     *
+     * @param cpf Cpf do usuario que irá fazer login
+     * @param senha senha do usuario que irá fazer o login
      * @return
      * @throws IOException
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
-    public List listar() throws IOException, ClassNotFoundException ;
-    /**
-     * 
-     
-     * @param obj funcionario
-     * @return true caso o funcionario seja atualizado
-     * @throws IOException
-     * @throws ClassNotFoundException 
-     */
-    public boolean atualizar(Funcionario obj) throws IOException, ClassNotFoundException;
-
-    /**
-     * Autentica o login de funcionário
-     *
-     * @param cpf Cpf do funcionario que realiza o login
-     * @param senha senha do funcionario que realiza o login
-     * @return true caso o cpf e a senha sejam compativeis com o do funcionário
-     */
-    public boolean autentica(String cpf, String senha) throws IOException, ClassNotFoundException ;
+    public boolean autentica(String cpf, String senha) throws IOException, ClassNotFoundException;
 }

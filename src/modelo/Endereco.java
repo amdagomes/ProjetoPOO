@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Endereco implements Serializable  {
+public class Endereco implements Serializable {
 
     private String bairro;
     private String cidade;
