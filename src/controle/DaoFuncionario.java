@@ -7,7 +7,7 @@ import modelo.Funcionario;
 /**
  * Essa classe contém metódos para realizar CRUD de funcionario
  *
- * @author
+ * @author Amanda e Rafaela
  * @param <T> -
  * @version 1.0
  *
@@ -22,10 +22,10 @@ public interface DaoFuncionario<T> {
      */
     public boolean salvar(T obj) throws IOException, ClassNotFoundException ;
 
-    /**
+     /**
      * Remove um funcionário da lista 
      *
-     * @param cpf Cpf do funcionario a ser adicionado
+     * @param obj Elemento a ser removido na lista
      * @return true caso seja encontrado o funcionario e ele seja removido
      */
     public boolean remove(T obj) throws IOException, ClassNotFoundException ;

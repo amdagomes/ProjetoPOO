@@ -54,7 +54,7 @@ public class TelaHome extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "NotFoundClassException TableModel");
         }
-        
+
         try {
             cadCompra = new CadastroCompra();
         } catch (IOException ex) {
@@ -1274,20 +1274,18 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        Vendedor funcionario =  montaFuncionario();
+        Vendedor funcionario = montaFuncionario();
         try {
-            if (VerificarCampos() == false) {
+            if (VerificarCampos()) {
                 if (cadFuncionario.salvar(funcionario)) {
                     JOptionPane.showMessageDialog(null, "Funcionario Cadastrado  com sucesso");
                     limpaFuncionario();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Falha ao registrar ");
-
-                }
-
-            } else {
+                } 
+                else {
                 JOptionPane.showMessageDialog(null, "Falha ao registrar ");
             }
+
+            } 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
@@ -1356,22 +1354,22 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferencia3ActionPerformed
 
     private void btnSalvar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar3ActionPerformed
-        try{
-            if(validaCliente()){
-                if(cadCompra.salvar(montaCompra())){
+        try {
+            if (validaCliente()) {
+                if (cadCompra.salvar(montaCompra())) {
                     JOptionPane.showMessageDialog(null, "Venda realizada com sucesso");
                     clienteTable.insere();
                     limpaVenda();
-                } else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Falha ao realizar venda");
-                }    
-            } 
-        } catch(IOException ex){
+                }
+            }
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
-        } catch(ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
-        } 
+        }
     }//GEN-LAST:event_btnSalvar3ActionPerformed
 
     private void cpf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpf3ActionPerformed
@@ -1384,10 +1382,10 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
 
-        if(jTable.getSelectedRow() != -1){
+        if (jTable.getSelectedRow() != -1) {
             AtualizarCliente atCliente;
             try {
-                atCliente = new AtualizarCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(),0), jTable.getSelectedRow(), funcLogado);
+                atCliente = new AtualizarCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0), jTable.getSelectedRow(), funcLogado);
                 atCliente.setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
@@ -1395,22 +1393,22 @@ public class TelaHome extends javax.swing.JFrame {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha da tabela foi selecionada");
         }
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jBDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDetalhesActionPerformed
-        if(jTable.getSelectedRow() != -1){
+        if (jTable.getSelectedRow() != -1) {
             try {
-                DetalheCliente tela = new DetalheCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(),0));
+                DetalheCliente tela = new DetalheCliente((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0));
                 tela.setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
-            }   catch (ClassNotFoundException ex) {
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha da tabela foi selecionada");
         }
     }//GEN-LAST:event_jBDetalhesActionPerformed
@@ -1452,16 +1450,16 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtBuscarMouseClicked
 
     private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
-        if(jTable.getSelectedRow() != -1){
+        if (jTable.getSelectedRow() != -1) {
             try {
-                
-                if(cadCompra.remove((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0),jTable.getSelectedRow())){
+
+                if (cadCompra.remove((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0), jTable.getSelectedRow())) {
                     JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
-                } else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Falha ao remover cliente");
                 }
                 jTable.clearSelection();
-                
+
             } catch (IOException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -1478,7 +1476,7 @@ public class TelaHome extends javax.swing.JFrame {
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
+
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jPanel4MouseDragged
 
@@ -1586,36 +1584,36 @@ public class TelaHome extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Compra montaCompra() throws IOException, ClassNotFoundException {
-        
+
         Compra compra = new Compra();
         Cliente cliente = new Cliente();
-        
+
         cliente.setNome(nome3.getText());
         cliente.setCpf(cpf3.getText());
         cliente.setDataDeNascimento(dataNascimento1.getText());
         cliente.setRg(rg3.getText());
         cliente.setEmail(email3.getText());
         cliente.setTelefone(telefone3.getText());
-        
+
         Endereco endereco = new Endereco();
-        
+
         endereco.setBairro(bairro3.getText());
         endereco.setCidade(cidade3.getText());
         endereco.setCep(cep3.getText());
         //Se o JTextField estiver vazio preenche o campo numero com o valor 0
-        if(numero3.getText().isEmpty()){
+        if (numero3.getText().isEmpty()) {
             endereco.setNumero(0);
-        } else{
+        } else {
             endereco.setNumero(Integer.parseInt(numero3.getText()));
         }
         endereco.setComplemento(complemento3.getText());
         endereco.setLogradouro(rua3.getText());
         endereco.setPontoDeReferencia(pontoReferencia3.getText());
-        
+
         cliente.setEndereco(endereco);
-        
+
         Internet serv = new Internet();
-        
+
         switch (servico1.getSelectedIndex()) {
             case 0:
                 serv = (Internet) cadServ.busca(1);
@@ -1627,11 +1625,11 @@ public class TelaHome extends javax.swing.JFrame {
                 serv = (Internet) cadServ.busca(3);
                 break;
         }
-        
+
         compra.setCliente(cliente);
         compra.setServico(serv);
         compra.setVendedor(cadFuncionario.busca(funcLogado));
-        
+
         return compra;
     }
 
@@ -1708,21 +1706,38 @@ public class TelaHome extends javax.swing.JFrame {
 
         if (nome.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            return true;
+            return false;
         }
         if (cpf.getText().equals("   .   .   -  ")) {
             JOptionPane.showMessageDialog(null, "Campo Cpf é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            return true;
+            return false;
         }
         if (senhaFunc.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo Senha é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            return true;
-        } else {
             return false;
         }
+        if (rg.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo RG é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (rua.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Rua é obrigatório,por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (cidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo Cidade é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (telefone.getText().equals("(  )     -    ")) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else {
+            return true;
+        }
     }
-    
-    public boolean validaCliente(){
+
+    public boolean validaCliente() {
         if (nome3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo nome é Obrigatório,por favor Preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
@@ -1753,5 +1768,5 @@ public class TelaHome extends javax.swing.JFrame {
         }
         return true;
     }
-  
+
 }
