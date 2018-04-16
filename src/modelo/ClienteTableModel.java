@@ -36,6 +36,10 @@ public class ClienteTableModel extends AbstractTableModel {
         } 
         return dados.size();
     }
+    
+    public int setRowCount(int n){
+        return n;
+    }
 
     @Override
     public int getColumnCount() { // quantidade de colunas da tabela
@@ -145,8 +149,7 @@ public class ClienteTableModel extends AbstractTableModel {
     public boolean remove(int linha) throws IOException, ClassNotFoundException{
         List<Cliente> clientes = listar();
         
-        this.fireTableRowsDeleted(linha, linha);
-        this.fireTableDataChanged();
+        fireTableDataChanged();
         return true;
     }
     

@@ -1026,10 +1026,11 @@ public class TelaHome extends javax.swing.JFrame {
             jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jTelaCadFuncLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addGroup(jTelaCadFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1277,9 +1278,9 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_pontoReferenciaActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        Funcionario funcionario;
+        Vendedor funcionario;
         try {
-            funcionario = montaFuncionario();
+            funcionario = (Vendedor) montaFuncionario();
             if (cadFuncionario.atualizar(funcionario)) {
                 JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
                 limpaFuncionario();
@@ -1297,7 +1298,7 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        Funcionario funcionario = montaFuncionario();
+        Vendedor funcionario =  montaFuncionario();
         try {
             if (VerificarCampos() == false) {
                 if (cadFuncionario.salvar(funcionario)) {
@@ -1330,7 +1331,7 @@ public class TelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_numeroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Funcionario funcionario = montaFuncionario();
+        Vendedor funcionario = (Vendedor) montaFuncionario();
         try {
             if (cadFuncionario.remove(funcionario)) {
                 JOptionPane.showMessageDialog(null, "removido com sucesso");
@@ -1521,11 +1522,14 @@ public class TelaHome extends javax.swing.JFrame {
     private void jBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoverActionPerformed
         if(jTable.getSelectedRow() != -1){
             try {
+                
                 if(cadCompra.remove((int) clienteTable.getValueAt(jTable.getSelectedRow(), 0),jTable.getSelectedRow())){
                     JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
                 } else{
                     JOptionPane.showMessageDialog(null, "Falha ao remover cliente");
                 }
+                jTable.clearSelection();
+                
             } catch (IOException ex) {
                 Logger.getLogger(TelaHome.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -1696,7 +1700,7 @@ public class TelaHome extends javax.swing.JFrame {
         
         compra.setCliente(cliente);
         compra.setServico(serv);
-        compra.setVendedor((Vendedor) cadFuncionario.busca(funcLogado));
+        compra.setVendedor(cadFuncionario.busca(funcLogado));
         
         return compra;
     }
@@ -1739,8 +1743,8 @@ public class TelaHome extends javax.swing.JFrame {
         senhaFunc.setText("");
     }
 
-    private Funcionario montaFuncionario() {
-        Funcionario funcionario = new Funcionario();
+    private Vendedor montaFuncionario() {
+        Vendedor funcionario = new Vendedor();
 
         funcionario.setNome(nome.getText());
         funcionario.setCpf(cpf.getText());

@@ -41,14 +41,7 @@ public class CadastroCliente implements Dao<Cliente> {
         //verifica se existe numero de cartão repetido e cria outro aleatorio
         Random num = new Random();
         String nCartao = Integer.toString(num.nextInt(1000) + 1000) + "-" + Integer.toString(num.nextInt(80) + 10);
-        for(Cliente c : clientes){
-            if(c.getNumeroDoCartao().equals(nCartao)){
-                nCartao = Integer.toString(num.nextInt(1000) + 1000) + "-" + Integer.toString(num.nextInt(80) + 10);
-            } else{
-                obj.setNumeroDoCartao(nCartao);
-                break;
-            }
-        }
+        
         
         if(clientes.add(obj)){
             atualizaArquivo(clientes);

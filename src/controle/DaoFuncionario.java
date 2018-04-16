@@ -12,7 +12,7 @@ import modelo.Funcionario;
  * @version 1.0
  *
  */
-public interface DaoFuncionario<T extends Funcionario> {
+public interface DaoFuncionario<T> {
 
     /**
      * Adiciona um funcionario a lista
@@ -28,7 +28,7 @@ public interface DaoFuncionario<T extends Funcionario> {
      * @param cpf Cpf do funcionario a ser adicionado
      * @return true caso seja encontrado o funcionario e ele seja removido
      */
-    public boolean remove(Funcionario obj) throws IOException, ClassNotFoundException ;
+    public boolean remove(T obj) throws IOException, ClassNotFoundException ;
 
     /**
      * Busca um cadastro na lista atraves do CPF
@@ -47,7 +47,7 @@ public interface DaoFuncionario<T extends Funcionario> {
      * @throws IOException
      * @throws ClassNotFoundException 
      */
-    public boolean atualizar(Funcionario obj) throws IOException, ClassNotFoundException;
+    public boolean atualizar(T obj) throws IOException, ClassNotFoundException;
 
     /**
      * Autentica o login de funcionário

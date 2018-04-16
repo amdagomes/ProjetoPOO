@@ -9,14 +9,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelo.Funcionario;
+import modelo.Vendedor;
 
 /**
  * Classe de cadastro de funcionário
  *
  * @author
  */
-public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
+public class CadastroFuncionario implements DaoFuncionario<Vendedor>{
 
     private File file; 
 
@@ -33,11 +33,11 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
     }
 
     @Override
-    public boolean salvar(Funcionario obj) throws IOException, ClassNotFoundException  {
+    public boolean salvar(Vendedor obj) throws IOException, ClassNotFoundException  {
         
         if (busca(obj.getCpf()) == null) {
 
-            List<Funcionario> funcionarios = listar();
+            List<Vendedor> funcionarios = listar();
 
             if (funcionarios.add(obj)) {
                 atualizaArquivo(funcionarios);
@@ -52,9 +52,9 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
  
 
     @Override
-    public boolean remove(Funcionario funcionario) throws IOException, ClassNotFoundException {
+    public boolean remove(Vendedor funcionario) throws IOException, ClassNotFoundException {
         
-        List<Funcionario> funcionarios = listar();
+        List<Vendedor> funcionarios = listar();
         
         if(funcionarios.remove(funcionario)){
             atualizaArquivo(funcionarios);
@@ -67,11 +67,11 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
     }
 
     @Override
-    public Funcionario busca(String cpf) throws IOException, ClassNotFoundException {
+    public Vendedor busca(String cpf) throws IOException, ClassNotFoundException {
         
-        List<Funcionario> funcionarios = listar();
+        List<Vendedor> funcionarios = listar();
         
-        for(Funcionario f : funcionarios){
+        for(Vendedor f : funcionarios){
             if(f.getCpf().equals(cpf)){
                 return f;
             }
@@ -86,7 +86,7 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
         
         if(file.length() > 0){
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            return (List<Funcionario>) in.readObject();
+            return (List<Vendedor>) in.readObject();
         } else{
             return new ArrayList<>();
         }
@@ -95,9 +95,9 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
 
     @Override
     public boolean autentica(String cpf, String senha) throws IOException, ClassNotFoundException  {
-        List<Funcionario> funcionarios = listar();
+        List<Vendedor> funcionarios = listar();
         
-        for(Funcionario f : funcionarios){
+        for(Vendedor f : funcionarios){
             if(f.getCpf().equals(cpf) && f.getSenha().equals(senha)){
                 return true;
             }
@@ -105,7 +105,7 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
         return false;
     }
 
-    private void atualizaArquivo(List<Funcionario> funcionarios) throws IOException {
+    private void atualizaArquivo(List<Vendedor> funcionarios) throws IOException {
         
         try{
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
@@ -118,8 +118,8 @@ public class CadastroFuncionario implements DaoFuncionario<Funcionario>{
     }
     
     @Override
-     public boolean atualizar(Funcionario obj) throws IOException, ClassNotFoundException{
-       List <Funcionario> funcionarios = listar();
+     public boolean atualizar(Vendedor obj) throws IOException, ClassNotFoundException{
+       List <Vendedor> funcionarios = listar();
        for(int i=0;i<funcionarios.size();i++){
            if(funcionarios.get(i).getCpf().equals(obj.getCpf())){
                funcionarios.set(i,obj);

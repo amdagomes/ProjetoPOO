@@ -31,7 +31,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         cadFuncionario = new CadastroFuncionario();
         
-       /*try{ 
+       try{ 
             cadFuncionario.salvar(new Vendedor(50, "Amanda", "amanda@gmail.com", "222.222.222-22", 
                     "1111-1", "ADS", "Superior Incompleto", "(83) 99999-9999", "Atendente", 
                     new Endereco("Centro", "Sousa", "58815-000", "José Viana", 204, " ", "F Sarmento Pneus"), "123"));
@@ -41,7 +41,7 @@ public class TelaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao criar funcionario");
         } catch (ClassNotFoundException ex){
             
-        }*/
+        }
         
        
         dao = new CadastroFuncionario();

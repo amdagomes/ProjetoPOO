@@ -5,13 +5,13 @@ import java.util.Objects;
 
 public class Compra implements Serializable  {
 
-    private Funcionario vendedor;
+    private Vendedor vendedor;
     private Cliente cliente;
     private Servico servico;
     private int codigo;
    
 
-    public Compra(Funcionario vendedor, Cliente cliente, Servico servico) {
+    public Compra(Vendedor vendedor, Cliente cliente, Servico servico) {
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.servico = servico;
@@ -21,7 +21,7 @@ public class Compra implements Serializable  {
         
     }
 
-    public Funcionario getVendedor() {
+    public Vendedor getVendedor() {
         return vendedor;
     }
 
@@ -55,11 +55,11 @@ public class Compra implements Serializable  {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.vendedor);
-        hash = 83 * hash + Objects.hashCode(this.cliente);
-        hash = 83 * hash + Objects.hashCode(this.servico);
-        hash = 83 * hash + this.codigo;
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.vendedor);
+        hash = 43 * hash + Objects.hashCode(this.cliente);
+        hash = 43 * hash + Objects.hashCode(this.servico);
+        hash = 43 * hash + this.codigo;
         return hash;
     }
 
@@ -89,6 +89,8 @@ public class Compra implements Serializable  {
         }
         return true;
     }
+
+    
 
     @Override
     public String toString() {

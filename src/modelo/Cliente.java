@@ -105,15 +105,15 @@ public class Cliente implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 37 * hash + this.codigo;
-        hash = 37 * hash + Objects.hashCode(this.nome);
-        hash = 37 * hash + Objects.hashCode(this.rg);
-        hash = 37 * hash + Objects.hashCode(this.cpf);
-        hash = 37 * hash + Objects.hashCode(this.dataDeNascimento);
-        hash = 37 * hash + Objects.hashCode(this.email);
-        hash = 37 * hash + Objects.hashCode(this.telefone);
-        hash = 37 * hash + Objects.hashCode(this.numeroDoCartao);
-        hash = 37 * hash + Objects.hashCode(this.endereco);
+        hash = 79 * hash + this.codigo;
+        hash = 79 * hash + Objects.hashCode(this.nome);
+        hash = 79 * hash + Objects.hashCode(this.rg);
+        hash = 79 * hash + Objects.hashCode(this.cpf);
+        hash = 79 * hash + Objects.hashCode(this.dataDeNascimento);
+        hash = 79 * hash + Objects.hashCode(this.email);
+        hash = 79 * hash + Objects.hashCode(this.telefone);
+        hash = 79 * hash + Objects.hashCode(this.numeroDoCartao);
+        hash = 79 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -158,6 +158,8 @@ public class Cliente implements Serializable {
         }
         return true;
     }
+
+    
     
     @Override
     public String toString() {
