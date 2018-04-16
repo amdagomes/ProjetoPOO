@@ -22,33 +22,31 @@ public class TelaLogin extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    
     int xMouse;
     int yMouse;
     private DaoFuncionario dao;
     private final CadastroFuncionario cadFuncionario;
+
     public TelaLogin() throws IOException {
 
         cadFuncionario = new CadastroFuncionario();
-        
-       try{ 
-            cadFuncionario.salvar(new Vendedor(50, "Amanda", "amanda@gmail.com", "222.222.222-22", 
-                    "1111-1", "ADS", "Superior Incompleto", "(83) 99999-9999", "Atendente", 
+
+        try {
+            cadFuncionario.salvar(new Vendedor(50, "Amanda", "amanda@gmail.com", "222.222.222-22",
+                    "1111-1", "ADS", "Superior Incompleto", "(83) 99999-9999", "Atendente",
                     new Endereco("Centro", "Sousa", "58815-000", "José Viana", 204, " ", "F Sarmento Pneus"), "123"));
-            
-        } catch (IOException ex){
+
+        } catch (IOException ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao criar funcionario");
-        } catch (ClassNotFoundException ex){
-            
+        } catch (ClassNotFoundException ex) {
+
         }
-        
-       
+
         dao = new CadastroFuncionario();
         initComponents();
-        overflow_bg.setBackground(new Color(0,0,0,200));
+        overflow_bg.setBackground(new Color(0, 0, 0, 200));
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,22 +201,22 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        
-        try{
-            
-            if(dao.autentica(campo_usuario.getText(), new String(campo_senha.getPassword()))){
+
+        try {
+
+            if (dao.autentica(campo_usuario.getText(), new String(campo_senha.getPassword()))) {
                 TelaHome home = new TelaHome(campo_usuario.getText());
                 home.setVisible(true);
                 dispose();
-            } else{
+            } else {
                 jLabel6.setText("Usuário ou senha inválidos");
             }
-        } catch(IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
-        } catch (ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Login não encontrado", "ERROr", JOptionPane.ERROR_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void campo_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_usuarioActionPerformed
@@ -232,7 +230,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jLabel7MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
+
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jLabel7MouseDragged
 
@@ -272,9 +270,9 @@ public class TelaLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try{
+                try {
                     new TelaLogin().setVisible(true);
-                } catch(IOException ex){
+                } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }

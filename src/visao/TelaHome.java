@@ -20,7 +20,7 @@ import modelo.Internet;
 import modelo.Vendedor;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
-import modelo.ClienteTableModel;
+import controle.ClienteTableModel;
 
 /**
  *
@@ -1269,7 +1269,6 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Falha ao encontrar Cpf de funcionario");
         }
 
-
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -1280,19 +1279,17 @@ public class TelaHome extends javax.swing.JFrame {
                 if (cadFuncionario.salvar(funcionario)) {
                     JOptionPane.showMessageDialog(null, "Funcionario Cadastrado  com sucesso");
                     limpaFuncionario();
-                } 
-                else {
-                JOptionPane.showMessageDialog(null, "Falha ao registrar ");
-            }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Falha ao registrar ");
+                }
 
-            } 
+            }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
             ex.printStackTrace(System.err);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
         }
-
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -1774,7 +1771,7 @@ public class TelaHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório,Por favor preencher!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        
+
         return true;
     }
 

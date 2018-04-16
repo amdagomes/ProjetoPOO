@@ -1,6 +1,5 @@
-package modelo;
+package controle;
 
-import controle.CadastroCliente;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,51 +10,86 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
+import modelo.Cliente;
 
+/**
+ * Essa classe contém métodos para controle de tabela
+ *
+ * @author Amanda e Rafaela
+ */
 public class ClienteTableModel extends AbstractTableModel {
-    
+
     private File file;
     private CadastroCliente cadCliente;
-    private String[] colunas = {"Código" , "Nome", "RG", "CPF", "Nascimento",  "Email", "Telefone", "NºCartao"};
-    
-    public ClienteTableModel() throws IOException, ClassNotFoundException{
+    private String[] colunas = {"Código", "Nome", "RG", "CPF", "Nascimento", "Email", "Telefone", "NºCartao"};
+
+    /**
+     * Construtor da classe ClienteTableModel
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public ClienteTableModel() throws IOException, ClassNotFoundException {
         file = new File("Arquivos/clientes.bin");
-        
-        if(!file.exists()){
+
+        if (!file.exists()) {
             file.createNewFile();
         }
     }
 
+    /**
+     * Metodo retornar quantidade de linhas da tabela
+     *
+     * @return int quantidade de linhas
+     */
     @Override
-    public int getRowCount(){ // quantidade de linhas da tabela
+    public int getRowCount() { // quantidade de linhas da tabela
         List<Cliente> dados = null;
         try {
             dados = listar();
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Erro no numero de linhas da tabela cliente");
-        } 
+        }
         return dados.size();
     }
-    
-    public int setRowCount(int n){
+
+    /**
+     * Método para setar o numero de linhas da tabela
+     *
+     * @param n numero de linhas
+     * @return int numero de linhas
+     */
+    public int setRowCount(int n) {
         return n;
     }
 
+    /**
+     * Método que retorna a quantidade de colunas
+     *
+     * @return int referente a quantidade de colunas
+     */
     @Override
     public int getColumnCount() { // quantidade de colunas da tabela
         return colunas.length;
     }
 
+    /**
+     * Método para retorna o valor de uma linha da tabela
+     *
+     * @param linha linha da tabela
+     * @param coluna coluna da tabela
+     * @return objeto
+     */
     @Override
-    public Object getValueAt( int linha, int coluna) { //pega os valores da tabela
+    public Object getValueAt(int linha, int coluna) { //pega os valores da tabela
         List<Cliente> dados = null;
         try {
             dados = listar();
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possivel listar os clientes");
-        } 
-        
-        switch(coluna){
+        }
+
+        switch (coluna) {
             case 0:
                 return dados.get(linha).getCodigo();
             case 1:
@@ -71,21 +105,28 @@ public class ClienteTableModel extends AbstractTableModel {
             case 6:
                 return dados.get(linha).getTelefone();
             case 7:
-                return dados.get(linha).getNumeroDoCartao(); 
+                return dados.get(linha).getNumeroDoCartao();
         }
         return null;
     }
-    
+
+    /**
+     * Método para atualizar a linha de uma tabela
+     *
+     * @param valor Objeto a ser atualizado
+     * @param linha int Linha da tabela
+     * @param coluna int Coluna da tabela
+     */
     @Override
-    public void setValueAt(Object valor, int linha, int coluna){
+    public void setValueAt(Object valor, int linha, int coluna) {
         List<Cliente> dados = null;
         try {
             dados = listar();
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possivel listar os clientes");
-        } 
-        
-        switch(coluna){
+        }
+
+        switch (coluna) {
             case 1:
                 dados.get(linha).setNome((String) valor);
                 break;
@@ -108,32 +149,48 @@ public class ClienteTableModel extends AbstractTableModel {
                 dados.get(linha).setNumeroDoCartao((String) valor);
                 break;
         }
-        
+
         this.fireTableRowsUpdated(linha, linha);
     }
-    
+
+    /**
+     * Método que retorna o nome da coluna
+     *
+     * @param column int coluna
+     * @return String com o nome da coluna
+     */
     @Override
-    public String getColumnName(int column){
+    public String getColumnName(int column) {
         return colunas[column];
     }
-    
-    
-    
-    public void insere(){
+
+    /**
+     * Para inserir dados na tabela
+     */
+    public void insere() {
         List<Cliente> dados = null;
-        
+
         try {
-           dados = listar(); 
-           this.fireTableDataChanged(); 
+            dados = listar();
+            this.fireTableDataChanged();
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possivel listar os clientes");
-        } 
-        
+        }
+
     }
-    
-    public boolean atualizaTabela(int linha, Cliente obj) throws IOException, ClassNotFoundException{
+
+    /**
+     * Método para atualizar a tabela
+     *
+     * @param linha int referente a linha da tabela
+     * @param obj obj a ser atualizado
+     * @return true se for atualizado com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public boolean atualizaTabela(int linha, Cliente obj) throws IOException, ClassNotFoundException {
         List<Cliente> clientes = listar();
-        
+
         setValueAt(obj.getNome(), linha, 1);
         setValueAt(obj.getRg(), linha, 2);
         setValueAt(obj.getCpf(), linha, 3);
@@ -141,39 +198,59 @@ public class ClienteTableModel extends AbstractTableModel {
         setValueAt(obj.getEmail(), linha, 5);
         setValueAt(obj.getTelefone(), linha, 6);
         setValueAt(obj.getNumeroDoCartao(), linha, 7);
-                
+
         fireTableRowsUpdated(linha, linha);
-        return true;    
+        return true;
     }
-    
-    public boolean remove(int linha) throws IOException, ClassNotFoundException{
+
+    /**
+     * Método para remover dados da linha
+     *
+     * @param linha int referente a linha da tabela
+     * @return true se for removido com sucesso
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public boolean remove(int linha) throws IOException, ClassNotFoundException {
         List<Cliente> clientes = listar();
-        
+
         fireTableDataChanged();
         return true;
     }
-    
+
+    /**
+     * Metodo para listar
+     *
+     * @return List
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public List listar() throws IOException, ClassNotFoundException {
-        
-        if(file.length() > 0){
+
+        if (file.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             return (List<Cliente>) in.readObject();
-        } else{
+        } else {
             return new ArrayList<>();
         }
-        
+
     }
-    
+
+    /**
+     * Método para atualizar o arquivo
+     *
+     * @param dados List
+     */
     private void atualizaArquivo(List<Cliente> dados) {
-        
-        try{
+
+        try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
             out.writeObject(dados);
             out.close();
-        } catch(IOException ex){
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
         }
-   
+
     }
-    
+
 }

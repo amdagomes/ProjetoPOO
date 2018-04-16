@@ -25,9 +25,9 @@ public class Cliente implements Serializable {
         this.numeroDoCartao = numeroDoCartao;
         this.endereco = endereco;
     }
-    
-    public Cliente(){
-     
+
+    public Cliente() {
+
     }
 
     public String getNome() {
@@ -93,12 +93,12 @@ public class Cliente implements Serializable {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public int getCodigo() {
         return this.codigo;
     }
 
-    public void setCodigo(int codigo){
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -159,11 +159,9 @@ public class Cliente implements Serializable {
         return true;
     }
 
-    
-    
     @Override
     public String toString() {
         return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", rg=" + rg + ", cpf=" + cpf + ", dataDeNascimento=" + dataDeNascimento + ", email=" + email + ", telefone=" + telefone + ", numeroDoCartao=" + numeroDoCartao + ", endereco=" + endereco + '}';
     }
-    
+
 }

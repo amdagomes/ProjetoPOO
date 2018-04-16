@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
-import modelo.ClienteTableModel;
+import controle.ClienteTableModel;
 import modelo.Compra;
 import modelo.Endereco;
 import modelo.Funcionario;
@@ -29,16 +29,15 @@ public class AtualizarCliente extends javax.swing.JFrame {
     /**
      * Creates new form AtualizarCliente
      */
-    
     int xMouse;
     int yMouse;
-    
+
     private int codCliente;
     private int linhaTabela;
     private CadastroCompra cadCompra;
     private List<Compra> compras;
     private String funcLogado;
-    
+
     public AtualizarCliente(int codCliente, int linhaTabela, String cpfFunc) throws IOException, ClassNotFoundException {
         cadCompra = new CadastroCompra();
         compras = cadCompra.listar();
@@ -440,19 +439,19 @@ public class AtualizarCliente extends javax.swing.JFrame {
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         try {
             ClienteTableModel tabelaCliente = new ClienteTableModel();
-            
+
             Compra compra = montaCompra();
-            if(cadCompra.atualizar(compra) && tabelaCliente.atualizaTabela(linhaTabela, compra.getCliente())){
+            if (cadCompra.atualizar(compra) && tabelaCliente.atualizaTabela(linhaTabela, compra.getCliente())) {
                 JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso");
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Falha na atualização");
-            }   
+            }
         } catch (IOException ex) {
             ex.getStackTrace();
         } catch (ClassNotFoundException ex) {
-           ex.getStackTrace();
+            ex.getStackTrace();
         }
-        
+
         dispose();
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
@@ -480,7 +479,7 @@ public class AtualizarCliente extends javax.swing.JFrame {
     private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        
+
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jLabel1MouseDragged
 
@@ -530,20 +529,20 @@ public class AtualizarCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> servico1;
     private javax.swing.JFormattedTextField telefone3;
     // End of variables declaration//GEN-END:variables
-    
-    public Compra preencheCampos(int CodCliente){
+
+    public Compra preencheCampos(int CodCliente) {
         Compra compra = null;
-        
-        for(Compra c: compras){
-            if(c.getCliente().getCodigo() == codCliente){
+
+        for (Compra c : compras) {
+            if (c.getCliente().getCodigo() == codCliente) {
                 compra = c;
                 break;
             }
         }
-        
-        if(compra == null){
+
+        if (compra == null) {
             JOptionPane.showMessageDialog(null, "Código da venda não existe");
-        } else{
+        } else {
             jtCodCliente.setText(Integer.toString(compra.getCliente().getCodigo()));
             jtNCartao.setText(compra.getCliente().getNumeroDoCartao());
             jtCodVenda.setText(Integer.toString(compra.getCodigo()));
@@ -560,19 +559,19 @@ public class AtualizarCliente extends javax.swing.JFrame {
             pontoReferencia3.setText(compra.getCliente().getEndereco().getPontoDeReferencia());
             cidade3.setText(compra.getCliente().getEndereco().getCidade());
             cep3.setText(compra.getCliente().getEndereco().getCep());
-        
-            switch(compra.getServico().getCodigo()){
-                case 1: 
+
+            switch (compra.getServico().getCodigo()) {
+                case 1:
                     servico1.setSelectedIndex(0);
                     break;
-                case 2: 
+                case 2:
                     servico1.setSelectedIndex(1);
                     break;
-                case 3: 
+                case 3:
                     servico1.setSelectedIndex(2);
                     break;
             }
-        
+
         }
         return compra;
     }
@@ -581,7 +580,7 @@ public class AtualizarCliente extends javax.swing.JFrame {
         CadastroServico cadServ = new CadastroServico();
         CadastroCliente cadCliente = new CadastroCliente();
         Compra compra = new Compra();
-        
+
         Cliente cliente = cadCliente.busca(Integer.parseInt(jtCodCliente.getText()));
 
         cliente.setNome(nome3.getText());
@@ -590,26 +589,26 @@ public class AtualizarCliente extends javax.swing.JFrame {
         cliente.setRg(rg3.getText());
         cliente.setEmail(email3.getText());
         cliente.setTelefone(telefone3.getText());
-        
+
         Endereco endereco = new Endereco();
-        
+
         endereco.setBairro(bairro3.getText());
         endereco.setCidade(cidade3.getText());
         endereco.setCep(cep3.getText());
         //Se o JTextField estiver vazio preenche o campo numero com o valor 0
-        if(numero3.getText().isEmpty()){
+        if (numero3.getText().isEmpty()) {
             endereco.setNumero(0);
-        } else{
+        } else {
             endereco.setNumero(Integer.parseInt(numero3.getText()));
         }
         endereco.setComplemento(complemento3.getText());
         endereco.setLogradouro(rua3.getText());
         endereco.setPontoDeReferencia(pontoReferencia3.getText());
-        
+
         cliente.setEndereco(endereco);
-        
+
         Internet serv = new Internet();
-        
+
         switch (servico1.getSelectedIndex()) {
             case 0:
                 serv = (Internet) cadServ.busca(1);
@@ -621,15 +620,15 @@ public class AtualizarCliente extends javax.swing.JFrame {
                 serv = (Internet) cadServ.busca(3);
                 break;
         }
-        
+
         CadastroFuncionario cadFunc = new CadastroFuncionario();
         Funcionario func = cadFunc.busca(funcLogado);
-        
+
         compra.setCodigo(Integer.parseInt(jtCodVenda.getText()));
         compra.setCliente(cliente);
         compra.setServico(serv);
         compra.setVendedor((Vendedor) func);
         return compra;
     }
-    
+
 }

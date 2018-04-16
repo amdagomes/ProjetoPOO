@@ -17,27 +17,29 @@ import modelo.Vendedor;
  *
  * @author Amanda e Rafaela
  */
-
 public class CadastroCompra implements Dao<Compra> {
 
-    
     private File file;
 
-    
+    /**
+     * Construtor de compra
+     *
+     * @throws IOException
+     */
     public CadastroCompra() throws IOException {
         file = new File("Arquivos/vendas.bin");
-        
-        if(!file.exists()){
+
+        if (!file.exists()) {
             file.createNewFile();
         }
     }
 
-   @Override
-    public boolean salvar(Compra obj) throws IOException, ClassNotFoundException  {
-        
+    @Override
+    public boolean salvar(Compra obj) throws IOException, ClassNotFoundException {
+
         List<Compra> compras = listar();
         obj.setCodigo(compras.size() + 1);
-        if(compras.add(obj)){
+        if (compras.add(obj)) {
             CadastroCliente cadCliente = new CadastroCliente();
             cadCliente.salvar(obj.getCliente());
             atualizaArquivo(compras);
@@ -46,22 +48,22 @@ public class CadastroCompra implements Dao<Compra> {
             return false;
         }
     }
-    
-    public boolean atualizar(Compra obj) throws IOException, ClassNotFoundException{
+
+    public boolean atualizar(Compra obj) throws IOException, ClassNotFoundException {
         //obj se refere-se a um objeto de compra com os novos valores
         List<Compra> compras = listar();
-        
+
         CadastroCliente cadCliente = new CadastroCliente();
-       
-        for(int i = 0; i < compras.size(); i++){
-            if(compras.get(i).getCodigo() == obj.getCodigo()){
+
+        for (int i = 0; i < compras.size(); i++) {
+            if (compras.get(i).getCodigo() == obj.getCodigo()) {
                 cadCliente.atualizar(obj.getCliente());
                 Compra compra = compras.get(i);
                 compra.setCliente(obj.getCliente());
                 compra.setServico(obj.getServico());
                 compra.setVendedor((Vendedor) obj.getVendedor());
                 compras.set(i, compra);
-                
+
                 atualizaArquivo(compras);
                 return true;
             }
@@ -69,60 +71,60 @@ public class CadastroCompra implements Dao<Compra> {
         return false;
 
     }
-    
+
     @Override
-    public boolean remove(int cod, int linha) throws IOException, ClassNotFoundException{
-        
+    public boolean remove(int cod, int linha) throws IOException, ClassNotFoundException {
+
         List<Compra> compras = listar();
         Compra compra = busca(cod);
         CadastroCliente cadCliente = new CadastroCliente();
-        
-        if(cadCliente.remove(compra.getCliente().getCodigo(), linha)){
+
+        if (cadCliente.remove(compra.getCliente().getCodigo(), linha)) {
             compras.remove(compra);
             atualizaArquivo(compras);
             return true;
         }
-        
+
         return false;
     }
 
     @Override
-    public Compra busca(int cod) throws IOException, ClassNotFoundException{
-        
+    public Compra busca(int cod) throws IOException, ClassNotFoundException {
+
         List<Compra> compras = listar();
-        
-        for(Compra c : compras){
-            if(c.getCodigo() == cod){
+
+        for (Compra c : compras) {
+            if (c.getCodigo() == cod) {
                 return c;
             }
         }
-        
+
         return null;
-        
+
     }
 
     @Override
     public List listar() throws IOException, ClassNotFoundException {
-        
-        if(file.length() > 0){
+
+        if (file.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             return (List<Compra>) in.readObject();
-        } else{
+        } else {
             return new ArrayList<>();
         }
-        
+
     }
-    
-    private void atualizaArquivo(List<Compra> compras){
-        
-        try{
+
+    private void atualizaArquivo(List<Compra> compras) {
+
+        try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
             out.writeObject(compras);
             out.close();
-        } catch(IOException ex){
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
         }
-   
+
     }
 
     @Override
@@ -130,15 +132,14 @@ public class CadastroCompra implements Dao<Compra> {
         List<Compra> compras = listar();
         Compra compra = busca(cod);
         CadastroCliente cadCliente = new CadastroCliente();
-        
-        if(cadCliente.remove(compra.getCliente().getCodigo())){
+
+        if (cadCliente.remove(compra.getCliente().getCodigo())) {
             compras.remove(compra);
             atualizaArquivo(compras);
             return true;
         }
-        
+
         return false;
     }
 
 }
-

@@ -2,7 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 
-public abstract class Servico  implements Serializable{
+public abstract class Servico implements Serializable {
 
     private float vInstalacao;
     private float vMesalidade;
@@ -13,9 +13,9 @@ public abstract class Servico  implements Serializable{
         this.vMesalidade = vMesalidade;
         this.codigo = codigo;
     }
-    
-    public Servico(){
-        
+
+    public Servico() {
+
     }
 
     public float getvInstalacao() {

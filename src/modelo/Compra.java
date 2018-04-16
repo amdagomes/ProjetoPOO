@@ -3,13 +3,12 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Compra implements Serializable  {
+public class Compra implements Serializable {
 
     private Vendedor vendedor;
     private Cliente cliente;
     private Servico servico;
     private int codigo;
-   
 
     public Compra(Vendedor vendedor, Cliente cliente, Servico servico) {
         this.vendedor = vendedor;
@@ -18,7 +17,7 @@ public class Compra implements Serializable  {
     }
 
     public Compra() {
-        
+
     }
 
     public Vendedor getVendedor() {
@@ -48,8 +47,8 @@ public class Compra implements Serializable  {
     public int getCodigo() {
         return codigo;
     }
-    
-    public void setCodigo(int codigo){
+
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -89,8 +88,6 @@ public class Compra implements Serializable  {
         }
         return true;
     }
-
-    
 
     @Override
     public String toString() {

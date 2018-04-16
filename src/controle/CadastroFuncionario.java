@@ -14,11 +14,11 @@ import modelo.Vendedor;
 /**
  * Classe de cadastro de funcionário
  *
- * @author
+ * @author Amanda e Rafaela
  */
-public class CadastroFuncionario implements DaoFuncionario<Vendedor>{
+public class CadastroFuncionario implements DaoFuncionario<Vendedor> {
 
-    private File file; 
+    private File file;
 
     /**
      * construtor de funcionario
@@ -26,15 +26,15 @@ public class CadastroFuncionario implements DaoFuncionario<Vendedor>{
      */
     public CadastroFuncionario() throws IOException {
         file = new File("Arquivos/funcionarios.bin");
-        
-        if(!file.exists()){
+
+        if (!file.exists()) {
             file.createNewFile();
         }
     }
 
     @Override
-    public boolean salvar(Vendedor obj) throws IOException, ClassNotFoundException  {
-        
+    public boolean salvar(Vendedor obj) throws IOException, ClassNotFoundException {
+
         if (busca(obj.getCpf()) == null) {
 
             List<Vendedor> funcionarios = listar();
@@ -48,57 +48,55 @@ public class CadastroFuncionario implements DaoFuncionario<Vendedor>{
         } else {
             return false;
         }
-    } 
- 
+    }
 
     @Override
     public boolean remove(Vendedor funcionario) throws IOException, ClassNotFoundException {
-        
+
         List<Vendedor> funcionarios = listar();
-        
-        if(funcionarios.remove(funcionario)){
+
+        if (funcionarios.remove(funcionario)) {
             atualizaArquivo(funcionarios);
             return true;
-        }
-        else{
+        } else {
             return false;
         }
-        
+
     }
 
     @Override
     public Vendedor busca(String cpf) throws IOException, ClassNotFoundException {
-        
+
         List<Vendedor> funcionarios = listar();
-        
-        for(Vendedor f : funcionarios){
-            if(f.getCpf().equals(cpf)){
+
+        for (Vendedor f : funcionarios) {
+            if (f.getCpf().equals(cpf)) {
                 return f;
             }
         }
-        
+
         return null;
-        
+
     }
 
     @Override
     public List listar() throws IOException, ClassNotFoundException {
-        
-        if(file.length() > 0){
+
+        if (file.length() > 0) {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             return (List<Vendedor>) in.readObject();
-        } else{
+        } else {
             return new ArrayList<>();
         }
-        
+
     }
 
     @Override
-    public boolean autentica(String cpf, String senha) throws IOException, ClassNotFoundException  {
+    public boolean autentica(String cpf, String senha) throws IOException, ClassNotFoundException {
         List<Vendedor> funcionarios = listar();
-        
-        for(Vendedor f : funcionarios){
-            if(f.getCpf().equals(cpf) && f.getSenha().equals(senha)){
+
+        for (Vendedor f : funcionarios) {
+            if (f.getCpf().equals(cpf) && f.getSenha().equals(senha)) {
                 return true;
             }
         }
@@ -106,30 +104,28 @@ public class CadastroFuncionario implements DaoFuncionario<Vendedor>{
     }
 
     private void atualizaArquivo(List<Vendedor> funcionarios) throws IOException {
-        
-        try{
+
+        try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
             out.writeObject(funcionarios);
             out.close();
-        } catch(IOException ex){
+        } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Erro na atualização do arquivo");
         }
-        
+
     }
-    
+
     @Override
-     public boolean atualizar(Vendedor obj) throws IOException, ClassNotFoundException{
-       List <Vendedor> funcionarios = listar();
-       for(int i=0;i<funcionarios.size();i++){
-           if(funcionarios.get(i).getCpf().equals(obj.getCpf())){
-               funcionarios.set(i,obj);
-               atualizaArquivo(funcionarios);
-               return true;
-           }
-       }
-       return false;
+    public boolean atualizar(Vendedor obj) throws IOException, ClassNotFoundException {
+        List<Vendedor> funcionarios = listar();
+        for (int i = 0; i < funcionarios.size(); i++) {
+            if (funcionarios.get(i).getCpf().equals(obj.getCpf())) {
+                funcionarios.set(i, obj);
+                atualizaArquivo(funcionarios);
+                return true;
+            }
+        }
+        return false;
     }
 
 }
-  
-
